@@ -1,0 +1,7 @@
+build.bat
+ExcludeFiles.txt
+Jar.txt
+Xpi.txt
+*.jar
+*.xpi
+new

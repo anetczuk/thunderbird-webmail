@@ -1,0 +1,17 @@
+<database>
+    <domain>hotmail.com</domain>
+    <domain>msn.com</domain>
+    <domain>hotmail.it</domain>
+    <domain>hotmail.fr</domain>
+    <domain>hotmail.de</domain>
+    <domain>hotmail.co.jp</domain>
+    <domain>hotmail.co.uk</domain>
+    <domain>msn.co.uk</domain>
+    <domain>live.com</domain>
+    <domain>live.fr</domain>
+    <domain>live.de</domain>
+    <domain>live.co.uk</domain>
+    <domain>live.ie</domain>
+    <domain>live.nl</domain>
+    <domain>live.com.au</domain>
+</database>

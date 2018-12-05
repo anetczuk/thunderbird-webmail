@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://lycos/skin/Lycos-About.css" type="text/css"?>
+
+<!DOCTYPE dialog SYSTEM "chrome://lycos/locale/Lycos-About.dtd">
+
+<window class="dialog"
+        title= "&LycosAbout.Title;"
+        orient="vertical"
+        autostretch="always"
+        onload="gLycosAbout.init();sizeToContent()"
+        onunload ="gLycosAbout.stop()"
+        xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+        id = "LycosAboutDialog">
+
+    <script type="application/x-javascript" src="chrome://lycos/content/Lycos-About.js"/>
+
+    <groupbox align="center" orient="horizontal">
+        <vbox>
+            <hbox>
+                <spacer flex="1"/>
+                <image id="LycosImage"/>
+                <spacer flex="1"/>
+            </hbox>
+            <hbox>
+                <text value="&LycosAbout.ExtVersion;" id = "LycosVersionTitle" class="LycosVersion"/>
+                <text id = "LycosVersionNumber" class="LycosVersion"/>
+            </hbox>
+            <text value="&LycosAbout.ExtDescription;" id = "LycosDescription"/>
+            <text value="&LycosAbout.ExtCreaterTitle;" id = "LycosCreatorLabel"/>
+            <hbox>
+                <image id="LionImage"/>
+                <text id="LycosCreator" class = "LycosCreatorText"/>
+            </hbox>
+            <text value="&LycosAbout.ExtContributorTitle;" id = "LycosContributorLabel"/>
+            <vbox flex="1" id="LycosContributorBox"/>
+            <text value="&LycosAbout.ExtHome;" id = "LycosHomePage"/>
+        </vbox>
+    </groupbox>
+
+    <hbox>
+        <spacer flex="1"/>
+        <button label="&LycosAbout.ExtButton;" oncommand="window.close();"/>
+    </hbox>
+</window>

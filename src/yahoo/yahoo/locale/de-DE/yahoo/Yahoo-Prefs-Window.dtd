@@ -1,0 +1,41 @@
+<!ENTITY YahooPref.Window.Title "Yahoo-Einstellungen">
+<!ENTITY YahooPref.Panel.Accounts.Title "Konten">
+<!ENTITY YahooPref.Panel.Domains.Title "Websites">
+<!ENTITY YahooPref.Button.Close.Label "Close">
+<!ENTITY YahooPref.Tab.Mode.Title "Zugangsart">
+<!ENTITY YahooPref.Tab.POP.Title "POP3">
+<!ENTITY YahooPref.Tab.SMTP.Title "SMTP">
+<!ENTITY YahooPref.Tab.Adv.Title "Erweitert">
+<!ENTITY YahooPref.Mode.Label "Bitte Website auswählen">
+<!ENTITY YahooPref.Mode.ScreenScraper.Label "Website (Standard)">
+<!ENTITY YahooPref.Mode.Beta.Label "Website (BETA)">
+<!ENTITY YahooPref.Mode.Classic.Label "New Classic Website">
+<!ENTITY YahooPref.POP.DownloadUnread.Label "Nur ungelesene Nachrichten herunterladen">
+<!ENTITY YahooPref.POP.DownloadUnread.AccessKey "u">
+<!ENTITY YahooPref.POP.JunkMail.Label "JunkMail herunterladen">
+<!ENTITY YahooPref.POP.JunkMail.AccessKey "J">
+<!ENTITY YahooPref.POP.Folders.Label "Ordner herunterladen">
+<!ENTITY YahooPref.POP.ButtonAdd.Label "Hinzufügen...">
+<!ENTITY YahooPref.POP.ButtonAdd.AccessKey "H">
+<!ENTITY YahooPref.POP.ButtonRemove.Label "Entfernen">
+<!ENTITY YahooPref.POP.ButtonRemove.AccessKey "E">
+<!ENTITY YahooPref.POP.MarkAsRead.Label "E-Mails auf dem Server als gelesen markieren.">
+<!ENTITY YahooPref.POP.MarkAsRead.AccessKey "g">
+<!ENTITY YahooPref.SMTP.SaveSentItems.Label "Eine Kopie im &quot;Gesendet&quot;-Ordner speichern.">
+<!ENTITY YahooPref.SMTP.SaveSentItems.AccessKey "K">
+<!ENTITY YahooPref.SMTP.AlternativeGroup.Label "When sending rich text emails which part should the extension send?">
+<!ENTITY YahooPref.SMTP.SendPlain.Label "Send plain text">
+<!ENTITY YahooPref.SMTP.SendPlain.AccessKey "p">
+<!ENTITY YahooPref.SMTP.SendHtml.Label "Send html text">
+<!ENTITY YahooPref.SMTP.SendHtml.AccessKey "h">
+<!ENTITY YahooPref.Adv.ShortID.Label "Kurze ID verwenden">
+<!ENTITY YahooPref.Adv.ShortID.AccessKey "I">
+<!ENTITY YahooPref.Adv.ReUseSession.Label "HTTP-Sitzungsdaten wiederverwenden.">
+<!ENTITY YahooPref.Adv.ReUseSession.AccessKey "S">
+<!ENTITY YahooPref.AdvInfo.Label "Das Ändern der Short ID Einstellung führt zum vollständigen Herunterladen der Mailbox.">
+<!ENTITY YahooPref.AccountError.Label "Keine Yahoo-Konten gefunden">
+<!ENTITY YahooPref.Domain.Label "Von der Yahoo-Komponente unterstützte Websites">
+<!ENTITY YahooPref.Domain.Button.AddDomain.Label "Hinzufügen...">
+<!ENTITY YahooPref.Domain.Button.AddDomain.AccessKey "H">
+<!ENTITY YahooPref.Domain.Button.RemoveDomain.Label "Entfernen">
+<!ENTITY YahooPref.Domain.Button.RemoveDomain.AccessKey "E">

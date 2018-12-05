@@ -1,0 +1,140 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://yahoo/skin/Yahoo-Prefs-Folders-Add.css" type="text/css"?>
+
+<!DOCTYPE dialog SYSTEM "chrome://yahoo/locale/Yahoo-Prefs-Folders-Add.dtd">
+
+<window id="addWindow"
+        title="&YahooFolderAdd.Title;"
+        xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+        onload="return gYahooFoldersAdd.init();">
+
+    <script type="application/x-javascript" src="chrome://web-mail/content/common/DebugLog.js"/>
+    <script type="application/x-javascript" src="chrome://yahoo/content/Yahoo-Prefs-Folders-Add.js"/>
+    
+    <stringbundleset>
+        <stringbundle id="stringsYahooFoldersAdd" src="chrome://yahoo/locale/Yahoo-Prefs-Folders-Add.properties"/>
+    </stringbundleset>
+
+    <keyset>
+        <key id="key_close"  keycode="VK_ESCAPE" command="cmd_close"/>
+        <key id="key_return" keycode="VK_RETURN" command="cmd_ok" />
+        <key id="key_enter" keycode="VK_ENTER" command="cmd_ok" />
+    </keyset>
+
+    <commandset id="globalCommands">
+        <command id="cmd_close" oncommand="gYahooFoldersAdd.doCancel();"/>
+        <command id="cmd_ok" oncommand="gYahooFoldersAdd.doOk();" />
+    </commandset>
+
+    <vbox flex="1">
+        <vbox id="vBoxFolderList" flex="1">
+            <hbox>
+                <vbox>
+                    <image id="folderImage" class="folder"/>
+                    <spacer flex="1"/>
+                </vbox>
+    
+                <vbox>
+                      <label id="labelFolder"
+                             value="&YahooFolders.Label;"/>
+                </vbox>
+            </hbox>            
+            <hbox align="center">
+                <label id="labelFolderName"
+                       value="&YahooFolderName.Label;"
+                       accesskey="&YahooFolderName.AccessKey;"
+                       control="txtDomain"/>
+    
+                <textbox id="txtDomain"
+                         value=""
+                         flex="2"
+                         onchange = ""/>
+    
+                <spacer flex="1"/>
+            </hbox>
+                    
+            <spacer flex="1" />
+
+            <hbox align="end" pack="center">
+                <button id="add"
+                        label="&YahooFolder.ButtonOk.Label;"
+                        accesskey="&YahooFolder.ButtonOk.AccessKey;"
+                        default="true"
+                        oncommand ="gYahooFoldersAdd.doOk();"/>
+                <button id="cancel"
+                        label="&YahooFolder.ButtonCancel.Label;"
+                        accesskey="&YahooFolder.ButtonCancel.AccessKey;"
+                        oncommand ="gYahooFoldersAdd.doCancel();"/>
+            </hbox>
+        </vbox>
+        
+        <deck id="vBoxfolderDownload" selectedIndex="0" hidden="true" flex="1">
+            <vbox flex="1"  align="center" pack="center">
+                <spacer flex="1" />
+                <hbox >
+                    <vbox>
+                        <spacer flex="1"/>
+                        <image id="imageDownloadFolder" class="folder"/>
+                        <spacer flex="1"/>
+                    </vbox>
+                    <vbox pack="center">
+                        <label id="labelFolderName"
+                               value="&YahooFolder.DownloadFolder.Label;"/>
+                    </vbox>
+                </hbox>
+                        
+                <spacer flex="1" />
+    
+                <hbox align="end" pack="center">
+                    <button id="cancel"
+                            label="&YahooFolder.ButtonCancel.Label;"
+                            accesskey="&YahooFolder.ButtonCancel.AccessKey;"
+                            oncommand ="gYahooFoldersAdd.doDownloadCancel();"/>
+                </hbox>
+            </vbox>
+            
+            <vbox flex="1">
+                <vbox>
+                    <hbox>
+                        <vbox>
+                            <image id="folderImage" class="folder"/>
+                            <spacer flex="1"/>
+                        </vbox>
+            
+                        <vbox>
+                            <label id="labelFolder"
+                                   value="&YahooFolders.Label;"/>
+                        </vbox>
+                    </hbox>            
+
+                    <label id="labelFolderName"
+                           value="&YahooFolderName.Label;"/>  
+                    <spacer flex="1"/>
+                    <hbox>
+                        <spacer flex="1"/>
+                        <richlistbox id="listFolders"
+                                     class="listbox"
+                                     onselect=""/>
+                        <spacer flex="1"/>
+                    </hbox> 
+                    <spacer flex="1"/>
+                </vbox>
+                        
+                <spacer flex="1" />
+    
+                <hbox align="end" pack="center">
+                    <button id="add"
+                            label="&YahooFolder.ButtonOk.Label;"
+                            accesskey="&YahooFolder.ButtonOk.AccessKey;"
+                            default="true"
+                            oncommand ="gYahooFoldersAdd.doOkList();"/>
+                    <button id="cancel"
+                            label="&YahooFolder.ButtonCancel.Label;"
+                            accesskey="&YahooFolder.ButtonCancel.AccessKey;"
+                            oncommand ="gYahooFoldersAdd.doCancel();"/>
+                </hbox>
+            </vbox>
+        </deck>
+    </vbox>
+</window>

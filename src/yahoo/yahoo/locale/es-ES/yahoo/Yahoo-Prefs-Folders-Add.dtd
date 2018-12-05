@@ -1,0 +1,9 @@
+<!ENTITY YahooFolderAdd.Title "Añadir">
+<!ENTITY YahooFolderName.Label "Nombre de la carpeta">
+<!ENTITY YahooFolderName.AccessKey "N">
+<!ENTITY YahooFolders.Label "Añadir carpeta a descargar">
+<!ENTITY YahooFolder.ButtonOk.Label "Ok">
+<!ENTITY YahooFolder.ButtonOk.AccessKey "O">
+<!ENTITY YahooFolder.ButtonCancel.Label "Cancelar">
+<!ENTITY YahooFolder.ButtonCancel.AccessKey "C">
+<!ENTITY YahooFolder.DownloadFolder.Label "Downloading folder list">

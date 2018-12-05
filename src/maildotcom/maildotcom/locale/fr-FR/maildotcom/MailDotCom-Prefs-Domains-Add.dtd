@@ -1,0 +1,8 @@
+<!ENTITY MailDotComAddDomain.Title "Ajouter un domaine">
+<!ENTITY MailDotComAddDomainName.Label "Domaine">
+<!ENTITY MailDotComAddDomainName.AccessKey "D">
+<!ENTITY MailDotComAddDomain.Label "Ajouter un domaine MailDotCom">
+<!ENTITY MailDotComAddDomain.ButtonOk.Label "OK">
+<!ENTITY MailDotComAddDomain.ButtonOk.AccessKey "O">
+<!ENTITY MailDotComAddDomain.ButtonCancel.Label "Annuler">
+<!ENTITY MailDotComAddDomain.ButtonCancel.AccessKey "A">

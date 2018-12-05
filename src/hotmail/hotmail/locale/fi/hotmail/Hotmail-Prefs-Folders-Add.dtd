@@ -1,0 +1,8 @@
+<!ENTITY HotmailFolderAdd.Title "Lisää kansio">
+<!ENTITY HotmailFolderName.Label "Kansion nimi">
+<!ENTITY HotmailFolderName.AccessKey "K">
+<!ENTITY HotmailFolders.Label "Lisää latauskansio">
+<!ENTITY HotmailFolder.ButtonOk.Label "Ok">
+<!ENTITY HotmailFolder.ButtonOk.AccessKey "O">
+<!ENTITY HotmailFolder.ButtonCancel.Label "Peruuta">
+<!ENTITY HotmailFolder.ButtonCancel.AccessKey "P">

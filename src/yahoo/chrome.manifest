@@ -1,0 +1,44 @@
+overlay chrome://messenger/content/messenger.xul    chrome://yahoo/content/Yahoo-Start.xul
+
+interfaces components/nsIYahooDomains.xpt
+component {10796650-dbc6-11da-a94d-0800200c9a66} components/nsYahooDomains.js
+contract @mozilla.org/YahooDomains;1 {10796650-dbc6-11da-a94d-0800200c9a66}
+category profile-after-change nsYahooDomains @mozilla.org/YahooDomains;1
+
+interfaces components/nsIYahooPOP.xpt
+component {bfacf8a0-6447-11d9-9669-0800200c9a66} components/nsYahooPOP.js
+contract @mozilla.org/YahooPOP;1 {bfacf8a0-6447-11d9-9669-0800200c9a66}
+
+interfaces components/nsIYahooSMTP.xpt
+component {958266e0-e2a6-11d9-8cd6-0800200c9a66} components/nsYahooSMTP.js
+contract @mozilla.org/YahooSMTP;1 {958266e0-e2a6-11d9-8cd6-0800200c9a66}
+
+
+content yahoo    jar:chrome/yahoo.jar!/content/yahoo/
+
+skin    yahoo     classic/1.0     jar:chrome/yahoo.jar!/skin/classic/yahoo/
+
+style   chrome://yahoo/content/Yahoo-Prefs-Window.xul  chrome://messenger/skin/preferences/preferences.css
+style   chrome://yahoo/content/Yahoo-Prefs-Window.xul  chrome://mozapps/content/preferences/preferences.css
+
+locale  yahoo    en-US   jar:chrome/yahoo.jar!/locale/en-US/yahoo/
+locale  yahoo    it-IT   jar:chrome/yahoo.jar!/locale/it-IT/yahoo/
+locale  yahoo    es-ES   jar:chrome/yahoo.jar!/locale/es-ES/yahoo/
+locale  yahoo    fr-FR   jar:chrome/yahoo.jar!/locale/fr-FR/yahoo/
+locale  yahoo    de-DE   jar:chrome/yahoo.jar!/locale/de-DE/yahoo/
+locale  yahoo    ca-AD   jar:chrome/yahoo.jar!/locale/ca-AD/yahoo/
+locale  yahoo    nl-NL   jar:chrome/yahoo.jar!/locale/nl-NL/yahoo/
+locale  yahoo    zh-CN   jar:chrome/yahoo.jar!/locale/zh-CN/yahoo/
+locale  yahoo    fi-FI   jar:chrome/yahoo.jar!/locale/fi-FI/yahoo/
+locale  yahoo    tr-TR   jar:chrome/yahoo.jar!/locale/tr-TR/yahoo/
+locale  yahoo    sl-SI   jar:chrome/yahoo.jar!/locale/sl-SI/yahoo/
+locale  yahoo    pt-BR   jar:chrome/yahoo.jar!/locale/pt-BR/yahoo/
+locale  yahoo    es-AR   jar:chrome/yahoo.jar!/locale/es-AR/yahoo/
+locale  yahoo    da-DK   jar:chrome/yahoo.jar!/locale/da-DK/yahoo/
+locale  yahoo    lt-LT   jar:chrome/yahoo.jar!/locale/lt-LT/yahoo/
+locale  yahoo    nb-NO   jar:chrome/yahoo.jar!/locale/nb-NO/yahoo/
+locale  yahoo    pt-PT   jar:chrome/yahoo.jar!/locale/pt-PT/yahoo/
+locale  yahoo    sk-SK   jar:chrome/yahoo.jar!/locale/sk-SK/yahoo/
+locale  yahoo    ro-RO   jar:chrome/yahoo.jar!/locale/ro-RO/yahoo/
+locale  yahoo    zh-TW   jar:chrome/yahoo.jar!/locale/zh-TW/yahoo/
+locale  yahoo    ar      jar:chrome/yahoo.jar!/locale/ar/yahoo/

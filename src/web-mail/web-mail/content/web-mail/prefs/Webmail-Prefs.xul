@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/global.css"?>
+<?xml-stylesheet href="chrome://web-mail/skin/Webmail-Prefs.css"?>
+
+<!DOCTYPE dialog SYSTEM "chrome://web-mail/locale/Webmail-Prefs.dtd">
+
+<prefwindow type="prefwindow"
+            id="WebMail-Prefs"
+            title="&Options.szTitle;"
+            xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+            style="&Window.size;"
+            lastSelected="paneServers"
+            instantApply="true"
+            buttons="extra1"
+            buttonlabelextra1="&close.button.label;"
+            ondialogextra1="window.close();">
+
+    <!-- servers -->
+    <prefpane id="paneServers"
+              label="&Servers.Panel.szTitle;"
+              src="chrome://web-mail/content/prefs/Webmail-Prefs-Servers.xul"/>
+
+    <!-- domains -->
+    <prefpane id="paneDomains"
+              label="&Domains.Panel.szTitle;"
+              src="chrome://web-mail/content/prefs/Webmail-Prefs-Domains.xul"/>
+
+    <!-- logging -->
+    <prefpane id="paneLogging"
+              label="&Logging.Panel.szTitle;"
+              src="chrome://web-mail/content/prefs/Webmail-Prefs-Logging.xul"/>
+
+    <script type="application/x-javascript" src="chrome://web-mail/content/common/DebugLog.js"/>
+    <script type="application/x-javascript" src="chrome://web-mail/content/prefs/Webmail-Prefs-Servers.js"/>
+    <script type="application/x-javascript" src="chrome://web-mail/content/prefs/Webmail-Prefs-Domains.js"/>
+    <script type="application/x-javascript" src="chrome://web-mail/content/prefs/Webmail-Prefs-Logging.js"/>
+</prefwindow>

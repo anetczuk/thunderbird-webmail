@@ -1,0 +1,8 @@
+<!ENTITY MailDotComFolderAdd.Title "Dodaj mapo">
+<!ENTITY MailDotComFolderName.Label "Ime mape">
+<!ENTITY MailDotComFolderName.AccessKey "m">
+<!ENTITY MailDotComFolders.Label "Dodaj mapo za prenos">
+<!ENTITY MailDotComFolder.ButtonOk.Label "V redu">
+<!ENTITY MailDotComFolder.ButtonOk.AccessKey "r">
+<!ENTITY MailDotComFolder.ButtonCancel.Label "Prekliči">
+<!ENTITY MailDotComFolder.ButtonCancel.AccessKey "k">

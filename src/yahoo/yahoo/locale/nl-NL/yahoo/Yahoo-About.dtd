@@ -1,0 +1,8 @@
+<!ENTITY YahooAbout.Title "Over Yahoo">
+<!ENTITY YahooAbout.ExtName "Yahoo">
+<!ENTITY YahooAbout.ExtVersion "versie">
+<!ENTITY YahooAbout.ExtDescription "Yahoo-module voor de Webmail extensie.">
+<!ENTITY YahooAbout.ExtCreaterTitle "Gemaakt door:">
+<!ENTITY YahooAbout.ExtHome "Homepage">
+<!ENTITY YahooAbout.ExtButton "Afsluiten">
+<!ENTITY YahooAbout.ExtContributorTitle "Medewerk(st)ers:">

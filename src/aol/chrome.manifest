@@ -1,0 +1,37 @@
+overlay chrome://messenger/content/messenger.xul    chrome://aol/content/AOL-Start.xul
+
+interfaces components/nsIAOLPOP.xpt
+component {e977c180-9103-11da-a72b-0800200c9a66} components/nsAOLPOP.js
+contract @mozilla.org/AOLPOP;1 {e977c180-9103-11da-a72b-0800200c9a66}
+
+interfaces components/nsIAOLSMTP.xpt
+component {411242b0-9b47-11da-a72b-0800200c9a66} components/nsAOLSMTP.js
+contract @mozilla.org/AOLSMTP;1 {411242b0-9b47-11da-a72b-0800200c9a66}
+
+interfaces components/nsIAOLDomains.xpt
+component {0e1009c0-8533-11db-b606-0800200c9a66} components/nsAOLDomains.js
+contract @mozilla.org/AOLDomains;1 {0e1009c0-8533-11db-b606-0800200c9a66}
+category profile-after-change nsAOLDomains @mozilla.org/AOLDomains;1
+
+
+content aol    jar:chrome/aol.jar!/content/aol/
+
+skin    aol       classic/1.0    jar:chrome/aol.jar!/skin/classic/aol/
+
+style   chrome://aol/content/AOL-Prefs.xul  chrome://messenger/skin/preferences/preferences.css
+style   chrome://aol/content/AOL-Prefs.xul  chrome://mozapps/content/preferences/preferences.css
+
+locale    aol    en-US   jar:chrome/aol.jar!/locale/en-US/aol/
+locale    aol    es-ES   jar:chrome/aol.jar!/locale/es-ES/aol/
+locale    aol    fi-FI   jar:chrome/aol.jar!/locale/fi-FI/aol/
+locale    aol    fr-FR   jar:chrome/aol.jar!/locale/fr-FR/aol/
+locale    aol    it-IT   jar:chrome/aol.jar!/locale/it-IT/aol/
+locale    aol    pt-Br   jar:chrome/aol.jar!/locale/pt-BR/aol/
+locale    aol    sl-SI   jar:chrome/aol.jar!/locale/sl-SI/aol/
+locale    aol    nl-NL   jar:chrome/aol.jar!/locale/nl-NL/aol/
+locale    aol    lt-LT   jar:chrome/aol.jar!/locale/lt-LT/aol/
+locale    aol    nb-NO   jar:chrome/aol.jar!/locale/nb-NO/aol/
+locale    aol    de-DE   jar:chrome/aol.jar!/locale/de-DE/aol/
+locale    aol    zh-CN   jar:chrome/aol.jar!/locale/zh-CN/aol/
+locale    aol    tr-TR   jar:chrome/aol.jar!/locale/tr-TR/aol/
+locale    aol    sk-SK   jar:chrome/aol.jar!/locale/sk-SK/aol/

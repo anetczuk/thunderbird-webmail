@@ -1,0 +1,8 @@
+<!ENTITY AOLFolderAdd.Title "Adicionar Pasta">
+<!ENTITY AOLFolderName.Label "Nome da Pasta">
+<!ENTITY AOLFolderName.AccessKey "P">
+<!ENTITY AOLFolders.Label "Adicionar pasta de download">
+<!ENTITY AOLFolderName.ButtonOk.Label "Ok">
+<!ENTITY AOLFolderName.ButtonOk.AccessKey "O">
+<!ENTITY AOLFolderName.ButtonCancel.Label "Cancelar">
+<!ENTITY AOLFolderName.ButtonCancel.AccessKey "C">

@@ -1,0 +1,8 @@
+<!ENTITY YahooAddDomain.Title "Add Domain">
+<!ENTITY YahooAddDomainName.Label "Domain">
+<!ENTITY YahooAddDomainName.AccessKey "D">
+<!ENTITY YahooAddDomain.Label "Add Yahoo domain">
+<!ENTITY YahooAddDomain.ButtonOk.Label "Ok">
+<!ENTITY YahooAddDomain.ButtonOk.AccessKey "O">
+<!ENTITY YahooAddDomain.ButtonCancel.Label "Cancel">
+<!ENTITY YahooAddDomain.ButtonCancel.AccessKey "C">

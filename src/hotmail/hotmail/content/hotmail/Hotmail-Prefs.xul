@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/global.css"?>
+<?xml-stylesheet href="chrome://hotmail/skin/Hotmail-Prefs.css"?>
+
+<!DOCTYPE dialog SYSTEM "chrome://hotmail/locale/Hotmail-Prefs.dtd">
+
+<prefwindow type="prefwindow"
+            id="prefsWindow"
+            title="&HotmailPref.Window.Title;"
+            xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+            style="&HotmailPref.Window.size;"
+            lastSelected="paneAccounts"
+            instantApply="true"
+            buttons="extra1"
+            buttonlabelextra1="&HotmailPref.Button.Close.Label;"
+            ondialogextra1="window.close();">
+
+    <!-- Accounts -->
+    <prefpane id="paneAccounts"
+              label="&HotmailPref.Panel.Accounts.Title;"
+              src="chrome://hotmail/content/Hotmail-Prefs-Accounts.xul"/>
+
+    <!-- Domains -->
+    <prefpane id="paneDomains"
+              label="&HotmailPref.Panel.Domains.Title;"
+              src="chrome://hotmail/content/Hotmail-Prefs-Domains.xul"/>
+
+    <script type="application/x-javascript" src="chrome://web-mail/content/common/DebugLog.js"/>
+    <script type="application/x-javascript" src="chrome://hotmail/content/Hotmail-Prefs-Domains.js"/>
+    <script type="application/x-javascript" src="chrome://web-mail/content/common/CommonPrefs.js"/>
+    <script type="application/x-javascript" src="chrome://hotmail/content/Hotmail-Prefs-Accounts.js"/>
+</prefwindow>

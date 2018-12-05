@@ -1,0 +1,35 @@
+const kAOLConstants = true;
+
+const patternAOLReplace = /parent\.location\.replace\("(.*?)"\);/i;
+const patternAOLRedirect = /goToLoginUrl[\s\S]*snsRedir\("(.*?)"\)/i;
+const patternAOLLoginForm = /<form.*?AOLLoginForm.*?>[\s\S]*?<\/form>/igm;
+const patternAOLScreen = /<iframe title="Screen Name Container".*? src="(.*?)"/i;
+const patternAOLAction = /<form.*?action="(.*?)".*?>/;
+const patternAOLInput = /<input.*?>/igm;
+const patternAOLType = /type="(.*?)"/i;
+const patternAOLName = /name="(.*?)"/i;
+const patternAOLValue = /value="(.*?)"/i;
+const patternAOLVerify = /<body onLoad=".*?'(http.*?)'.*>/i;
+const patternAOLMSGList = /gMessageButtonVisibility/i;
+const patternAOLVersion =/var VERSION="(.*?):.*?"/i;
+const patternAOLUserID =/uid:(.*?)&/i;
+const patternAOLRealUserName =/"UserScreenName":"(.*?)"/i;
+const patternAOLPageNum = /info.pageCount\s=\s(.*?);/i;
+const patternAOLMSGSender = /^fa[\s\S].*$/gmi;
+const patternAOLMSGData = /"rows":\[(.*?\]\]),/i;
+const patternAOLMSGDataProcess =/\["(.*?)","(.*?)",.*?,"([\s\S]*)",(.*?),(.*?),.*?,.*?,(.*?),.*?\]/i;
+const patternAOLURLPageNum = /page=(.*?)&/i;
+const patternAOLLogout = /Logout\.aspx/i;
+const patternAOLLogoutURL = /<div id="sns"><a.*?href="(.*?logout.*?)".*?>.*?<\/div>/i;
+const patternAOLFolders =/"folders"\:\[(\[.*?\])\]/i;
+const patternAOLFolderName = /\["(.*?)",.*?\]/i
+const patternAOLFolderNameURL = /folder=(.*?)&/i;
+const patternAOLSend =/<form.*?name="SendForm".*?>[\s\S]*?<\/form>/igm;
+const patternAOLSendCheck = /parent.HandleSendSaveResponse\(true,.*?\)/igm;
+const patternAOLBounce =/goToLoginUrl[\s\S]*?snsRedir\("(.*?)"\);[\s\S]*?\}/im;
+const patternAOLPath = /gSuccessPath.*?"(.*?)";/i;
+const patternAOLPreferredHost = /gPreferredHost.*?"(.*?)";/i;
+const patternAOLSuccess = /gSuccessURL.*?"(.*?)";/i;
+const patternAOLHostCheckPath = /gHostCheckPath.*?"(.*?)";/i;
+const kPatternFolderID = /<FolderInfo name="(.*?)">/i;
+const kPatternSettings = /"(.*?settings\.js\.aspx.*?)"/i;

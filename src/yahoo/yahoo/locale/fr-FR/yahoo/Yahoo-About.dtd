@@ -1,0 +1,8 @@
+<!ENTITY YahooAbout.Title "Yahoo – À propos">
+<!ENTITY YahooAbout.ExtName "Yahoo">
+<!ENTITY YahooAbout.ExtVersion "version">
+<!ENTITY YahooAbout.ExtDescription "Module Yahoo pour l&apos;extension Web Mail.">
+<!ENTITY YahooAbout.ExtCreaterTitle "Créée par :">
+<!ENTITY YahooAbout.ExtHome "Visiter la page d&apos;accueil">
+<!ENTITY YahooAbout.ExtButton "Fermer">
+<!ENTITY YahooAbout.ExtContributorTitle "Contributeurs :">

@@ -1,0 +1,10 @@
+<!ENTITY Window.size "lebar: 30em; tinggi: 10em">
+<!ENTITY Uri.label "Uri">
+<!ENTITY Uri.accessKey "U">
+<!ENTITY Uri.size "lebar: 35px">
+<!ENTITY Domain.label "Domain">
+<!ENTITY Domain.accessKey "D">
+<!ENTITY TitleAdd "Tambah">
+<!ENTITY TitleEdit "Sunting">
+<!ENTITY Ok.label "Ok">
+<!ENTITY Cancel.label "Batal">

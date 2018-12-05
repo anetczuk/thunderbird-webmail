@@ -1,0 +1,9 @@
+<!ENTITY YahooFolderAdd.Title "Ordner hinzufügen">
+<!ENTITY YahooFolderName.Label "Ordnername">
+<!ENTITY YahooFolderName.AccessKey "N">
+<!ENTITY YahooFolders.Label "Download-Ordner hinzufügen">
+<!ENTITY YahooFolder.ButtonOk.Label "OK">
+<!ENTITY YahooFolder.ButtonOk.AccessKey "O">
+<!ENTITY YahooFolder.ButtonCancel.Label "Abbrechen">
+<!ENTITY YahooFolder.ButtonCancel.AccessKey "A">
+<!ENTITY YahooFolder.DownloadFolder.Label "Downloading folder list">

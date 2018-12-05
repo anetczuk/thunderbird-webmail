@@ -1,0 +1,35 @@
+<!ENTITY Window.size "bredde: 46em; høyde: 37em">
+<!ENTITY Options.szTitle "WebMail-innstillinger">
+<!ENTITY Servers.Panel.szTitle "Servere">
+<!ENTITY Domains.Panel.szTitle "Domener">
+<!ENTITY Logging.Panel.szTitle "Logging">
+<!ENTITY General.Panel.szTitle "Generell">
+<!ENTITY close.button.label "Lukk">
+<!ENTITY Ports.Label "Port">
+<!ENTITY Ports.POP.AccessKey "o">
+<!ENTITY Ports.SMTP.AccessKey "r">
+<!ENTITY Ports.IMAP.AccessKey "t">
+<!ENTITY Pop.Label "POP">
+<!ENTITY SMTP.Label "SMTP">
+<!ENTITY IMAP.Label "IMAP">
+<!ENTITY StatusBox.size "bredde: 6em;">
+<!ENTITY StartServer.Tooltip "Start server">
+<!ENTITY StopServer.Tooltip "Stopp server">
+<!ENTITY Enable.Server.Label "Aktiver ved oppstart">
+<!ENTITY Enable.POP.AccessKey "E">
+<!ENTITY Enable.SMTP.AccessKey "n">
+<!ENTITY Enable.IMAP.AccessKey "a">
+<!ENTITY ShowInStatusbar.AccessKey "s">
+<!ENTITY ShowInStatusbar.Label "Vis serverens status i statuslinjen">
+<!ENTITY GeneralLogging.Label "Aktiver loggføring">
+<!ENTITY GeneralLogging.AccessKey "E">
+<!ENTITY Location.Label "Sted">
+<!ENTITY Location.AccessKey "L">
+<!ENTITY Button.Label "Velg...">
+<!ENTITY Button.AccessKey "B">
+<!ENTITY NotePort.Label "Noen operativsystemer blokkerer porter lavere enn 1024.">
+<!ENTITY Note.Label "Disse loggene vil inneholde brukernavn og passord.">
+<!ENTITY Restart.Label "Du må starte Thunderbird på nytt for at endringene skal tre i kraft.">
+<!ENTITY RestartServer.Label "Du må starte Thunderbird på nytt for at forandringen skal tre i kraft.">
+<!ENTITY Domain.Label "Domene">
+<!ENTITY POP.Label "POP">

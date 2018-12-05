@@ -1,0 +1,8 @@
+<!ENTITY HotmailAddDomain.Title "Lisää verkkotunnus">
+<!ENTITY HotmailAddDomain.Label "Lisää Hotmail -verkkotunnus">
+<!ENTITY HotmailAddDomainName.Label "Verkkotunnus">
+<!ENTITY HotmailAddDomainName.AccessKey "V">
+<!ENTITY HotmailAddDomain.ButtonOk.Label "Ok">
+<!ENTITY HotmailAddDomain.ButtonOk.AccessKey "O">
+<!ENTITY HotmailAddDomain.ButtonCancel.Label "Peruuta">
+<!ENTITY HotmailAddDomain.ButtonCancel.AccessKey "P">

@@ -1,0 +1,35 @@
+<!ENTITY Window.size "width: 46em; height: 37em">
+<!ENTITY Options.szTitle "WebMail indstillinger">
+<!ENTITY Servers.Panel.szTitle "Servere">
+<!ENTITY Domains.Panel.szTitle "Domæner">
+<!ENTITY Logging.Panel.szTitle "Logning">
+<!ENTITY General.Panel.szTitle "Generelt">
+<!ENTITY close.button.label "Luk">
+<!ENTITY Ports.Label "Port">
+<!ENTITY Ports.POP.AccessKey "o">
+<!ENTITY Ports.SMTP.AccessKey "r">
+<!ENTITY Ports.IMAP.AccessKey "t">
+<!ENTITY Pop.Label "POP">
+<!ENTITY SMTP.Label "SMTP">
+<!ENTITY IMAP.Label "IMAP">
+<!ENTITY StatusBox.size "width: 6em;">
+<!ENTITY StartServer.Tooltip "Start Server">
+<!ENTITY StopServer.Tooltip "Stop Server">
+<!ENTITY Enable.Server.Label "Aktiver ved opstart">
+<!ENTITY Enable.POP.AccessKey "A">
+<!ENTITY Enable.SMTP.AccessKey "k">
+<!ENTITY Enable.IMAP.AccessKey "t">
+<!ENTITY ShowInStatusbar.AccessKey "s">
+<!ENTITY ShowInStatusbar.Label "Show server status in statusbar">
+<!ENTITY GeneralLogging.Label "Aktiver logning">
+<!ENTITY GeneralLogging.AccessKey "e">
+<!ENTITY Location.Label "Lokation">
+<!ENTITY Location.AccessKey "L">
+<!ENTITY Button.Label "Gennemse...">
+<!ENTITY Button.AccessKey "G">
+<!ENTITY NotePort.Label "Nogle OSer blokerer porte over 1024.">
+<!ENTITY Note.Label "Disse logs vil indeholde brugernavne og kodeord.">
+<!ENTITY Restart.Label "En genstart af Thunderbird er påkrævet før ændringerne træder i kraft.">
+<!ENTITY RestartServer.Label "En genstart af serveren er påkrævet før portændringerne træder i kraft.">
+<!ENTITY Domain.Label "Domæne">
+<!ENTITY POP.Label "POP">

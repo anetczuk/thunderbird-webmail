@@ -1,0 +1,8 @@
+<!ENTITY WebmailAbout.Title "WebMail - Hakkında">
+<!ENTITY WebmailAbout.ExtName "Web Posta">
+<!ENTITY WebmailAbout.ExtVersion "sürüm">
+<!ENTITY WebmailAbout.ExtDescription "Thunderbird ile web posta hesaplarınıza ulaşın">
+<!ENTITY WebmailAbout.ExtCreaterTitle "Hazırlayan:">
+<!ENTITY WebmailAbout.ExtHome "Anasayfa">
+<!ENTITY WebmailAbout.ExtButton "Kapat">
+<!ENTITY WebmailAbout.ExtContributorTitle "Destekleyenler:">

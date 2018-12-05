@@ -1,0 +1,8 @@
+<!ENTITY MailDotComFolderAdd.Title "Aggiunta di una cartella">
+<!ENTITY MailDotComFolderName.Label "Nome della cartella:">
+<!ENTITY MailDotComFolderName.AccessKey "c">
+<!ENTITY MailDotComFolders.Label "Aggiungere cartella dalla quale scaricare i messaggi">
+<!ENTITY MailDotComFolder.ButtonOk.Label "OK">
+<!ENTITY MailDotComFolder.ButtonOk.AccessKey "O">
+<!ENTITY MailDotComFolder.ButtonCancel.Label "Annulla">
+<!ENTITY MailDotComFolder.ButtonCancel.AccessKey "U">

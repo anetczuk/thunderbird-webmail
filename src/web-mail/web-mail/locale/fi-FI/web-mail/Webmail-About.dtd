@@ -1,0 +1,8 @@
+<!ENTITY WebmailAbout.Title "Webmail - Tietoja">
+<!ENTITY WebmailAbout.ExtName "Web Mail">
+<!ENTITY WebmailAbout.ExtVersion "versio">
+<!ENTITY WebmailAbout.ExtDescription "Mahdollistaa Thunderbirdin pääsyn webmailiin">
+<!ENTITY WebmailAbout.ExtCreaterTitle "Tekijä:">
+<!ENTITY WebmailAbout.ExtHome "Kotisivu">
+<!ENTITY WebmailAbout.ExtButton "Sulje">
+<!ENTITY WebmailAbout.ExtContributorTitle "Avustajat:">

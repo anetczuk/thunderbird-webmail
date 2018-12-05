@@ -1,0 +1,8 @@
+<!ENTITY YahooAbout.Title "关于 Yahoo">
+<!ENTITY YahooAbout.ExtName "Yahoo">
+<!ENTITY YahooAbout.ExtVersion "版本:">
+<!ENTITY YahooAbout.ExtDescription "Web-Mail 扩展的 Yahoo 组件。">
+<!ENTITY YahooAbout.ExtCreaterTitle "创建者:">
+<!ENTITY YahooAbout.ExtHome "主页">
+<!ENTITY YahooAbout.ExtButton "关闭">
+<!ENTITY YahooAbout.ExtContributorTitle "贡献者:">

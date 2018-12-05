@@ -1,0 +1,10 @@
+<!ENTITY GMailAbout.Title "GMail - Tentang">
+<!ENTITY GMailAbout.ExtName "GMail">
+<!ENTITY GMailAbout.ExtVersion "versi 0.5.4">
+<!ENTITY GMailAbout.ExtDescription "Komponen GMail untuk ekstensi Web-Mail.">
+<!ENTITY GMailAbout.ExtCreaterTitle "Dibuat Oleh:">
+<!ENTITY GMailAbout.ExtCreator "Luigi Capriotti">
+<!ENTITY GMailAbout.ExtHome "Situs">
+<!ENTITY GMailAbout.ExtHomeURL "http://webmail.mozdev.org/">
+<!ENTITY GMailAbout.ExtButton "Tutup">
+<!ENTITY GMailAbout.ExtContributorTitle "Kontributor2:">

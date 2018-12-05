@@ -1,0 +1,4 @@
+<!ENTITY DownloadUnread.Label "Scarica solo messaggi non letti">
+<!ENTITY DownloadUnread.AccessKey "n">
+<!ENTITY Archive.Label "Archivia i messaggi anziché eliminarli">
+<!ENTITY Archive.AccessKey "S">

@@ -1,0 +1,8 @@
+<!ENTITY HotmailFolderAdd.Title "Tilføj mappe">
+<!ENTITY HotmailFolderName.Label "Mappenavn">
+<!ENTITY HotmailFolderName.AccessKey "M">
+<!ENTITY HotmailFolders.Label "Tilføj download-mappe">
+<!ENTITY HotmailFolder.ButtonOk.Label "Ok">
+<!ENTITY HotmailFolder.ButtonOk.AccessKey "O">
+<!ENTITY HotmailFolder.ButtonCancel.Label "Annuller">
+<!ENTITY HotmailFolder.ButtonCancel.AccessKey "A">

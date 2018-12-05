@@ -1,0 +1,16 @@
+<!ENTITY AOLPref.Window.Title "AOL / Netscape - Asetukset">
+<!ENTITY AOLPref.Panel.Accounts.Title "Tilit">
+<!ENTITY AOLPref.Button.Close.Label "Clsoe">
+<!ENTITY AOLPref.Tab.POP.Title "POP">
+<!ENTITY AOLPref.POP.DownloadUnread.Label "Lataa vain lukemattomat viestit">
+<!ENTITY AOLPref.POP.DownloadUnread.AccessKey "a">
+<!ENTITY AOLPref.POP.JunkMail.Label "Lataa roskaposti">
+<!ENTITY AOLPref.POP.JunkMail.AccessKey "r">
+<!ENTITY AOLPref.POP.Folders.Label "Latauskansiot">
+<!ENTITY AOLPref.POP.ButtonAdd.Label "Lisää...">
+<!ENTITY AOLPref.POP.ButtonAdd.AccessKey "L">
+<!ENTITY AOLPref.POP.ButtonRemove.Label "Poista">
+<!ENTITY AOLPref.POP.ButtonRemove.AccessKey "P">
+<!ENTITY AOLPref.AccountError.Label "AOL-tilejä ei löytynyt">
+<!ENTITY AOLPref.POP.MarkAsRead.Label "Merkitse viestit luetuksi palvelimella">
+<!ENTITY AOLPref.POP.MarkAsRead.AccessKey "M">

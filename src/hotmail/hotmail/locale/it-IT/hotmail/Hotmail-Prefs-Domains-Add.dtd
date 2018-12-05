@@ -1,0 +1,8 @@
+<!ENTITY HotmailAddDomain.Title "Aggiunta di un dominio">
+<!ENTITY HotmailAddDomain.Label "Aggiungere un dominio di Hotmail">
+<!ENTITY HotmailAddDomainName.Label "Dominio:">
+<!ENTITY HotmailAddDomainName.AccessKey "D">
+<!ENTITY HotmailAddDomain.ButtonOk.Label "OK">
+<!ENTITY HotmailAddDomain.ButtonOk.AccessKey "O">
+<!ENTITY HotmailAddDomain.ButtonCancel.Label "Annulla">
+<!ENTITY HotmailAddDomain.ButtonCancel.AccessKey "A">

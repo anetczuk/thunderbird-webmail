@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/global.css"?>
+<?xml-stylesheet href="chrome://aol/skin/AOL-Prefs.css"?>
+<?xml-stylesheet href="chrome://aol/skin/AOL-Prefs-Accounts.css"?>
+
+<!DOCTYPE dialog SYSTEM "chrome://aol/locale/AOL-Prefs.dtd">
+
+<prefwindow type="prefwindow"
+            id="prefsWindow"
+            title="&AOLPref.Window.Title;"
+            xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+            lastSelected="paneAccounts"
+            instantApply="true"
+            buttons="extra1"
+            buttonlabelextra1="&AOLPref.Button.Close.Label;"
+            ondialogextra1="window.close();">
+
+    <!-- Accounts -->
+    <prefpane id="paneAccounts"
+              label="&AOLPref.Panel.Accounts.Title;"
+              src="chrome://aol/content/AOL-Prefs-Accounts.xul"/>
+
+    <!-- Domains -->
+    <prefpane id="paneDomains"
+              label="&AOLPref.Panel.Domains.Title;"
+              src="chrome://aol/content/AOL-Prefs-Domains.xul"/>
+
+    <script type="application/x-javascript" src="chrome://web-mail/content/common/DebugLog.js"/>
+    <script type="application/x-javascript" src="chrome://aol/content/AOL-Prefs-Domains.js"/>
+    <script type="application/x-javascript" src="chrome://web-mail/content/common/CommonPrefs.js"/>
+    <script type="application/x-javascript" src="chrome://aol/content/AOL-Prefs-Accounts.js"/>
+    <script type="application/x-javascript" src="chrome://aol/content/AOL-Prefs-Data.js"/>
+</prefwindow>

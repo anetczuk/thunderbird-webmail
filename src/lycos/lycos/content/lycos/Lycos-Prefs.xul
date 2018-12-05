@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/global.css"?>
+<?xml-stylesheet href="chrome://lycos/skin/Lycos-Prefs.css"?>
+
+<!DOCTYPE dialog SYSTEM "chrome://lycos/locale/Lycos-Prefs.dtd">
+
+<prefwindow type="prefwindow"
+            id="prefsWindow"
+            title="&LycosPref.Window.Title;"
+            xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+            lastSelected="paneAccounts"
+            instantApply="true"
+            buttons="extra1"
+            buttonlabelextra1="&LycosPref.Button.Close.Label;"
+            ondialogextra1="window.close();">
+
+    <!-- Accounts -->
+    <prefpane id="paneAccounts"
+              label="&LycosPref.Panel.Accounts.Title;"
+              src="chrome://lycos/content/Lycos-Prefs-Accounts.xul"/>
+
+    <script type="application/x-javascript" src="chrome://web-mail/content/common/DebugLog.js"/>
+    <script type="application/x-javascript" src="chrome://web-mail/content/common/CommonPrefs.js"/>
+    <script type="application/x-javascript" src="chrome://lycos/content/Lycos-Prefs-Accounts.js"/>
+</prefwindow>

@@ -1,0 +1,8 @@
+<!ENTITY HotmailFolderAdd.Title "Añadir">
+<!ENTITY HotmailFolderName.Label "Nombre de la carpeta">
+<!ENTITY HotmailFolderName.AccessKey "N">
+<!ENTITY HotmailFolders.Label "Añadir carpetas a descargar">
+<!ENTITY HotmailFolder.ButtonOk.Label "Ok">
+<!ENTITY HotmailFolder.ButtonOk.AccessKey "O">
+<!ENTITY HotmailFolder.ButtonCancel.Label "Cancelar">
+<!ENTITY HotmailFolder.ButtonCancel.AccessKey "C">

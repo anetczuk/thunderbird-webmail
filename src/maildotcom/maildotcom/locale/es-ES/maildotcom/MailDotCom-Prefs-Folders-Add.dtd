@@ -1,0 +1,8 @@
+<!ENTITY MailDotComFolderAdd.Title "Añadir">
+<!ENTITY MailDotComFolderName.Label "Nombre de la carpeta">
+<!ENTITY MailDotComFolderName.AccessKey "N">
+<!ENTITY MailDotComFolders.Label "Añadir carpeta a descargar">
+<!ENTITY MailDotComFolder.ButtonOk.Label "Ok">
+<!ENTITY MailDotComFolder.ButtonOk.AccessKey "O">
+<!ENTITY MailDotComFolder.ButtonCancel.Label "Cancelar">
+<!ENTITY MailDotComFolder.ButtonCancel.AccessKey "C">

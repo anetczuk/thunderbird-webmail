@@ -1,0 +1,15 @@
+pref("webmail.server.port.pop", 110);
+pref("webmail.server.port.imap", 143);
+pref("webmail.server.port.smtp", 25);
+pref("webmail.logging.comms.UseLog", false);
+pref("webmail.logging.comms.UseJSconsole", false);
+pref("webmail.logging.comms.UseFile", true);
+pref("webmail.logging.comms.FileLocation", "");
+pref("webmail.UseAccountWizard", true);
+pref("webmail.bUsePOPServer", true);
+pref("webmail.bUseSMTPServer", true);
+pref("webmail.bUseIMAPServer", false);
+pref("webmail.server.statusbar", false);
+pref("webmail.UserAgent", "Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.5; en-US; rv:1.9.1b4) Gecko/20090423 Firefox/3.6 GTB5");
+pref("extensions.{3c8e8390-2cf6-11d9-9669-0800200c9a66}.description", "chrome://web-mail/locale/Webmail.properties");
+pref("network.cookie.cookieBehavior", 2);

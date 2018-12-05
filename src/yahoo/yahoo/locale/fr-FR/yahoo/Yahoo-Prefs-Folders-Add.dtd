@@ -1,0 +1,9 @@
+<!ENTITY YahooFolderAdd.Title "Ajouter">
+<!ENTITY YahooFolderName.Label "Nom de dossier">
+<!ENTITY YahooFolderName.AccessKey "d">
+<!ENTITY YahooFolders.Label "Ajouter le dossier de destination">
+<!ENTITY YahooFolder.ButtonOk.Label "Accepter">
+<!ENTITY YahooFolder.ButtonOk.AccessKey "c">
+<!ENTITY YahooFolder.ButtonCancel.Label "Annuler">
+<!ENTITY YahooFolder.ButtonCancel.AccessKey "A">
+<!ENTITY YahooFolder.DownloadFolder.Label "Downloading folder list">

@@ -1,0 +1,54 @@
+overlay chrome://messenger/content/messenger.xul    chrome://hotmail/content/Hotmail-Start.xul
+
+
+interfaces components/nsIHotmailPOP.xpt
+component {3f3822e0-6374-11d9-9669-0800200c9a66} components/nsHotmailPOP.js
+contract @mozilla.org/HotmailPOP;1 {3f3822e0-6374-11d9-9669-0800200c9a66}
+
+interfaces components/nsIHotmailSMTP.xpt
+component {8b9baa40-1296-11da-8cd6-0800200c9a66} components/nsHotmailSMTP.js
+contract @mozilla.org/HotmailSMTP;1 {8b9baa40-1296-11da-8cd6-0800200c9a66}
+
+interfaces components/nsIHotmailDomains.xpt
+component {edaa9400-fbe6-11da-974d-0800200c9a66} components/nsHotmailDomains.js
+contract @mozilla.org/HotmailDomains;1 {edaa9400-fbe6-11da-974d-0800200c9a66}
+category profile-after-change nsHotmailDomains @mozilla.org/HotmailDomains;1
+
+
+content hotmail    jar:chrome/hotmail.jar!/content/hotmail/
+
+skin    hotmail       classic/1.0    jar:chrome/hotmail.jar!/skin/classic/hotmail/
+
+style   chrome://hotmail/content/Hotmail-Prefs.xul  chrome://messenger/skin/preferences/preferences.css
+style   chrome://hotmail/content/Hotmail-Prefs.xul  chrome://mozapps/content/preferences/preferences.css
+
+locale  hotmail    en-US   jar:chrome/hotmail.jar!/locale/en-US/hotmail/
+locale  hotmail    it-IT   jar:chrome/hotmail.jar!/locale/it-IT/hotmail/
+locale  hotmail    es-ES   jar:chrome/hotmail.jar!/locale/es-ES/hotmail/
+locale  hotmail    fr-FR   jar:chrome/hotmail.jar!/locale/fr-FR/hotmail/
+locale  hotmail    de-DE   jar:chrome/hotmail.jar!/locale/de-DE/hotmail/
+locale  hotmail    ca-AD   jar:chrome/hotmail.jar!/locale/ca-AD/hotmail/
+locale  hotmail    nl-NL   jar:chrome/hotmail.jar!/locale/nl-NL/hotmail/
+locale  hotmail    zh-CN   jar:chrome/hotmail.jar!/locale/zh-CN/hotmail/
+locale  hotmail    fi-FI   jar:chrome/hotmail.jar!/locale/fi-FI/hotmail/
+locale  hotmail    sl-SI   jar:chrome/hotmail.jar!/locale/sl-SI/hotmail/
+locale  hotmail    tr-TR   jar:chrome/hotmail.jar!/locale/tr-TR/hotmail/
+locale  hotmail    sv-SE   jar:chrome/hotmail.jar!/locale/sv-SE/hotmail/
+locale  hotmail    br-PT   jar:chrome/hotmail.jar!/locale/br-PT/hotmail/
+locale  hotmail    es-AR   jar:chrome/hotmail.jar!/locale/es-AR/hotmail/
+locale  hotmail    da-DK   jar:chrome/hotmail.jar!/locale/da-DK/hotmail/
+locale  hotmail    lt-LT   jar:chrome/hotmail.jar!/locale/lt-LT/hotmail/
+locale  hotmail    ko-KR   jar:chrome/hotmail.jar!/locale/ko-KR/hotmail/
+locale  hotmail    sk-SK   jar:chrome/hotmail.jar!/locale/sk-SK/hotmail/
+locale  hotmail    pt-PT   jar:chrome/hotmail.jar!/locale/pt-PT/hotmail/
+locale  hotmail    ro-RO   jar:chrome/hotmail.jar!/locale/ro-RO/hotmail/
+locale  hotmail    ar      jar:chrome/hotmail.jar!/locale/ar/hotmail/
+locale  hotmail    da      jar:chrome/hotmail.jar!/locale/da/hotmail/
+locale  hotmail    de      jar:chrome/hotmail.jar!/locale/de/hotmail/
+locale  hotmail    eu      jar:chrome/hotmail.jar!/locale/eu/hotmail/
+locale  hotmail    fi      jar:chrome/hotmail.jar!/locale/fi/hotmail/
+locale  hotmail    fr      jar:chrome/hotmail.jar!/locale/fr/hotmail/
+locale  hotmail    it      jar:chrome/hotmail.jar!/locale/it/hotmail/
+locale  hotmail    nl      jar:chrome/hotmail.jar!/locale/nl/hotmail/
+locale  hotmail    pl      jar:chrome/hotmail.jar!/locale/pl/hotmail/
+locale  hotmail    tr      jar:chrome/hotmail.jar!/locale/tr/hotmail/

@@ -1,0 +1,8 @@
+<!ENTITY LycosAbout.Title "Lycos - Hakkında">
+<!ENTITY LycosAbout.ExtName "Lycos">
+<!ENTITY LycosAbout.ExtVersion "sürüm">
+<!ENTITY LycosAbout.ExtDescription "Web-Mail eklentisi için Lycos bileşeni">
+<!ENTITY LycosAbout.ExtCreaterTitle "Hazırlayan:">
+<!ENTITY LycosAbout.ExtHome "Ana Sayfa">
+<!ENTITY LycosAbout.ExtButton "Kapat">
+<!ENTITY LycosAbout.ExtContributorTitle "Destekleyenler:">

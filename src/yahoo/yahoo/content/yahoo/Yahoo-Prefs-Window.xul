@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/global.css"?>
+<?xml-stylesheet href="chrome://yahoo/skin/Yahoo-Prefs.css"?>
+
+
+<!DOCTYPE dialog SYSTEM "chrome://yahoo/locale/Yahoo-Prefs-Window.dtd">
+
+<prefwindow type="prefwindow"
+            id="prefsWindow"
+            title="&YahooPref.Window.Title;"
+            xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+            lastSelected="paneAccounts"
+            instantApply="true"
+            buttons="extra1"
+            buttonlabelextra1="&YahooPref.Button.Close.Label;"
+            ondialogextra1="window.close();">
+
+    <!-- Accounts -->
+    <prefpane id="paneAccounts"
+              label="&YahooPref.Panel.Accounts.Title;"
+              src="chrome://yahoo/content/Yahoo-Prefs-Accounts.xul"/>
+
+    <!-- Domains -->
+    <prefpane id="paneDomains"
+              label="&YahooPref.Panel.Domains.Title;"
+              src="chrome://yahoo/content/Yahoo-Prefs-Domains.xul"/>
+
+
+    <script type="application/x-javascript" src="chrome://web-mail/content/common/DebugLog.js"/>
+    <script type="application/x-javascript" src="chrome://web-mail/content/common/CommonPrefs.js"/>
+    <script type="application/x-javascript" src="chrome://yahoo/content/Yahoo-Prefs-Accounts.js"/>
+    <script type="application/x-javascript" src="chrome://yahoo/content/Yahoo-Prefs-Domains.js"/>
+</prefwindow>

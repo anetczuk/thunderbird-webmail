@@ -1,0 +1,8 @@
+<!ENTITY YahooAbout.Title "Yahoo - Hakkında">
+<!ENTITY YahooAbout.ExtName "Yahoo">
+<!ENTITY YahooAbout.ExtVersion "sürüm">
+<!ENTITY YahooAbout.ExtDescription "Web-Mail eklentisi için Yahoo bileşeni">
+<!ENTITY YahooAbout.ExtCreaterTitle "Hazırlayan:">
+<!ENTITY YahooAbout.ExtHome "Anasayfa">
+<!ENTITY YahooAbout.ExtButton "Kapat">
+<!ENTITY YahooAbout.ExtContributorTitle "Destekleyenler:">

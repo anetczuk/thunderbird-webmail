@@ -1,0 +1,37 @@
+<!ENTITY HotmailPref.Window.Title "Hotmail - Asetukset">
+<!ENTITY HotmailPref.Window.size "width: 45em; height: 38em">
+<!ENTITY HotmailPref.Panel.Accounts.Title "Tilit">
+<!ENTITY HotmailPref.Panel.Domains.Title "Verkkotunnukset">
+<!ENTITY HotmailPref.Button.Close.Label "Sulje">
+<!ENTITY HotmailPref.Tab.Mode.Title "Menetelmä">
+<!ENTITY HotmailPref.Tab.POP.Title "POP">
+<!ENTITY HotmailPref.Tab.SMTP.Title "SMTP">
+<!ENTITY HotmailPref.Mode.Label "Valitse yhteystapa, jolla laajennus yhdistää Microsoftin palvelimelle">
+<!ENTITY HotmailPref.Mode.HotmailLive.Label "Hotmail Live (uusi verkkosivu)">
+<!ENTITY HotmailPref.Mode.HotmailOld.Label "Hotmail (vanha verkkosivu)">
+<!ENTITY HotmailPref.Mode.WebDav.Label "WebDav">
+<!ENTITY HotmailPref.POP.DownloadUnread.Label "Lataa vain lukemattomat viestit">
+<!ENTITY HotmailPref.POP.DownloadUnread.AccessKey "a">
+<!ENTITY HotmailPref.POP.JunkMail.Label "Lataa roskaposti">
+<!ENTITY HotmailPref.POP.JunkMail.AccessKey "t">
+<!ENTITY HotmailPref.POP.Folders.Label "Latauskansiot">
+<!ENTITY HotmailPref.POP.ButtonAdd.Label "Lisää...">
+<!ENTITY HotmailPref.POP.ButtonAdd.AccessKey "L">
+<!ENTITY HotmailPref.POP.ButtonRemove.Label "Poista">
+<!ENTITY HotmailPref.POP.ButtonRemove.AccessKey "P">
+<!ENTITY HotmailPref.SMTP.SaveSentItems.Label "Tallenna kopio lähetettyihin.">
+<!ENTITY HotmailPref.SMTP.SaveSentItems.AccessKey "T">
+<!ENTITY HotmailPref.SMTP.AlternativeGroup.Label "Lähetettäessä erikoismuotoiltuja viestejä, mikä osa laajennuksen tulisi lähettää?">
+<!ENTITY HotmailPref.SMTP.SendPlain.Label "Lähetä pelkkä teksti">
+<!ENTITY HotmailPref.SMTP.SendPlain.AccessKey "p">
+<!ENTITY HotmailPref.SMTP.SendHtml.Label "Lähetä HTML">
+<!ENTITY HotmailPref.SMTP.SendHtml.AccessKey "H">
+<!ENTITY HotmailPref.AccountError.Label "Hotmail-tilejä ei löytynyt">
+<!ENTITY HotmailPref.SMTP.NA.Label "Hotmail Livelle ei asetuksia">
+<!ENTITY HotmailPref.POP.MarkAsRead.Label "Merkitse viestit luetuksi palvelimella">
+<!ENTITY HotmailPref.POP.MarkAsRead.AccessKey "M">
+<!ENTITY HotmailPref.Domain.Label "Hotmail-laajennuksen tukemat verkkotunnukset">
+<!ENTITY HotmailPref.Domain.Button.AddDomain.Label "Lisää...">
+<!ENTITY HotmailPref.Domain.Button.AddDomain.AccessKey "L">
+<!ENTITY HotmailPref.Domain.Button.RemoveDomain.Label "Poista">
+<!ENTITY HotmailPref.Domain.Button.RemoveDomain.AccessKey "P">

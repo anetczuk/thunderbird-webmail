@@ -1,0 +1,8 @@
+<!ENTITY LycosFolderAdd.Title "Afegeix una carpeta">
+<!ENTITY LycosFolderName.Label "Nom de la carpeta">
+<!ENTITY LycosFolderName.AccessKey "F">
+<!ENTITY LycosFolders.Label "Afegeix una carpeta de descàrrega">
+<!ENTITY LycosFolderName.ButtonOk.Label "D&apos;acord">
+<!ENTITY LycosFolderName.ButtonOk.AccessKey "O">
+<!ENTITY LycosFolderName.ButtonCancel.Label "Cancela">
+<!ENTITY LycosFolderName.ButtonCancel.AccessKey "C">

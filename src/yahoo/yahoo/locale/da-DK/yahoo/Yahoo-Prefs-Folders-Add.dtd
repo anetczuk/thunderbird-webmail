@@ -1,0 +1,9 @@
+<!ENTITY YahooFolderAdd.Title "Tilføj">
+<!ENTITY YahooFolderName.Label "Mappenavn">
+<!ENTITY YahooFolderName.AccessKey "M">
+<!ENTITY YahooFolders.Label "Tilføj mappe der skal hentes fra">
+<!ENTITY YahooFolder.ButtonOk.Label "OK">
+<!ENTITY YahooFolder.ButtonOk.AccessKey "O">
+<!ENTITY YahooFolder.ButtonCancel.Label "Annuller">
+<!ENTITY YahooFolder.ButtonCancel.AccessKey "A">
+<!ENTITY YahooFolder.DownloadFolder.Label "Downloading folder list">

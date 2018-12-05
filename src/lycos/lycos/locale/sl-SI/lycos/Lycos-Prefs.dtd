@@ -1,0 +1,22 @@
+<!ENTITY LycosPref.Window.Title "Možnosti Lycos">
+<!ENTITY LycosPref.Panel.Accounts.Title "Računi">
+<!ENTITY LycosPref.Panel.Domains.Title "Domene">
+<!ENTITY LycosPref.Button.Close.Label "Zapri">
+<!ENTITY LycosPref.Tab.POP.Title "POP">
+<!ENTITY LycosPref.Tab.SMTP.Title "SMTP">
+<!ENTITY LycosPref.POP.DownloadUnread.Label "Prenesi le neprebrano pošto">
+<!ENTITY LycosPref.POP.DownloadUnread.AccessKey "n">
+<!ENTITY LycosPref.POP.EmptyTrash.Label "Izprazni koš">
+<!ENTITY LycosPref.POP.EmptyTrash.AccessKey "I">
+<!ENTITY LycosPref.POP.JunkMail.Label "Prenesi neželeno pošto">
+<!ENTITY LycosPref.POP.JunkMail.AccessKey "ž">
+<!ENTITY LycosPref.POP.Folders.Label "Prenesi mape">
+<!ENTITY LycosPref.POP.ButtonAdd.Label "Dodaj ...">
+<!ENTITY LycosPref.POP.ButtonAdd.AccessKey "D">
+<!ENTITY LycosPref.POP.ButtonRemove.Label "Odstrani">
+<!ENTITY LycosPref.POP.ButtonRemove.AccessKey "O">
+<!ENTITY LycosPref.SMTP.SaveSentItems.Label "Shrani kopijo v Odposlano.">
+<!ENTITY LycosPref.SMTP.SaveSentItems.AccessKey "S">
+<!ENTITY LycosPref.AccountError.Label "Ni najdenih računov Lycos">
+<!ENTITY LycosPref.POP.MarkAsRead.Label "Na strežniku označi sporočila prebrana">
+<!ENTITY LycosPref.POP.MarkAsRead.AccessKey "p">

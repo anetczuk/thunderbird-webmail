@@ -1,0 +1,8 @@
+<!ENTITY MailDotComAbout.Title "Over MailDotCom">
+<!ENTITY MailDotComAbout.ExtName "MailDotCom">
+<!ENTITY MailDotComAbout.ExtVersion "versie">
+<!ENTITY MailDotComAbout.ExtDescription "MailDotCom-module voor de Webmail extensie.">
+<!ENTITY MailDotComAbout.ExtCreaterTitle "Gemaakt door:">
+<!ENTITY MailDotComAbout.ExtHome "Homepage">
+<!ENTITY MailDotComAbout.ExtButton "Afsluiten">
+<!ENTITY MailDotComAbout.ExtContributorTitle "Medewerk(st)ers:">

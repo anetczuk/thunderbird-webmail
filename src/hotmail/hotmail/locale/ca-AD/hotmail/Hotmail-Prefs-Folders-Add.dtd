@@ -1,0 +1,8 @@
+<!ENTITY HotmailFolderAdd.Title "Afegeix carpeta">
+<!ENTITY HotmailFolderName.Label "Nom de la carpeta">
+<!ENTITY HotmailFolderName.AccessKey "F">
+<!ENTITY HotmailFolders.Label "Afegeix carpeta per descarregar">
+<!ENTITY HotmailFolder.ButtonOk.Label "D&apos;acord">
+<!ENTITY HotmailFolder.ButtonOk.AccessKey "O">
+<!ENTITY HotmailFolder.ButtonCancel.Label "Cancel·la">
+<!ENTITY HotmailFolder.ButtonCancel.AccessKey "C">

@@ -1,0 +1,37 @@
+<!ENTITY HotmailPref.Window.Title "Hotmail indstillinger">
+<!ENTITY HotmailPref.Window.size "width: 45em; height: 38em">
+<!ENTITY HotmailPref.Panel.Accounts.Title "Konti">
+<!ENTITY HotmailPref.Panel.Domains.Title "Domæner">
+<!ENTITY HotmailPref.Button.Close.Label "Luk">
+<!ENTITY HotmailPref.Tab.Mode.Title "Tilstand">
+<!ENTITY HotmailPref.Tab.POP.Title "POP">
+<!ENTITY HotmailPref.Tab.SMTP.Title "SMTP">
+<!ENTITY HotmailPref.Mode.Label "Vælger hvilken kommunikationsmetode udvidelsen skla bruge til at forbinde til Microsoft&apos;s servere">
+<!ENTITY HotmailPref.Mode.HotmailLive.Label "Hotmail Live (Nyt website)">
+<!ENTITY HotmailPref.Mode.HotmailOld.Label "Hotmail (Gammelt website)">
+<!ENTITY HotmailPref.Mode.WebDav.Label "WebDav">
+<!ENTITY HotmailPref.POP.DownloadUnread.Label "Download kun ulæste meddelelser">
+<!ENTITY HotmailPref.POP.DownloadUnread.AccessKey "u">
+<!ENTITY HotmailPref.POP.JunkMail.Label "Download JunkMail">
+<!ENTITY HotmailPref.POP.JunkMail.AccessKey "J">
+<!ENTITY HotmailPref.POP.Folders.Label "Download mapper">
+<!ENTITY HotmailPref.POP.ButtonAdd.Label "Tilføj...">
+<!ENTITY HotmailPref.POP.ButtonAdd.AccessKey "i">
+<!ENTITY HotmailPref.POP.ButtonRemove.Label "Fjern">
+<!ENTITY HotmailPref.POP.ButtonRemove.AccessKey "r">
+<!ENTITY HotmailPref.SMTP.SaveSentItems.Label "Gem kopi i sendte meddelelser.">
+<!ENTITY HotmailPref.SMTP.SaveSentItems.AccessKey "s">
+<!ENTITY HotmailPref.SMTP.AlternativeGroup.Label "Ved afsendelse af emails med udvidet tekstindhold, hvilken del skal udvidelsen sende?">
+<!ENTITY HotmailPref.SMTP.SendPlain.Label "Send almindelig tekst">
+<!ENTITY HotmailPref.SMTP.SendPlain.AccessKey "p">
+<!ENTITY HotmailPref.SMTP.SendHtml.Label "Send html tekst">
+<!ENTITY HotmailPref.SMTP.SendHtml.AccessKey "h">
+<!ENTITY HotmailPref.AccountError.Label "Ingen Hotmail konti fundet">
+<!ENTITY HotmailPref.SMTP.NA.Label "Ingen SMTP-indstillinger for Hotmail BETA">
+<!ENTITY HotmailPref.POP.MarkAsRead.Label "Markér emails som læste på server">
+<!ENTITY HotmailPref.POP.MarkAsRead.AccessKey "k">
+<!ENTITY HotmailPref.Domain.Label "Domæner understøttet af Hotmail udvidelse">
+<!ENTITY HotmailPref.Domain.Button.AddDomain.Label "Tilføj...">
+<!ENTITY HotmailPref.Domain.Button.AddDomain.AccessKey "i">
+<!ENTITY HotmailPref.Domain.Button.RemoveDomain.Label "Fjern">
+<!ENTITY HotmailPref.Domain.Button.RemoveDomain.AccessKey "r">

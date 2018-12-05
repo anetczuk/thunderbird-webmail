@@ -1,0 +1,4 @@
+<!ENTITY DownloadUnread.Label "Download email2 yang belum terbaca saja">
+<!ENTITY DownloadUnread.AccessKey "u">
+<!ENTITY Archive.Label "Simpan ke Arsip jangan dihapus">
+<!ENTITY Archive.AccessKey "A">

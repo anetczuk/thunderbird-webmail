@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://yahoo/skin/Yahoo-About.css" type="text/css"?>
+
+<!DOCTYPE dialog SYSTEM "chrome://yahoo/locale/Yahoo-About.dtd">
+
+<window class="dialog"
+        title= "&YahooAbout.Title;"
+        orient="vertical"
+        autostretch="always"
+        onload="gYahooAbout.init();sizeToContent()"
+        onunload ="gYahooAbout.stop()"
+        xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+        id = "YahooAboutDialog">
+
+    <script type="application/x-javascript" src="chrome://Yahoo/content/Yahoo-About.js"/>
+
+    <groupbox align="center" orient="horizontal">
+        <vbox>
+            <image id="Yahoo"/>
+            <hbox>
+                <text value="&YahooAbout.ExtVersion;" id = "YahooVersionTitle" class="YahooVersion"/>
+                <text id = "YahooVersionNumber" class="YahooVersion"/>
+            </hbox>
+            <text value="&YahooAbout.ExtDescription;" id = "YahooDescription"/>
+            <text value="&YahooAbout.ExtCreaterTitle;" id = "YahooCreatorLabel"/>
+            <hbox>
+                <image id="LionImage"/>
+                <text id="YahooCreator" class = "YahooCreatorText"/>
+            </hbox>
+            <text value="&YahooAbout.ExtContributorTitle;" id = "YahooContributorLabel"/>
+            <vbox flex="1" id="YahooContributorBox"/>
+            <text value="&YahooAbout.ExtHome;" id = "YahooHomePage"/>
+        </vbox>
+
+    </groupbox>
+
+    <hbox>
+        <spacer flex="1"/>
+        <button label="&YahooAbout.ExtButton;" oncommand="window.close();"/>
+    </hbox>
+</window>

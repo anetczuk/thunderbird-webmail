@@ -1,0 +1,22 @@
+<!ENTITY LycosPref.Window.Title "Opzioni del componente Lycos">
+<!ENTITY LycosPref.Panel.Accounts.Title "Account">
+<!ENTITY LycosPref.Panel.Domains.Title "Dominii">
+<!ENTITY LycosPref.Button.Close.Label "Chiudi">
+<!ENTITY LycosPref.Tab.POP.Title "POP">
+<!ENTITY LycosPref.Tab.SMTP.Title "SMTP">
+<!ENTITY LycosPref.POP.DownloadUnread.Label "Scarica solo messaggi non letti">
+<!ENTITY LycosPref.POP.DownloadUnread.AccessKey "N">
+<!ENTITY LycosPref.POP.EmptyTrash.Label "Svuota il cestino">
+<!ENTITY LycosPref.POP.EmptyTrash.AccessKey "S">
+<!ENTITY LycosPref.POP.JunkMail.Label "Scarica posta indesiderata">
+<!ENTITY LycosPref.POP.JunkMail.AccessKey "i">
+<!ENTITY LycosPref.POP.Folders.Label "Cartelle da cui scaricare i messaggi:">
+<!ENTITY LycosPref.POP.ButtonAdd.Label "Aggiungi...">
+<!ENTITY LycosPref.POP.ButtonAdd.AccessKey "A">
+<!ENTITY LycosPref.POP.ButtonRemove.Label "Elimina">
+<!ENTITY LycosPref.POP.ButtonRemove.AccessKey "E">
+<!ENTITY LycosPref.SMTP.SaveSentItems.Label "Salva una copia del messaggio in &apos;Posta inviata&apos;">
+<!ENTITY LycosPref.SMTP.SaveSentItems.AccessKey "s">
+<!ENTITY LycosPref.AccountError.Label "Nessun account Lycos trovato">
+<!ENTITY LycosPref.POP.MarkAsRead.Label "Segna i messaggi come letti sul server">
+<!ENTITY LycosPref.POP.MarkAsRead.AccessKey "S">

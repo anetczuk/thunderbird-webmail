@@ -1,0 +1,8 @@
+<!ENTITY HotmailFolderAdd.Title "Dodaj">
+<!ENTITY HotmailFolderName.Label "Ime mape">
+<!ENTITY HotmailFolderName.AccessKey "I">
+<!ENTITY HotmailFolders.Label "Dodaj preneseno mapo">
+<!ENTITY HotmailFolder.ButtonOk.Label "V redu">
+<!ENTITY HotmailFolder.ButtonOk.AccessKey "r">
+<!ENTITY HotmailFolder.ButtonCancel.Label "Prekliči">
+<!ENTITY HotmailFolder.ButtonCancel.AccessKey "P">

@@ -1,0 +1,8 @@
+<!ENTITY LycosFolderAdd.Title "Dodaj mapo">
+<!ENTITY LycosFolderName.Label "Ime mape">
+<!ENTITY LycosFolderName.AccessKey "I">
+<!ENTITY LycosFolders.Label "Dodaj mapo za prenos">
+<!ENTITY LycosFolderName.ButtonOk.Label "V redu">
+<!ENTITY LycosFolderName.ButtonOk.AccessKey "r">
+<!ENTITY LycosFolderName.ButtonCancel.Label "Prekliči">
+<!ENTITY LycosFolderName.ButtonCancel.AccessKey "k">

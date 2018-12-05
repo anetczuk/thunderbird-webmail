@@ -1,0 +1,8 @@
+<!ENTITY HotmailFolderAdd.Title "Ajouter">
+<!ENTITY HotmailFolderName.Label "Nom de dossier">
+<!ENTITY HotmailFolderName.AccessKey "d">
+<!ENTITY HotmailFolders.Label "Ajouter un nom de dossier">
+<!ENTITY HotmailFolder.ButtonOk.Label "Accepter">
+<!ENTITY HotmailFolder.ButtonOk.AccessKey "A">
+<!ENTITY HotmailFolder.ButtonCancel.Label "Annuler">
+<!ENTITY HotmailFolder.ButtonCancel.AccessKey "n">

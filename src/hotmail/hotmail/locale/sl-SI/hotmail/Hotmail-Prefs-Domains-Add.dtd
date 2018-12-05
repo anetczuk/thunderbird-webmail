@@ -1,0 +1,8 @@
+<!ENTITY HotmailAddDomain.Title "Dodaj domeno">
+<!ENTITY HotmailAddDomain.Label "Dodaj domeno Hotmail">
+<!ENTITY HotmailAddDomainName.Label "Domena">
+<!ENTITY HotmailAddDomainName.AccessKey "D">
+<!ENTITY HotmailAddDomain.ButtonOk.Label "V redu">
+<!ENTITY HotmailAddDomain.ButtonOk.AccessKey "r">
+<!ENTITY HotmailAddDomain.ButtonCancel.Label "Prekliči">
+<!ENTITY HotmailAddDomain.ButtonCancel.AccessKey "P">

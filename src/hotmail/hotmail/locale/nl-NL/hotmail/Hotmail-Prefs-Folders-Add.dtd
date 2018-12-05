@@ -1,0 +1,8 @@
+<!ENTITY HotmailFolderAdd.Title "Map toevoegen">
+<!ENTITY HotmailFolderName.Label "Mapnaame">
+<!ENTITY HotmailFolderName.AccessKey "M">
+<!ENTITY HotmailFolders.Label "Voeg downloadfolder toe">
+<!ENTITY HotmailFolder.ButtonOk.Label "Ok">
+<!ENTITY HotmailFolder.ButtonOk.AccessKey "O">
+<!ENTITY HotmailFolder.ButtonCancel.Label "Annuleren">
+<!ENTITY HotmailFolder.ButtonCancel.AccessKey "A">

@@ -1,0 +1,4 @@
+<!ENTITY DownloadUnread.Label "Stiahnúť len neprečítanú poštu">
+<!ENTITY DownloadUnread.AccessKey "n">
+<!ENTITY Archive.Label "Uložiť do Archívu namiesto odstránenia">
+<!ENTITY Archive.AccessKey "A">

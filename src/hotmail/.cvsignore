@@ -1,0 +1,16 @@
+hotmail.jarFile
+hotmail-0-3-5.xpiFile
+defaults
+ExcludeFiles.txt
+hotmail.xpiFile
+hotmailBuild.bat
+hotmail.jar
+hotmail-0-2-5.xpi
+build.bat
+moneyJar.txt
+moneyXpi.txt
+Jar.txt
+Xpi.txt
+*.xpi
+update
+*.zip

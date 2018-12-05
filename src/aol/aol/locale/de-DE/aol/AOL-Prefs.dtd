@@ -1,0 +1,22 @@
+<!ENTITY AOLPref.Window.Title "AOL/Netscape-Einstellungen">
+<!ENTITY AOLPref.Panel.Accounts.Title "Konten">
+<!ENTITY AOLPref.Panel.Domains.Title "Domains">
+<!ENTITY AOLPref.Button.Close.Label "Schließen">
+<!ENTITY AOLPref.Tab.POP.Title "POP3">
+<!ENTITY AOLPref.POP.DownloadUnread.Label "Nur ungelesene Nachrichten herunterladen">
+<!ENTITY AOLPref.POP.DownloadUnread.AccessKey "u">
+<!ENTITY AOLPref.POP.JunkMail.Label "JunkMail herunterladen">
+<!ENTITY AOLPref.POP.JunkMail.AccessKey "J">
+<!ENTITY AOLPref.POP.Folders.Label "Ordner herunterladen">
+<!ENTITY AOLPref.POP.ButtonAdd.Label "Hinzufügen...">
+<!ENTITY AOLPref.POP.ButtonAdd.AccessKey "H">
+<!ENTITY AOLPref.POP.ButtonRemove.Label "Entfernen">
+<!ENTITY AOLPref.POP.ButtonRemove.AccessKey "E">
+<!ENTITY AOLPref.AccountError.Label "Keine AOL/Netscape-Konten gefunden">
+<!ENTITY AOLPref.POP.MarkAsRead.Label "Nachrichten auf dem Server als gelesen markieren">
+<!ENTITY AOLPref.POP.MarkAsRead.AccessKey "g">
+<!ENTITY AOLPref.Domain.Label "Unterstützte Domains">
+<!ENTITY AOLPref.Domain.Button.AddDomain.Label "Hinzufügen...">
+<!ENTITY AOLPref.Domain.Button.AddDomain.AccessKey "H">
+<!ENTITY AOLPref.Domain.Button.RemoveDomain.Label "Entfernen">
+<!ENTITY AOLPref.Domain.Button.RemoveDomain.AccessKey "E">

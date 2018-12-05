@@ -1,0 +1,8 @@
+<!ENTITY GMailPref.Domain.Label "Domain2 yang didukung">
+<!ENTITY Domain.label "Domain">
+<!ENTITY Remove.label "Hapus">
+<!ENTITY Remove.AccessKey "R">
+<!ENTITY Add.label "Tambah">
+<!ENTITY Add.AccessKey "A">
+<!ENTITY Edit.label "Sunting">
+<!ENTITY Edit.AccessKey "E">

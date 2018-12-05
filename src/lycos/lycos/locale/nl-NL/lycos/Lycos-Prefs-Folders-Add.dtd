@@ -1,0 +1,8 @@
+<!ENTITY LycosFolderAdd.Title "Map toevoegen">
+<!ENTITY LycosFolderName.Label "Map naam">
+<!ENTITY LycosFolderName.AccessKey "M">
+<!ENTITY LycosFolders.Label "Downloadmap toevoegen">
+<!ENTITY LycosFolderName.ButtonOk.Label "OK">
+<!ENTITY LycosFolderName.ButtonOk.AccessKey "O">
+<!ENTITY LycosFolderName.ButtonCancel.Label "Annuleren">
+<!ENTITY LycosFolderName.ButtonCancel.AccessKey "A">

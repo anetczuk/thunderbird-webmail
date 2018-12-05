@@ -1,0 +1,8 @@
+<!ENTITY LycosFolderAdd.Title "Lisää kansio">
+<!ENTITY LycosFolderName.Label "Kansion nimi">
+<!ENTITY LycosFolderName.AccessKey "K">
+<!ENTITY LycosFolders.Label "Lisää latauskansio">
+<!ENTITY LycosFolderName.ButtonOk.Label "Ok">
+<!ENTITY LycosFolderName.ButtonOk.AccessKey "O">
+<!ENTITY LycosFolderName.ButtonCancel.Label "Peruuta">
+<!ENTITY LycosFolderName.ButtonCancel.AccessKey "P">

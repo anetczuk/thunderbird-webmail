@@ -1,0 +1,41 @@
+<!ENTITY YahooPref.Window.Title "Yahoo opties">
+<!ENTITY YahooPref.Panel.Accounts.Title "Accounts">
+<!ENTITY YahooPref.Panel.Domains.Title "Domeinen">
+<!ENTITY YahooPref.Button.Close.Label "Sluiten">
+<!ENTITY YahooPref.Tab.Mode.Title "Mode">
+<!ENTITY YahooPref.Tab.POP.Title "POP">
+<!ENTITY YahooPref.Tab.SMTP.Title "SMTP">
+<!ENTITY YahooPref.Tab.Adv.Title "Advanced">
+<!ENTITY YahooPref.Mode.Label "Selecteer website die extensie zal gebruiken">
+<!ENTITY YahooPref.Mode.ScreenScraper.Label "Productiewebsite">
+<!ENTITY YahooPref.Mode.Beta.Label "BETA website">
+<!ENTITY YahooPref.Mode.Classic.Label "New Classic Website">
+<!ENTITY YahooPref.POP.DownloadUnread.Label "Download alleen ongelezen emails">
+<!ENTITY YahooPref.POP.DownloadUnread.AccessKey "u">
+<!ENTITY YahooPref.POP.JunkMail.Label "Download ongewenste berichten">
+<!ENTITY YahooPref.POP.JunkMail.AccessKey "J">
+<!ENTITY YahooPref.POP.Folders.Label "Download mappen">
+<!ENTITY YahooPref.POP.ButtonAdd.Label "Toevoegen...">
+<!ENTITY YahooPref.POP.ButtonAdd.AccessKey "T">
+<!ENTITY YahooPref.POP.ButtonRemove.Label "Verwijderen">
+<!ENTITY YahooPref.POP.ButtonRemove.AccessKey "V">
+<!ENTITY YahooPref.POP.MarkAsRead.Label "Mark emails as read on server">
+<!ENTITY YahooPref.POP.MarkAsRead.AccessKey "k">
+<!ENTITY YahooPref.SMTP.SaveSentItems.Label "Kopie opslaan in verzonden berichten">
+<!ENTITY YahooPref.SMTP.SaveSentItems.AccessKey "K">
+<!ENTITY YahooPref.SMTP.AlternativeGroup.Label "When sending rich text emails which part should the extension send?">
+<!ENTITY YahooPref.SMTP.SendPlain.Label "Send plain text">
+<!ENTITY YahooPref.SMTP.SendPlain.AccessKey "p">
+<!ENTITY YahooPref.SMTP.SendHtml.Label "Send html text">
+<!ENTITY YahooPref.SMTP.SendHtml.AccessKey "h">
+<!ENTITY YahooPref.Adv.ShortID.Label "Use Short ID">
+<!ENTITY YahooPref.Adv.ShortID.AccessKey "I">
+<!ENTITY YahooPref.Adv.ReUseSession.Label "Reuse http session data.">
+<!ENTITY YahooPref.Adv.ReUseSession.AccessKey "S">
+<!ENTITY YahooPref.AdvInfo.Label "Changing the Short Id option will result in your entire mailbox being downloaded">
+<!ENTITY YahooPref.AccountError.Label "Geen Yahoo accounts gevonden">
+<!ENTITY YahooPref.Domain.Label "Domains ondersteund door Yahoo-extensie">
+<!ENTITY YahooPref.Domain.Button.AddDomain.Label "Toevoegen...">
+<!ENTITY YahooPref.Domain.Button.AddDomain.AccessKey "T">
+<!ENTITY YahooPref.Domain.Button.RemoveDomain.Label "Verwijderen">
+<!ENTITY YahooPref.Domain.Button.RemoveDomain.AccessKey "V">
