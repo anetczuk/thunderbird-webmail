@@ -8,15 +8,43 @@ src_dir=$SCRIPT_DIR/src
 build_dir=$SCRIPT_DIR/build
 
 
-#for dirpath in $src_dir/*; do
-for dirpath in $(find $src_dir/* -maxdepth 0 -type d); do
-    ## echo "building $dirpath"
-    dirname=$(basename "$dirpath")
-    outputfile="$build_dir/$dirname.xpi"
+pushd $build_dir > /dev/null
+
+
+function zipbuild { 
+	local dirpath=$1
+    local dirname=$(basename "$dirpath")
+    local outputfile="$build_dir/$dirname.xpi"
     echo "building $outputfile"
     
 	pushd $dirpath > /dev/null
 	zip -q -r $outputfile *
 	popd > /dev/null
+}
+
+function antbuild { 
+	local dirpath=$1
+	local buildfile=$dirpath/build.xml
+	if [ -e $buildfile ]; then
+	    ant -f $buildfile
+	    echo -e "\n"
+	else
+		echo -e "Could not find buid file: $buildfile\n\n"
+	fi
+}
+
+
+
+#for dirpath in $src_dir/*; do
+for dirpath in $(find $src_dir/* -maxdepth 0 -type d); do
+    ## echo "building $dirpath"
+
+	#### use build script
+	antbuild $dirpath
+    
+    #### simply zip
+	##zipbuild $dirpath
 done
 
+
+popd > /dev/null
