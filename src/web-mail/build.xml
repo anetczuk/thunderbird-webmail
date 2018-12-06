@@ -18,7 +18,7 @@
 
     <target name="createxpi" depends="createjar">
         <zip destfile="${user.dir}/web-mail-${VERSION}.xpi" >
-            <zipfileset dir="." includes="${user.dir}/web-mail.jar" prefix="chrome"/>
+            <zipfileset dir="${user.dir}" includes="web-mail.jar" prefix="chrome"/>
             <zipfileset dir="components" prefix="components" includes="**" excludes="*.idl *.bat *xml"/>
             <zipfileset dir="defaults" prefix="defaults" includes="**"/>
             <zipfileset dir="isp" prefix="isp" includes="**"/>

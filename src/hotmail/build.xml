@@ -18,7 +18,7 @@
 
     <target name="createxpi" depends="createjar">
         <zip destfile="${user.dir}/hotmail-${VERSION}.xpi" >
-            <zipfileset dir="." includes="${user.dir}/hotmail.jar" prefix="chrome"/>
+            <zipfileset dir="${user.dir}" includes="hotmail.jar" prefix="chrome"/>
             <zipfileset dir="components" prefix="components" includes="**" excludes="*IMAP*.idl *.idl *.bat"/>
             <zipfileset dir="defaults" prefix="defaults" includes="**"/>
             <zipfileset dir="." includes="install.rdf"/>

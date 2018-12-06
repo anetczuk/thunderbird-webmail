@@ -18,7 +18,7 @@
 
     <target name="createxpi" depends="createjar">
         <zip destfile="${user.dir}/yahoo-${VERSION}.xpi" >
-            <zipfileset dir="." includes="${user.dir}/yahoo.jar" prefix="chrome"/>
+            <zipfileset dir="${user.dir}" includes="yahoo.jar" prefix="chrome"/>
             <zipfileset dir="components" prefix="components" includes="**" excludes="*.idl *.bat"/>
             <zipfileset dir="defaults" prefix="defaults" includes="**"/>
             <zipfileset dir="." includes="install.rdf"/>
