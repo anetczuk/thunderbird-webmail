@@ -2,11 +2,11 @@
 <project name="maildotcom" default="createxpi">
     <property name="VERSION" value="1-1-9a2"/>
 
-    <delete file="maildotcom-${VERSION}.xpi"/>
-    <delete file="maildotcom.jar"/>
+    <delete file="${user.dir}/maildotcom-${VERSION}.xpi"/>
+    <delete file="${user.dir}/maildotcom.jar"/>
 
     <target name="createjar">
-        <zip destfile="maildotcom.jar" compress="false">
+        <zip destfile="${user.dir}/maildotcom.jar" compress="false">
             <fileset dir="maildotcom">
                 <include name="locale/**" />
                 <include name="skin/**"/>
@@ -17,8 +17,8 @@
     </target>
 
     <target name="createxpi" depends="createjar">
-        <zip destfile="maildotcom-${VERSION}.xpi" >
-            <zipfileset dir="." includes="maildotcom.jar" prefix="chrome"/>
+        <zip destfile="${user.dir}/maildotcom-${VERSION}.xpi" >
+            <zipfileset dir="." includes="${user.dir}/maildotcom.jar" prefix="chrome"/>
             <zipfileset dir="components" prefix="components" includes="**" excludes="*.idl *.bat"/>
             <zipfileset dir="defaults" prefix="defaults" includes="**"/>
             <zipfileset dir="." includes="install.rdf"/>

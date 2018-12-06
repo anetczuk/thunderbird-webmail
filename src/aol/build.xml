@@ -2,11 +2,11 @@
 <project name="aol" default="createxpi">
     <property name="VERSION" value="1-3-6"/>
 
-    <delete file="aol-${VERSION}.xpi"/>
-    <delete file="aol.jar"/>
+    <delete file="${user.dir}/aol-${VERSION}.xpi"/>
+    <delete file="${user.dir}/aol.jar"/>
 
     <target name="createjar">
-        <zip destfile="aol.jar" compress="false">
+        <zip destfile="${user.dir}/aol.jar" compress="false">
             <fileset dir="aol">
                 <include name="locale/**" />
                 <include name="skin/**"/>
@@ -17,8 +17,8 @@
     </target>
 
     <target name="createxpi" depends="createjar">
-        <zip destfile="aol-${VERSION}.xpi" >
-            <zipfileset dir="." includes="aol.jar" prefix="chrome"/>
+        <zip destfile="${user.dir}/aol-${VERSION}.xpi" >
+            <zipfileset dir="." includes="${user.dir}/aol.jar" prefix="chrome"/>
             <zipfileset dir="components" prefix="components" includes="**" excludes="*.idl *.bat"/>
             <zipfileset dir="defaults" prefix="defaults" includes="**"/>
             <zipfileset dir="." includes="install.rdf"/>

@@ -2,11 +2,11 @@
 <project name="lycos" default="createxpi">
     <property name="VERSION" value="1-2-4"/>
 
-    <delete file="lycos-${VERSION}.xpi"/>
-    <delete file="lycos.jar"/>
+    <delete file="${user.dir}/lycos-${VERSION}.xpi"/>
+    <delete file="${user.dir}/lycos.jar"/>
 
     <target name="createjar">
-        <zip destfile="lycos.jar" compress="false">
+        <zip destfile="${user.dir}/lycos.jar" compress="false">
             <fileset dir="lycos">
                 <include name="locale/**" />
                 <include name="skin/**"/>
@@ -17,8 +17,8 @@
     </target>
 
     <target name="createxpi" depends="createjar">
-        <zip destfile="lycos-${VERSION}.xpi" >
-            <zipfileset dir="." includes="lycos.jar" prefix="chrome"/>
+        <zip destfile="${user.dir}/lycos-${VERSION}.xpi" >
+            <zipfileset dir="." includes="${user.dir}/lycos.jar" prefix="chrome"/>
             <zipfileset dir="components" prefix="components" includes="**" excludes="*.idl *.bat"/>
             <zipfileset dir="defaults" prefix="defaults" includes="**"/>
             <zipfileset dir="." includes="install.rdf"/>
