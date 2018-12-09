@@ -35,16 +35,30 @@ function antbuild {
 
 
 
-#for dirpath in $src_dir/*; do
-for dirpath in $(find $src_dir/* -maxdepth 0 -type d); do
-    ## echo "building $dirpath"
-
+if [ "$#" -lt 1 ]; then
+	#for dirpath in $src_dir/*; do
+	for dirpath in $(find $src_dir/* -maxdepth 0 -type d); do
+	    ## echo "building $dirpath"
+	
+		#### use build script
+		antbuild $dirpath
+	    
+	    #### simply zip
+		##zipbuild $dirpath
+	done
+else
+	addon=$1
+	dirpath=$src_dir/$addon
+	if [ ! -d "$dirpath" ]; then
+		echo "No addon found: $dirpath"
+		exit 1
+	fi
+	
 	#### use build script
 	antbuild $dirpath
     
     #### simply zip
-	##zipbuild $dirpath
-done
-
+	##zipbuild $dirpath	
+fi
 
 popd > /dev/null
