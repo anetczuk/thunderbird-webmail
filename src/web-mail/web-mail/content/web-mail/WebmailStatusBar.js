@@ -39,22 +39,31 @@ var gWebMailStatusBar =
             var strBundleService = Components.classes["@mozilla.org/intl/stringbundle;1"]
                                              .getService(Components.interfaces.nsIStringBundleService);
             this.m_stringbundle = strBundleService.createBundle("chrome://web-mail/locale/Webmail-Statusbar.properties");                                 
-                                             
+            
+            this.m_Log.Write("WebmailStatusbar.js : startUp - getting POP");
+            
             //get popt service
             this.m_POPServer = Components.classes["@mozilla.org/POPConnectionManager;1"].getService()
                                          .QueryInterface(Components.interfaces.nsIPOPConnectionManager);
 
+            this.m_Log.Write("WebmailStatusbar.js : startUp - getting SMTP");
+            
             //get SMTP service
             this.m_SMTPServer = Components.classes["@mozilla.org/SMTPConnectionManager;1"].getService()
                                           .QueryInterface(Components.interfaces.nsISMTPConnectionManager);
 
+            this.m_Log.Write("WebmailStatusbar.js : startUp - getting IMAP");
+            
             //get IMAP service
             this.m_IMAPServer = Components.classes["@mozilla.org/IMAPConnectionManager;1"].getService()
                                           .QueryInterface(Components.interfaces.nsIIMAPConnectionManager);
            
+            this.m_Log.Write("WebmailStatusbar.js : startUp - registering observers");
                    
             //watch for pref change
             this.registerObservers();
+            
+            this.m_Log.Write("WebmailStatusbar.js : startUp - creating the bar");
             
             this.createStatusbar();
             
@@ -320,12 +329,11 @@ var gWebMailStatusBar =
             var iWindowCount = 0;
             var winman = Components.classes["@mozilla.org/appshell/window-mediator;1"];
             winman = winman.getService(Components.interfaces.nsIWindowMediator);
-            var e = winman.getEnumerator(null);
+            var e = winman.getEnumerator(Components.interfaces.nsIDOMWindowInternal);
 
             while (e.hasMoreElements())
             {
                 var win = e.getNext();
-                win.QueryInterface(Components.interfaces.nsIDOMWindowInternal);
                 var szValue = win.document.documentElement.getAttribute("id");
                 this.m_Log.Write("Webmail.js : windowCount - "+ szValue);
 
@@ -337,7 +345,7 @@ var gWebMailStatusBar =
         }
         catch(e)
         {
-            this.m_Log.DebugDump("WebmailStatusbar.js : Exception in shutDown "
+            this.m_Log.DebugDump("WebmailStatusbar.js : Exception in windowCount "
                                             + e.name
                                             + ".\nError message: "
                                             + e.message);
@@ -399,7 +407,7 @@ var gWebMailStatusBar =
     
     statusText : function (iValue, szServerID)
     {
-        this.m_Log.Write("WebmailStatusbar : StatusText - " + iValue + " " + szServerID + "- START");
+        this.m_Log.Write("WebmailStatusbar : StatusText - val:" + iValue + " id:" + szServerID + "- START");
         
         var szStatus="";
 
@@ -446,7 +454,6 @@ var gWebMailStatusBar =
             var prefService = Components.classes["@mozilla.org/preferences-service;1"]
                                         .getService(Components.interfaces.nsIPrefService);
             this.m_prefBranch = prefService.getBranch("webmail.server.statusbar");
-            this.m_prefBranch.QueryInterface(Components.interfaces.nsIPrefBranch2);
             this.m_prefBranch.addObserver("", this, false);
 
             this.m_Log.Write("WebmailStatusbar.js - register - END");

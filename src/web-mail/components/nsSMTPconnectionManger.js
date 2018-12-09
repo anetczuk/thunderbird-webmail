@@ -49,7 +49,7 @@ nsSMTPConnectionManager.prototype =
                 }
                 this.m_Log.Write("nsSMTPConnectionManager.js - Start - SMTP port value "+ oPref.Value);
                 this.m_iSMTPPort = oPref.Value;
-                delete WebMailPrefAccess;
+                WebMailPrefAccess = null;
 
                 //create listener
                 //connect only to this machine, 10 Queue
@@ -197,7 +197,7 @@ nsSMTPConnectionManager.prototype =
 
                         if (temp.bRunning == false)
                         {
-                            delete temp;
+                            temp = null;
                             this.m_Log.Write("nsSMTPConnectionManager.js - notify - dead connection deleted" + " " +temp.iID);
                         }
                         else
@@ -299,7 +299,7 @@ nsSMTPConnectionManager.prototype =
                 WebMailPrefAccess.Get("bool","webmail.bUseSMTPServer",oPref);
                 if (oPref.Value) bStart = true;
                 this.m_Log.Write("nsSMTPConnectionManager : profile-after-change - bStart " + bStart);
-                delete WebMailPrefAccess;
+                WebMailPrefAccess = null;
 
                 if (!bOffline && bStart) this.Start();
             break;

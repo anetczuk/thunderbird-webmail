@@ -121,6 +121,7 @@ var gLoggingPane =
             var strbundle=document.getElementById("stringsWebmailPrefs-Log");
             var szFolder=strbundle.getString("BrowseForFolders");
             fp.init(window, szFolder, nsIFilePicker.modeGetFolder);
+            //TODO: fix exception: TypeError: fp.show is not a function
             var res=fp.show();
 
             if (res==nsIFilePicker.returnOK)

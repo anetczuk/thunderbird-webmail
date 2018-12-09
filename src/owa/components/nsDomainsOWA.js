@@ -40,7 +40,7 @@ nsOWADomains.prototype =
             //get location of DB
             var fileDB = Components.classes["@mozilla.org/file/directory_service;1"];
             fileDB = fileDB.createInstance(Components.interfaces.nsIProperties);
-            fileDB = fileDB.get("ProfD", Components.interfaces.nsILocalFile);
+            fileDB = fileDB.get("ProfD", Components.interfaces.nsIFile);
             fileDB.append("WebmailData");         //add folder
             if (!fileDB.exists() || !fileDB.isDirectory())    //check folder exist
                 fileDB.create(Components.interfaces.nsIFile.DIRECTORY_TYPE, 0764);

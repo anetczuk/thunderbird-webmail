@@ -36,11 +36,10 @@ var gGMailStartUp =
 			var iWindowCount = 0;
 			var winman = Components.classes["@mozilla.org/appshell/window-mediator;1"];
 			winman = winman.getService(Components.interfaces.nsIWindowMediator);
-			var e = winman.getEnumerator(null);
+			var e = winman.getEnumerator(Components.interfaces.nsIDOMWindowInternal);
 
 			while ( e.hasMoreElements() ) {
 				var win = e.getNext();
-				win.QueryInterface(Components.interfaces.nsIDOMWindowInternal);
 				var szValue = win.document.documentElement.getAttribute("id");
 				this.m_Log.Write("GMail.js : windowCount - "+ szValue);
 				if (szValue =="messengerWindow")

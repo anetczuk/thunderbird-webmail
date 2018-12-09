@@ -360,7 +360,7 @@ nsWebMailCookieManager2.prototype =
 /*
             var fileDB = Components.classes["@mozilla.org/file/directory_service;1"];
             fileDB = fileDB.createInstance(Components.interfaces.nsIProperties);
-            fileDB = fileDB.get("ProfD", Components.interfaces.nsILocalFile);
+            fileDB = fileDB.get("ProfD", Components.interfaces.nsIFile);
             fileDB.append("WebmailData");         //add folder
             if (!fileDB.exists())    //check folder exist
                 fileDB.create(Components.interfaces.nsIFile.DIRECTORY_TYPE, 0664);

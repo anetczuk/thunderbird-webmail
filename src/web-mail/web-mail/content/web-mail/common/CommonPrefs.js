@@ -29,9 +29,14 @@ WebMailCommonPrefAccess.prototype.Get = function(Type, Key, Value)
             break
          
             case "nsILocalFile":
-                Value.Value = this.m_PrefService.getComplexValue(Key, Components.interfaces.nsILocalFile);
+                Value.Value = this.m_PrefService.getComplexValue(Key, Components.interfaces.nsIFile);
                 return true;
             break
+            
+            case "nsIFile":
+            	Value.Value = this.m_PrefService.getComplexValue(Key, Components.interfaces.nsIFile);
+            	return true;
+            	break
             
             default:
                 return false;
@@ -71,9 +76,14 @@ WebMailCommonPrefAccess.prototype.Set = function(Type, Key, Value)
             break
          
             case "nsILocalFile":
-                this.m_PrefService.setComplexValue( Key , Components.interfaces.nsILocalFile,Value);
+                this.m_PrefService.setComplexValue( Key , Components.interfaces.nsIFile,Value);
                 return true;
             break
+            
+            case "nsIFile":
+            	this.m_PrefService.setComplexValue( Key , Components.interfaces.nsIFile,Value);
+            	return true;
+            	break
             
             default:
                 return false;

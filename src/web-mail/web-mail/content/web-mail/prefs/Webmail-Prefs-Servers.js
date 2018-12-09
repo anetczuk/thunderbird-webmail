@@ -19,8 +19,12 @@ var gServersPane =
         try
         {
             //get pop service
-            this.m_POPServer = Components.classes["@mozilla.org/POPConnectionManager;1"].getService()
-                                         .QueryInterface(Components.interfaces.nsIPOPConnectionManager);
+//            this.m_POPServer = Components.classes["@mozilla.org/POPConnectionManager;1"].getService()
+//                                         .QueryInterface(Components.interfaces.nsIPOPConnectionManager);
+
+        	var popclass = Components.classes["@mozilla.org/POPConnectionManager;1"]
+        	var service = popclass.getService()
+        	this.m_POPServer = service.QueryInterface(Components.interfaces.nsIPOPConnectionManager);
 
             //get SMTP service
             this.m_SMTPServer = Components.classes["@mozilla.org/SMTPConnectionManager;1"].getService()
@@ -76,7 +80,7 @@ var gServersPane =
     {
         try
         {   
-            this.m_Log.Write("Webmail-Prefs-Servers : updateGUI - START");
+            this.m_Log.Write("Webmail-Prefs-Servers : updateStatus - START");
             
             if (iValue == -1 ||iValue == 0)  //error -  stop
             {
@@ -103,7 +107,7 @@ var gServersPane =
             document.getElementById(imgStatus).setAttribute("value",iValue); //set pop status colour
             document.getElementById(txtStatus).value =this.StatusText(iValue); //set status text
             
-            this.m_Log.Write("Webmail-Prefs-Servers : updateGUI - END"); 
+            this.m_Log.Write("Webmail-Prefs-Servers : updateStatus - END"); 
         }
         catch(e)
         {
@@ -126,7 +130,7 @@ var gServersPane =
             var bPortChange = false;
             var iServerPort = this.m_POPServer.GetPort();
             var iPrefPort = document.getElementById("txtPopPort").value;
-            this.m_Log.Write("Webmail-Prefs-Servers : updataStatus - iServerPort " + iServerPort + " iPrefPort " + iPrefPort);
+            this.m_Log.Write("Webmail-Prefs-Servers : updatePort - iServerPort " + iServerPort + " iPrefPort " + iPrefPort);
             if (iServerPort != iPrefPort) 
             {
                 document.getElementById("imgPOPRestart").setAttribute("hidden", "false"); //show warning
@@ -136,7 +140,7 @@ var gServersPane =
             
             iServerPort = this.m_SMTPServer.GetPort();
             iPrefPort = document.getElementById("txtSmptPort").value;
-            this.m_Log.Write("Webmail-Prefs-Servers : updataStatus - iServerPort " + iServerPort + " iPrefPort " + iPrefPort);
+            this.m_Log.Write("Webmail-Prefs-Servers : updatePort - iServerPort " + iServerPort + " iPrefPort " + iPrefPort);
             if (iServerPort != iPrefPort) 
             {
                 document.getElementById("imgSMTPRestart").setAttribute("hidden", "false"); //show warning
@@ -146,7 +150,7 @@ var gServersPane =
             
             iServerPort = this.m_IMAPServer.GetPort();
             iPrefPort = document.getElementById("txtIMAPPort").value;
-            this.m_Log.Write("Webmail-Prefs-Servers : updataStatus - iServerPort " + iServerPort + " iPrefPort " + iPrefPort);
+            this.m_Log.Write("Webmail-Prefs-Servers : updatePort - iServerPort " + iServerPort + " iPrefPort " + iPrefPort);
             if (iServerPort != iPrefPort) 
             {
                 document.getElementById("imgIMAPRestart").setAttribute("hidden", "false"); //show warning

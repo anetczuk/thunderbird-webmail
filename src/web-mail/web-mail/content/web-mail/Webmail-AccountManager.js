@@ -75,7 +75,6 @@ WebmailAccountManager.prototype =
             var prefService = Components.classes["@mozilla.org/preferences-service;1"]
                                         .getService(Components.interfaces.nsIPrefService);
             this.m_Branch = prefService.getBranch("webmail.server.port.");
-            this.m_Branch.QueryInterface(Components.interfaces.nsIPrefBranch2);
             this.m_Branch.addObserver("", this, false);
 
             this.m_Log.Write("WebmailAccountManager.js - register - END");
@@ -232,7 +231,7 @@ WebmailAccountManager.prototype =
 
             var SourceFile =  Components.classes["@mozilla.org/file/directory_service;1"].
                                       createInstance(Components.interfaces.nsIProperties).
-                                      get("ProfD", Components.interfaces.nsILocalFile);
+                                      get("ProfD", Components.interfaces.nsIFile);
             SourceFile.append("extensions");                               //goto profile extension folder
             SourceFile.append("{3c8e8390-2cf6-11d9-9669-0800200c9a66}");  //goto client extension folder
             SourceFile.append("isp");

@@ -47,16 +47,16 @@ nsIMAPFolders.prototype =
             //get location of DB
             var fileDB = Components.classes["@mozilla.org/file/directory_service;1"];
             fileDB = fileDB.createInstance(Components.interfaces.nsIProperties);
-            fileDB = fileDB.get("ProfD", Components.interfaces.nsILocalFile);
+            fileDB = fileDB.get("ProfD", Components.interfaces.nsIFile);
             fileDB.append("WebmailData");         //add folder
             if (!fileDB.exists() || !fileDB.isDirectory())    //check folder exist
-                fileDB.create(Components.interfaces.nsIFile.DIRECTORY_TYPE, 0764);
-            if (fileDB.exists() && fileDB.isDirectory() && fileDB.permissions != 0764) //check permissions
+                fileDB.create(Components.interfaces.nsIFile.DIRECTORY_TYPE, 0o764);
+            if (fileDB.exists() && fileDB.isDirectory() && fileDB.permissions != 0o764) //check permissions
             {
                 this.m_Log.Write("nsIMAPFolders.js - loadDB - updating file permissions");
                 try
                 {
-                    fileDB.permissions = 0764;
+                    fileDB.permissions = 0o764;
                 }
                 catch(e)
                 {

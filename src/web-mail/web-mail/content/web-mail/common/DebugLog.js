@@ -33,12 +33,12 @@ function DebugLog(szBranch, extGUID , szFileName)
         try
         {
             var oNewFile = this.PrefService.getComplexValue(this.szPrefBranch +".FileLocation",
-                                             Components.interfaces.nsILocalFile);
+                                             Components.interfaces.nsIFile);
 
-            if (oNewFile instanceof Components.interfaces.nsILocalFile)
+            if (oNewFile instanceof Components.interfaces.nsIFile)
             {
                 this.oLogFile = Components.classes["@mozilla.org/file/local;1"]
-                                   .createInstance(Components.interfaces.nsILocalFile);
+                                   .createInstance(Components.interfaces.nsIFile);
                 this.oLogFile.initWithFile(oNewFile);
             }
             else
@@ -49,17 +49,18 @@ function DebugLog(szBranch, extGUID , szFileName)
             //get user profile folder
             var oNewFile = Components.classes["@mozilla.org/file/directory_service;1"].
                                    createInstance(Components.interfaces.nsIProperties).
-                                      get("ProfD", Components.interfaces.nsILocalFile);
+                                      get("ProfD", Components.interfaces.nsIFile);
+            
             oNewFile.append("extensions");  //goto extension folder
             oNewFile.append(extGUID);       //goto client extension folder
             oNewFile.append("logfiles");       //goto logfiles folder
 
             //save location
             this.PrefService.setComplexValue(this.szPrefBranch +".FileLocation",
-                                             Components.interfaces.nsILocalFile,
+                                             Components.interfaces.nsIFile,
                                              oNewFile);
             this.oLogFile = Components.classes["@mozilla.org/file/local;1"]
-                                    .createInstance(Components.interfaces.nsILocalFile);
+                                    .createInstance(Components.interfaces.nsIFile);
 
             this.oLogFile.initWithFile(oNewFile);
         }
@@ -107,7 +108,8 @@ DebugLog.prototype.Write = function(msg)
     {
         if(!this.bUseLog) return;  //dont log any messages
         //send log to console
-        if (this.bUseJSConsole) this.ConsoleService.logStringMessage(msg);
+        //if (this.bUseJSConsole) this.ConsoleService.logStringMessage(msg);
+        this.ConsoleService.logStringMessage(msg);
         //send log to file
         if (this.bUseFile) this.WriteToFile(msg);
         return;
@@ -199,7 +201,7 @@ DebugLog.prototype.UpdateLog = function ()
 
         //get folder
          var oNewFile = this.PrefService.getComplexValue(this.szPrefBranch +".FileLocation",
-                                                         Components.interfaces.nsILocalFile);
+                                                         Components.interfaces.nsIFile);
         //compare  old and new file location
         if (this.szPath != oNewFile.path)
         {
@@ -220,7 +222,7 @@ DebugLog.prototype.UpdateLog = function ()
 
 
             this.oLogFile = Components.classes["@mozilla.org/file/local;1"]
-                                 .createInstance(Components.interfaces.nsILocalFile);
+                                 .createInstance(Components.interfaces.nsIFile);
             this.oLogFile.initWithFile(oNewFile);
 
 

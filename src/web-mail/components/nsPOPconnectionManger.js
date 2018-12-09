@@ -51,7 +51,7 @@ nsPOPConnectionManager.prototype =
                 }
                 this.m_Log.Write("nsPOPConnectionManager - Start - POP port value "+ oPref.Value);
                 this.m_iPopPort = oPref.Value;
-                delete WebMailPrefAccess
+                WebMailPrefAccess = null;
 
                 //create listener
                 //connect only to this machine, 10 Queue
@@ -221,7 +221,7 @@ nsPOPConnectionManager.prototype =
 
                         if (temp.bRunning == false)
                         {
-                            delete temp;
+                            temp = null;
                             this.m_Log.Write("nsPOPConnectionManager - notify - dead connection deleted " + temp.iID);
                         }
                         else
@@ -287,7 +287,7 @@ nsPOPConnectionManager.prototype =
                 WebMailPrefAccess.Get("bool","webmail.bUsePOPServer",oPref);
                 if (oPref.Value) bStart = true;
                 this.m_Log.Write("nsPOPConnectionManager : profile-after-change - bStart " + bStart);
-                delete WebMailPrefAccess;
+                WebMailPrefAccess = null;
 
                 if (!bOffline && bStart) this.Start();
             break;

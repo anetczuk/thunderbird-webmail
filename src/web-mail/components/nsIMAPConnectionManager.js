@@ -49,7 +49,7 @@ nsIMAPConnectionManager.prototype =
                 }
                 this.m_Log.Write("nsIMAPConnectionManager.js - Start - IMAP port value "+ oPref.Value);
                 this.m_iIMAPPort = oPref.Value;
-                delete WebMailPrefAccess
+                WebMailPrefAccess = null;
 
                 //create listener
                 //connect only to this machine, 10 Queue
@@ -214,7 +214,7 @@ nsIMAPConnectionManager.prototype =
 
                         if (temp.bRunning == false)
                         {
-                            delete temp;
+                            temp = null;
                             this.m_Log.Write("nsIMAPConnectionManager.js - notify - dead connection deleted"+ " " +temp.iID);
                         }
                         else
@@ -291,7 +291,7 @@ nsIMAPConnectionManager.prototype =
                 WebMailPrefAccess.Get("bool","webmail.bUseIMAPServer",oPref);
                 if (oPref.Value) bStart = true;
                 this.m_Log.Write("nsIMAPConnectionManager : profile-after-change - bStart " + bStart);
-                delete WebMailPrefAccess;
+                WebMailPrefAccess = null;
 
                 if (!bOffline && bStart) this.Start();
             break;
