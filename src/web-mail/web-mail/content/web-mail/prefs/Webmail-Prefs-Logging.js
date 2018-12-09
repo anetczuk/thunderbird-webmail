@@ -121,16 +121,19 @@ var gLoggingPane =
             var strbundle=document.getElementById("stringsWebmailPrefs-Log");
             var szFolder=strbundle.getString("BrowseForFolders");
             fp.init(window, szFolder, nsIFilePicker.modeGetFolder);
-            //TODO: fix exception: TypeError: fp.show is not a function
-            var res=fp.show();
+            
+            var prefsLogging = this;
+            
+            fp.open( function (res) {
+            	prefsLogging.m_DebugLog.Write("Webmail-Prefs-Logging : browseForFoldersCallback: " + res);
+                if (res==nsIFilePicker.returnOK)
+                {
+                    var folderPref = document.getElementById("fileLocation");
+                    folderPref.value = fp.file;
 
-            if (res==nsIFilePicker.returnOK)
-            {
-                var folderPref = document.getElementById("fileLocation");
-                folderPref.value = fp.file;
-
-                this.updateFileField();
-            }
+                    prefsLogging.updateFileField();
+                }
+            } );
 
             this.m_DebugLog.Write("Webmail-Prefs-Logging : browseForFolders END");
             return;
@@ -144,7 +147,6 @@ var gLoggingPane =
                                           + e.lineNumber);
         }
     },
-
 
     updateFileField : function ()
     {
