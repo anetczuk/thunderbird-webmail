@@ -108,8 +108,7 @@ DebugLog.prototype.Write = function(msg)
     {
         if(!this.bUseLog) return;  //dont log any messages
         //send log to console
-        //if (this.bUseJSConsole) this.ConsoleService.logStringMessage(msg);
-        this.ConsoleService.logStringMessage(msg);
+        if (this.bUseJSConsole) this.ConsoleService.logStringMessage(msg);
         //send log to file
         if (this.bUseFile) this.WriteToFile(msg);
         return;
