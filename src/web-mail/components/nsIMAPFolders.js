@@ -309,7 +309,7 @@ nsIMAPFolders.prototype =
         }
         catch(err)
         {
-            this.m_Log.DebugDump("nsDataBaseManager.js: createDB : Exception : "
+            this.m_Log.DebugDump("nsIMAPFolders.js: createDB : Exception : "
                                           + err.name +
                                           "\nError message: "
                                           + err.message +"\n"
@@ -345,9 +345,9 @@ nsIMAPFolders.prototype =
 
             iSession++;
 
-            szSQL = "REPLACE INTO session (id, session) VALUES (1, ?1)";
+            szSQL = "REPLACE INTO session (id, session) VALUES (1, :session)";
             statement = this.m_dbConn.createStatement(szSQL);
-            statement.bindStringParameter(0, iSession);
+            statement.params.session = iSession;
             statement.execute();
 
             this.m_Log.Write("nsIMAPFolders.js - getSession - END " + iSession);
@@ -355,7 +355,7 @@ nsIMAPFolders.prototype =
         }
         catch(err)
         {
-            this.m_Log.DebugDump("nsDataBaseManager.js: createDB : Exception : "
+            this.m_Log.DebugDump("nsIMAPFolders.js: createDB : Exception : "
                                           + err.name +
                                           "\nError message: "
                                           + err.message +"\n"

@@ -67,7 +67,7 @@ nsDomainManager.prototype =
            }
            fileDB.append("domains.db3");         //sqlite database
            fileDB.QueryInterface(Components.interfaces.nsIFile)
-           this.m_Log.Write("nsDataBaseManager.js - loadDB - fileDB "+ fileDB.path);
+           this.m_Log.Write("nsDomainManager.js - loadDB - fileDB "+ fileDB.path);
 
            //load DB
            this.m_dbConn = this.m_dbService.openDatabase(fileDB);
@@ -148,7 +148,7 @@ nsDomainManager.prototype =
    {
        try
        {
-           this.m_Log.Write("nsDataBaseManager.js - updateDB - START");
+           this.m_Log.Write("nsDomainManager.js - updateDB - START");
 
            if (iVersion == 1)
            {
@@ -164,11 +164,11 @@ nsDomainManager.prototype =
            else if(iVersion == 3)
                this.updateV3toV4();
 
-           this.m_Log.Write("nsDataBaseManager.js - updateDB - END");
+           this.m_Log.Write("nsDomainManager.js - updateDB - END");
        }
        catch(err)
        {
-           this.m_Log.DebugDump("nsDataBaseManager.js: updateDB : Exception : "
+           this.m_Log.DebugDump("nsDomainManager.js: updateDB : Exception : "
                              + err.name +
                              "\nError message: "
                              + err.message +"\n"
@@ -183,7 +183,7 @@ nsDomainManager.prototype =
    {
        try
        {
-           this.m_Log.Write("nsDataBaseManager.js - updateV1toV2 - START");
+           this.m_Log.Write("nsDomainManager.js - updateV1toV2 - START");
 
            //get contents ids
            var aContentID = new Array();
@@ -217,12 +217,12 @@ nsDomainManager.prototype =
            szSQL +=    "content_id  TEXT, ";
            szSQL +=    "enabled     BOOLEAN ";
            szSQL += ")";
-           this.m_Log.Write("nsDataBaseManager.js - updateV1toV2 - szSQL " + szSQL);
+           this.m_Log.Write("nsDomainManager.js - updateV1toV2 - szSQL " + szSQL);
            this.m_dbConn.executeSimpleSQL(szSQL);
 
            //update version number
            szSQL = "DELETE FROM webmail_schema_version; INSERT INTO webmail_schema_version VALUES (2);"
-           this.m_Log.Write("nsDataBaseManager.js - updateV1toV2 - szSQL " + szSQL);
+           this.m_Log.Write("nsDomainManager.js - updateV1toV2 - szSQL " + szSQL);
            this.m_dbConn.executeSimpleSQL(szSQL);
 
            //add content ids to new table
@@ -243,11 +243,11 @@ nsDomainManager.prototype =
 
            this.m_dbConn.commitTransaction();
 
-           this.m_Log.Write("nsDataBaseManager.js - updateV1toV2 - END");
+           this.m_Log.Write("nsDomainManager.js - updateV1toV2 - END");
        }
        catch(err)
        {
-           this.m_Log.DebugDump("nsDataBaseManager.js: updateV1toV2 : Exception : "
+           this.m_Log.DebugDump("nsDomainManager.js: updateV1toV2 : Exception : "
                              + err.name +
                              "\nError message: "
                              + err.message +"\n"
@@ -262,7 +262,7 @@ nsDomainManager.prototype =
    {
        try
        {
-           this.m_Log.Write("nsDataBaseManager.js - updateV2toV3 - START");
+           this.m_Log.Write("nsDomainManager.js - updateV2toV3 - START");
 
            this.m_dbConn.beginTransaction();
 
@@ -270,31 +270,31 @@ nsDomainManager.prototype =
            var szSQL = null;
            szSQL  = "ALTER TABLE pop_domains "
            szSQL += "ADD COLUMN default_domain BOOLEAN"
-           this.m_Log.Write("nsDataBaseManager.js - updateV2toV3 - szSQL " + szSQL);
+           this.m_Log.Write("nsDomainManager.js - updateV2toV3 - szSQL " + szSQL);
            this.m_dbConn.executeSimpleSQL(szSQL);
 
            szSQL  = "ALTER TABLE smtp_domains "
            szSQL += "ADD COLUMN default_domain BOOLEAN"
-           this.m_Log.Write("nsDataBaseManager.js - updateV2toV3 - szSQL " + szSQL);
+           this.m_Log.Write("nsDomainManager.js - updateV2toV3 - szSQL " + szSQL);
            this.m_dbConn.executeSimpleSQL(szSQL);
 
            szSQL  = "ALTER TABLE imap_domains "
            szSQL += "ADD COLUMN default_domain BOOLEAN"
-           this.m_Log.Write("nsDataBaseManager.js - updateV2toV3 - szSQL " + szSQL);
+           this.m_Log.Write("nsDomainManager.js - updateV2toV3 - szSQL " + szSQL);
            this.m_dbConn.executeSimpleSQL(szSQL);
 
            //update version number
            szSQL = "DELETE FROM webmail_schema_version; INSERT INTO webmail_schema_version VALUES (3);"
-           this.m_Log.Write("nsDataBaseManager.js - updateV2toV3 - szSQL " + szSQL);
+           this.m_Log.Write("nsDomainManager.js - updateV2toV3 - szSQL " + szSQL);
            this.m_dbConn.executeSimpleSQL(szSQL);
 
            this.m_dbConn.commitTransaction();
 
-           this.m_Log.Write("nsDataBaseManager.js - updateV2toV3 - END");
+           this.m_Log.Write("nsDomainManager.js - updateV2toV3 - END");
        }
        catch(err)
        {
-           this.m_Log.DebugDump("nsDataBaseManager.js: updateV2toV3 : Exception : "
+           this.m_Log.DebugDump("nsDomainManager.js: updateV2toV3 : Exception : "
                              + err.name +
                              "\nError message: "
                              + err.message +"\n"
@@ -309,7 +309,7 @@ nsDomainManager.prototype =
    {
        try
        {
-           this.m_Log.Write("nsDataBaseManager.js - updateV3toV4 - START");
+           this.m_Log.Write("nsDomainManager.js - updateV3toV4 - START");
 
            this.m_dbConn.beginTransaction();
 
@@ -317,23 +317,23 @@ nsDomainManager.prototype =
            {
                szSQL  = "ALTER TABLE domain_handler "
                szSQL += "ADD COLUMN extension_guid TEXT"
-               this.m_Log.Write("nsDataBaseManager.js - updateV3toV4 - szSQL " + szSQL);
+               this.m_Log.Write("nsDomainManager.js - updateV3toV4 - szSQL " + szSQL);
                this.m_dbConn.executeSimpleSQL(szSQL);
            }
            catch(e){}
 
            //update version number
            szSQL = "DELETE FROM webmail_schema_version; INSERT INTO webmail_schema_version VALUES (4);"
-           this.m_Log.Write("nsDataBaseManager.js - updateV3toV4 - szSQL " + szSQL);
+           this.m_Log.Write("nsDomainManager.js - updateV3toV4 - szSQL " + szSQL);
            this.m_dbConn.executeSimpleSQL(szSQL);
 
            this.m_dbConn.commitTransaction();
 
-           this.m_Log.Write("nsDataBaseManager.js - updateV3toV4 - END");
+           this.m_Log.Write("nsDomainManager.js - updateV3toV4 - END");
        }
        catch(err)
        {
-           this.m_Log.DebugDump("nsDataBaseManager.js: updateV3toV4 : Exception : "
+           this.m_Log.DebugDump("nsDomainManager.js: updateV3toV4 : Exception : "
                              + err.name +
                              "\nError message: "
                              + err.message +"\n"
@@ -348,7 +348,7 @@ nsDomainManager.prototype =
    {
        try
        {
-           this.m_Log.Write("nsDataBaseManager.js - createDB - START");
+           this.m_Log.Write("nsDomainManager.js - createDB - START");
            var szSQL;
 
            //Domains Table
@@ -359,7 +359,7 @@ nsDomainManager.prototype =
            szSQL +=    "content_id TEXT, ";
            szSQL +=    "default_domain BOOLEAN ";
            szSQL +=");";
-           this.m_Log.Write("nsDataBaseManager.js - createDB - szSQL " + szSQL);
+           this.m_Log.Write("nsDomainManager.js - createDB - szSQL " + szSQL);
            this.m_dbConn.executeSimpleSQL(szSQL);
 
            szSQL = "CREATE TABLE smtp_domains ";
@@ -369,7 +369,7 @@ nsDomainManager.prototype =
            szSQL +=    "content_id TEXT, ";
            szSQL +=    "default_domain BOOLEAN ";
            szSQL +=");";
-           this.m_Log.Write("nsDataBaseManager.js - createDB - szSQL " + szSQL);
+           this.m_Log.Write("nsDomainManager.js - createDB - szSQL " + szSQL);
            this.m_dbConn.executeSimpleSQL(szSQL);
 
            szSQL = "CREATE TABLE imap_domains ";
@@ -379,7 +379,7 @@ nsDomainManager.prototype =
            szSQL +=    "content_id TEXT, ";
            szSQL +=    "default_domain BOOLEAN ";
            szSQL +=");";
-           this.m_Log.Write("nsDataBaseManager.js - createDB - szSQL " + szSQL);
+           this.m_Log.Write("nsDomainManager.js - createDB - szSQL " + szSQL);
            this.m_dbConn.executeSimpleSQL(szSQL);
 
 
@@ -387,7 +387,7 @@ nsDomainManager.prototype =
            szSQL+= "  domain ";
            szSQL+= "FROM smtp_domains UNION SELECT domain FROM pop_domains UNION SELECT domain FROM imap_domains "
            szSQL+= "ORDER BY domain ASC";
-           this.m_Log.Write("nsDataBaseManager.js - createDB - szSQL " + szSQL);
+           this.m_Log.Write("nsDomainManager.js - createDB - szSQL " + szSQL);
            this.m_dbConn.executeSimpleSQL(szSQL);
 
 
@@ -398,12 +398,12 @@ nsDomainManager.prototype =
            szSQL +=    "extension_guid TEXT, ";
            szSQL +=    "enabled BOOLEAN ";
            szSQL += ")";
-           this.m_Log.Write("nsDataBaseManager.js - createDB - szSQL " + szSQL);
+           this.m_Log.Write("nsDomainManager.js - createDB - szSQL " + szSQL);
            this.m_dbConn.executeSimpleSQL(szSQL);
 
            //dummy table
            szSQL = "CREATE TABLE dummy_table (id INTEGER PRIMARY KEY);";
-           this.m_Log.Write("nsDataBaseManager.js - createDB - szSQL " + szSQL);
+           this.m_Log.Write("nsDomainManager.js - createDB - szSQL " + szSQL);
            this.m_dbConn.executeSimpleSQL(szSQL);
            szSQL = "INSERT OR IGNORE INTO dummy_table VALUES (1)";
            this.m_dbConn.executeSimpleSQL(szSQL);
@@ -414,11 +414,11 @@ nsDomainManager.prototype =
            this.m_dbConn.executeSimpleSQL(szSQL);
            szSQL = "INSERT INTO webmail_schema_version VALUES(4);";
            this.m_dbConn.executeSimpleSQL(szSQL);
-           this.m_Log.Write("nsDataBaseManager.js - createDB - END");
+           this.m_Log.Write("nsDomainManager.js - createDB - END");
        }
        catch(err)
        {
-           this.m_Log.DebugDump("nsDataBaseManager.js: createDB : Exception : "
+           this.m_Log.DebugDump("nsDomainManager.js: createDB : Exception : "
                                          + err.name +
                                          "\nError message: "
                                          + err.message +"\n"
@@ -434,7 +434,7 @@ nsDomainManager.prototype =
    {
        try
        {
-           this.m_Log.Write("nsDataBaseManager.js - domainHandlerCheck - START");
+           this.m_Log.Write("nsDomainManager.js - domainHandlerCheck - START");
 
            //get domain handler list
            var aDomains = new Array();
@@ -477,30 +477,29 @@ nsDomainManager.prototype =
            szSQL = "REPLACE INTO domain_handler (id, content_id, enabled, extension_guid) ";
            szSQL+= "VALUES ";
            szSQL+= "(" ;
-           szSQL+=     "?1,";
-           szSQL+=     "?2,";
-           szSQL+=     "?3,";
-           szSQL+=     "?4 ";
+           szSQL+=     ":id,";
+           szSQL+=     ":content,";
+           szSQL+=     ":enabled,";
+           szSQL+=     ":extension ";
            szSQL+= ");";
 
            for (var i = 0; i < aDomains.length; i++)
            {
                statement = this.m_dbConn.createStatement(szSQL);
-               statement.bindStringParameter(0, aDomains[i].iId);
-               statement.bindStringParameter(1, aDomains[i].szContentId);
-               statement.bindStringParameter(2, aDomains[i].bEnabled);
-               statement.bindStringParameter(3, aDomains[i].szGUID);
+               statement.params.id = aDomains[i].iId;
+               statement.params.content= aDomains[i].szContentId;
+               statement.params.enabled = aDomains[i].bEnabled;
+               statement.params.extension = aDomains[i].szGUID;
                statement.execute();
            }
-           aContentID = null;
 
            this.m_dbConn.commitTransaction();
 
-           this.m_Log.Write("nsDataBaseManager.js - domainHandlerCheck - END");
+           this.m_Log.Write("nsDomainManager.js - domainHandlerCheck - END");
        }
        catch(err)
        {
-           this.m_Log.DebugDump("nsDataBaseManager.js: domainHandlerCheck : Exception : "
+           this.m_Log.DebugDump("nsDomainManager.js: domainHandlerCheck : Exception : "
                              + err.name +
                              "\nError message: "
                              + err.message +"\n"
