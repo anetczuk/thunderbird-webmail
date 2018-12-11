@@ -19,10 +19,15 @@ var gOWADomains =
             
             this.m_strBundle = document.getElementById("stringsOWAPrefs-Domains");
             
-            this.m_UriManager = Components.classes["@mozilla.org/OWADomains;1"]
-                                          .getService()
-                                          .QueryInterface(Components.interfaces.nsIOWADomains);   
+            var owaDomains = Components.classes["@mozilla.org/OWADomains;1"]
+            var service = owaDomains.getService()
+            this.m_UriManager = service.QueryInterface(Components.interfaces.nsIOWADomains);   
+//            this.m_UriManager = Components.classes["@mozilla.org/OWADomains;1"]
+//            .getService()
+//            .QueryInterface(Components.interfaces.nsIOWADomains);   
                
+            this.m_DebugLog.Write("OWA-Prefs-Domains : init - m_UriManager = " + this.m_UriManager);
+            
             this.updateList();
                             
             this.m_DebugLog.Write("OWA-Prefs-Domains : init - END");

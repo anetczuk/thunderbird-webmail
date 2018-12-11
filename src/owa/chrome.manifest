@@ -1,3 +1,9 @@
+interfaces components/nsIDomainsOWA.xpt
+component {0ea92972-a83a-11dc-8314-0800200c9a66} components/nsDomainsOWA.js
+contract @mozilla.org/OWADomains;1 {0ea92972-a83a-11dc-8314-0800200c9a66}
+category profile-after-change nsOWADomains @mozilla.org/OWADomains;1
+
+
 content owa    jar:chrome/owa.jar!/content/owa/
 
 skin	owa	 classic/1.0     jar:chrome/owa.jar!/skin/classic/owa/

@@ -68,11 +68,15 @@ var gPrefAccounts =
 
             var allServers = accountManager.allServers;
 
-            for (var i=0; i < allServers.Count(); i++)
+            this.m_DebugLog.Write("OWA-Pref-Accounts : getUserNames - allServers = " + allServers + " " + (typeof allServers));
+            
+            for (var i=0; i < allServers.length; i++)
             {
-                var currentServer = allServers.GetElementAt(i)
-                                              .QueryInterface(Components.interfaces.nsIMsgIncomingServer);
-
+                var currentServer = null;
+            	allServers.queryElementAt(i, Components.interfaces.nsIMsgIncomingServer, currentServer);
+            	if ( currentServer == null )
+            		continue;
+                
                 var szType = currentServer.type;
                 this.m_DebugLog.Write("OWA-Pref-Accounts  : getUserNames - type " +szType );             
                 if (szType.search(/pop3/i)!=-1)  //found pop account

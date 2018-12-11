@@ -1,7 +1,4 @@
-/*****************************  Globals   *************************************/
-const nsOWADomainsClassID = Components.ID("{0ea92972-a83a-11dc-8314-0800200c9a66}");
-const nsOWADomainsContactID = "@mozilla.org/OWADomains;1";
-const nsOWAExtGUID = "{3d82b2c0-0109-11da-8cd6-0800200c9a66}";
+Components.utils.import("resource://gre/modules/XPCOMUtils.jsm");
 
 /***********************  UriManager ********************************/
 function nsOWADomains()
@@ -20,6 +17,15 @@ function nsOWADomains()
 
 nsOWADomains.prototype =
 {
+    classDescription : "Webmail OWA mail Domains",
+    classID          : Components.ID("{0ea92972-a83a-11dc-8314-0800200c9a66}"),
+    contractID       : "@mozilla.org/OWADomains;1",
+    _xpcom_categories: [{category: "profile-after-change", service: true}],
+
+    QueryInterface : XPCOMUtils.generateQI([Components.interfaces.nsIObserver,
+                                            Components.interfaces.nsISupports,
+                                            Components.interfaces.nsIOWADomains]),
+	                                            
     loadDataBase : function()
     {
         try
@@ -43,13 +49,13 @@ nsOWADomains.prototype =
             fileDB = fileDB.get("ProfD", Components.interfaces.nsIFile);
             fileDB.append("WebmailData");         //add folder
             if (!fileDB.exists() || !fileDB.isDirectory())    //check folder exist
-                fileDB.create(Components.interfaces.nsIFile.DIRECTORY_TYPE, 0764);
-            if (fileDB.exists() && fileDB.isDirectory() && fileDB.permissions != 0764) //check permissions
+                fileDB.create(Components.interfaces.nsIFile.DIRECTORY_TYPE, 0o764);
+            if (fileDB.exists() && fileDB.isDirectory() && fileDB.permissions != 0o764) //check permissions
             {
                 this.m_Log.Write("nsDomainsOWA.js - loadDB - updating file permissions");
                 try
                 {
-                    fileDB.permissions = 0764;
+                    fileDB.permissions = 0o764;
                 }
                 catch(e)
                 {
@@ -103,21 +109,23 @@ nsOWADomains.prototype =
             {
                 var szVersion = "SELECT version FROM owadomains_schema_version LIMIT 1";
                 var statement = this.m_dbConn.createStatement(szVersion);
-                var wStatement = Components.classes["@mozilla.org/storage/statement-wrapper;1"]
-                                           .createInstance(Components.interfaces.mozIStorageStatementWrapper);
                 try
                 {
-                    wStatement.initialize(statement);
-                    if (wStatement.step()) iVersion = wStatement.row["version"];
+                    if (statement.executeStep()) iVersion = statement.row["version"];
                 }
                 finally
                 {
-                    wStatement.reset();
-                    this.m_Log.Write("nsDomainsOWA : getDBversion - DB Reset");
+                	statement.reset();
+                    this.m_Log.Write("nsDomainsOWA : getDBVersion - DB Reset");
                 }
             }
-            catch (e)
+            catch (err)
             {
+                this.m_Log.DebugDump("nsDomainsOWA.js: getDBVersion : Exception : "
+                        + err.name
+                        + ".\nError message: "
+                        + err.message + "\n"
+                        + err.lineNumber);
                 iVersion = -1;
             }
 
@@ -197,7 +205,7 @@ nsOWADomains.prototype =
             if (!this.m_oFile.exists())
             {   //create file
                 this.m_Log.Write("nsOWADomains.js - loadStandardData - creating file");
-                this.m_oFile.create(Components.interfaces.nsIFile.NORMAL_FILE_TYPE, 0764);
+                this.m_oFile.create(Components.interfaces.nsIFile.NORMAL_FILE_TYPE, 0o764);
             }
 
             //open file
@@ -321,8 +329,8 @@ nsOWADomains.prototype =
 
             if (this.m_iCount == 0)  //register content_id and extension guid
             {
-                this.m_DomainManager.registerDomainHandler("@mozilla.org/OWAPOP;1", nsOWAExtGUID);
-                this.m_DomainManager.registerDomainHandler("@mozilla.org/OWASMTP;1",nsOWAExtGUID);
+                this.m_DomainManager.registerDomainHandler("@mozilla.org/OWAPOP;1", "{3d82b2c0-0109-11da-8cd6-0800200c9a66}");
+                this.m_DomainManager.registerDomainHandler("@mozilla.org/OWASMTP;1","{3d82b2c0-0109-11da-8cd6-0800200c9a66}");
             }
 
             if (this.m_iCount< this.m_aFilesDomains.length)
@@ -468,12 +476,9 @@ nsOWADomains.prototype =
             var statement = this.m_dbConn.createStatement(szSQL);
             try
             {
-                var wStatement = Components.classes["@mozilla.org/storage/statement-wrapper;1"]
-                                           .createInstance(Components.interfaces.mozIStorageStatementWrapper);
-                wStatement.initialize(statement);
-                while (wStatement.step())
+                while (statement.executeStep())
                 {
-                   aResult.push(wStatement.row["domain"]);
+                   aResult.push(statement.row["domain"]);
                 }
             }
             finally
@@ -515,12 +520,9 @@ nsOWADomains.prototype =
             statement.bindStringParameter(0, szDomain.toLowerCase().replace(/\s/,""));
             try
             {
-                var wStatement = Components.classes["@mozilla.org/storage/statement-wrapper;1"]
-                                           .createInstance(Components.interfaces.mozIStorageStatementWrapper);
-                wStatement.initialize(statement);
-                while (wStatement.step())
+                while (statement.executeStep())
                 {
-                   szURL = wStatement.row["url"];
+                   szURL = statement.row["url"];
                 }
             }
             finally
@@ -550,7 +552,7 @@ nsOWADomains.prototype =
     {
         switch(aTopic)
         {
-            case "xpcom-startup":
+            case "profile-after-change":
                 // this is run very early, right after XPCOM is initialized, but before
                 // user profile information is applied. Register ourselves as an observer
                 // for 'profile-after-change' and 'quit-application'.
@@ -561,9 +563,7 @@ nsOWADomains.prototype =
 
                 this.m_scriptLoader = Components.classes["@mozilla.org/moz/jssubscript-loader;1"]
                                                 .getService(Components.interfaces.mozIJSSubScriptLoader);
-            break;
 
-            case "profile-after-change":
                 // This happens after profile has been loaded and user preferences have been read.
                 // startup code here
                 this.m_scriptLoader.loadSubScript("chrome://web-mail/content/common/DebugLog.js");
@@ -603,106 +603,26 @@ nsOWADomains.prototype =
             default:
                 throw Components.Exception("Unknown topic: " + aTopic);
         }
-    },
-
-
-
-/******************************************************************************/
-/***************** XPCOM  stuff ***********************************************/
-/******************************************************************************/
-    QueryInterface : function (iid)
-    {
-        if (!iid.equals(Components.interfaces.nsIOWADomains)
-                && !iid.equals(Components.interfaces.nsISupports)
-                    && !iid.equals(Components.interfaces.nsIObserver))
-            throw Components.results.NS_ERROR_NO_INTERFACE;
-
-        return this;
     }
+
 }
 
 
-/******************************************************************************/
-/* FACTORY*/
-var nsOWADomainsFactory = new Object();
+/**
+* XPCOMUtils.generateNSGetFactory was introduced in Mozilla 2 (Firefox 4).
+* XPCOMUtils.generateNSGetModule is for Mozilla 1.9.2 (Firefox 3.6).
+*/
+if (XPCOMUtils.generateNSGetFactory)
+    var NSGetFactory = XPCOMUtils.generateNSGetFactory([nsOWADomains]);
+else
+    var NSGetModule = XPCOMUtils.generateNSGetModule([nsOWADomains]);
 
-nsOWADomainsFactory.createInstance = function (outer, iid)
+
+//To be used for FUCK UP's only
+function ConsoleLog(msg)
 {
-    if (outer != null)
-        throw Components.results.NS_ERROR_NO_AGGREGATION;
+    var ConsoleService = Components.classes["@mozilla.org/consoleservice;1"].
+                                getService(Components.interfaces.nsIConsoleService);
 
-    if (!iid.equals(nsOWADomainsClassID)
-            && !iid.equals(Components.interfaces.nsISupports))
-        throw Components.results.NS_ERROR_INVALID_ARG;
-
-    return new nsOWADomains();
-}
-
-
-/******************************************************************************/
-/* MODULE */
-var nsOWADomainsModule = new Object();
-
-nsOWADomainsModule.registerSelf = function(compMgr, fileSpec, location, type)
-{
-    var catman = Components.classes["@mozilla.org/categorymanager;1"].
-                        getService(Components.interfaces.nsICategoryManager);
-
-    catman.addCategoryEntry("xpcom-startup",
-                            "OWA Domains",
-                            nsOWADomainsContactID,
-                            true,
-                            true);
-
-    catman.addCategoryEntry("app-startup",
-                            "OWA Domains",
-                            "service," + nsOWADomainsContactID,
-                            true,
-                            true);
-
-    compMgr = compMgr.QueryInterface(Components.interfaces.nsIComponentRegistrar);
-    compMgr.registerFactoryLocation(nsOWADomainsClassID,
-                                    "OWA Domains",
-                                    nsOWADomainsContactID,
-                                    fileSpec,
-                                    location,
-                                    type);
-}
-
-
-nsOWADomainsModule.unregisterSelf = function(aCompMgr, aFileSpec, aLocation)
-{
-    var catman = Components.classes["@mozilla.org/categorymanager;1"].
-                            getService(Components.interfaces.nsICategoryManager);
-
-    catman.deleteCategoryEntry("xpcom-startup", "OWA Domains", true);
-    catman.deleteCategoryEntry("app-startup", "OWA Domains", true);
-    
-    aCompMgr = aCompMgr.QueryInterface(Components.interfaces.nsIComponentRegistrar);
-    aCompMgr.unregisterFactoryLocation(nsOWADomainsClassID, aFileSpec);
-}
-
-
-nsOWADomainsModule.getClassObject = function(compMgr, cid, iid)
-{
-    if (!cid.equals(nsOWADomainsClassID))
-        throw Components.results.NS_ERROR_NO_INTERFACE;
-
-    if (!iid.equals(Components.interfaces.nsIFactory))
-        throw Components.results.NS_ERROR_NOT_IMPLEMENTED;
-
-    return nsOWADomainsFactory;
-}
-
-
-nsOWADomainsModule.canUnload = function(compMgr)
-{
-    return true;
-}
-/******************************************************************************/
-
-
-function NSGetModule(compMgr, fileSpec)
-{
-    return nsOWADomainsModule;
+    ConsoleService.logStringMessage(msg);
 }
