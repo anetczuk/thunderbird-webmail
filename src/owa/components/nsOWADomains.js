@@ -30,7 +30,7 @@ nsOWADomains.prototype =
     {
         try
         {
-            this.m_Log.Write("nsDomainsOWA.js - loadDataBase - START");
+            this.m_Log.Write("nsOWADomains.js - loadDataBase - START");
 
             try
             {
@@ -39,7 +39,7 @@ nsOWADomains.prototype =
             }
             catch(err)
             {
-                this.m_Log.Write("nsDomainsOWA.js : startUp - SQL components NOT installed");
+                this.m_Log.Write("nsOWADomains.js : startUp - SQL components NOT installed");
                 throw new Error("no database");
             }
 
@@ -52,14 +52,14 @@ nsOWADomains.prototype =
                 fileDB.create(Components.interfaces.nsIFile.DIRECTORY_TYPE, 0o764);
             if (fileDB.exists() && fileDB.isDirectory() && fileDB.permissions != 0o764) //check permissions
             {
-                this.m_Log.Write("nsDomainsOWA.js - loadDB - updating file permissions");
+                this.m_Log.Write("nsOWADomains.js - loadDB - updating file permissions");
                 try
                 {
                     fileDB.permissions = 0o764;
                 }
                 catch(e)
                 {
-                    this.m_Log.Write("nsDomainsOWA.js: loadDataBase : permissions exception : "
+                    this.m_Log.Write("nsOWADomains.js: loadDataBase : permissions exception : "
                                           + e.name
                                           + ".\nError message: "
                                           + e.message);
@@ -67,7 +67,7 @@ nsOWADomains.prototype =
             }
             fileDB.append("OWAdomains.db3");         //sqlite database
             fileDB.QueryInterface(Components.interfaces.nsIFile)
-            this.m_Log.Write("nsDomainsOWA.js - loadDB - fileDB "+ fileDB.path);
+            this.m_Log.Write("nsOWADomains.js - loadDB - fileDB "+ fileDB.path);
 
             //load DB
             this.m_dbConn = this.m_dbService.openDatabase(fileDB);
@@ -79,12 +79,12 @@ nsOWADomains.prototype =
           
             this.m_bIsReady = true;
 
-            this.m_Log.Write("nsDomainsOWA.js - loadDataBase - END");
+            this.m_Log.Write("nsOWADomains.js - loadDataBase - END");
             return true;
         }
         catch(err)
         {
-            this.m_Log.DebugDump("nsDomainsOWA.js: loadDataBase : Exception : "
+            this.m_Log.DebugDump("nsOWADomains.js: loadDataBase : Exception : "
                                           + err.name
                                           + ".\nError message: "
                                           + err.message + "\n"
@@ -101,7 +101,7 @@ nsOWADomains.prototype =
     {
         try
         {
-            this.m_Log.Write("nsDomainsOWA.js - getDBVersion - START");
+            this.m_Log.Write("nsOWADomains.js - getDBVersion - START");
 
             var iVersion = -1;
 
@@ -116,12 +116,12 @@ nsOWADomains.prototype =
                 finally
                 {
                 	statement.reset();
-                    this.m_Log.Write("nsDomainsOWA : getDBVersion - DB Reset");
+                    this.m_Log.Write("nsOWADomains : getDBVersion - DB Reset");
                 }
             }
             catch (err)
             {
-                this.m_Log.DebugDump("nsDomainsOWA.js: getDBVersion : Exception : "
+                this.m_Log.DebugDump("nsOWADomains.js: getDBVersion : Exception : "
                         + err.name
                         + ".\nError message: "
                         + err.message + "\n"
@@ -129,13 +129,13 @@ nsOWADomains.prototype =
                 iVersion = -1;
             }
 
-            this.m_Log.Write("nsDomainsOWA.js - getDBVersion - "+ iVersion);
-            this.m_Log.Write("nsDomainsOWA.js - getDBVersion - END");
+            this.m_Log.Write("nsOWADomains.js - getDBVersion - "+ iVersion);
+            this.m_Log.Write("nsOWADomains.js - getDBVersion - END");
             return iVersion;
         }
         catch(err)
         {
-            this.m_Log.DebugDump("nsDomainsOWA.js: getDBVersion : Exception : "
+            this.m_Log.DebugDump("nsOWADomains.js: getDBVersion : Exception : "
                                           + err.name
                                           + "\nError message: "
                                           + err.message +"\n"
@@ -151,7 +151,7 @@ nsOWADomains.prototype =
     {
         try
         {
-            this.m_Log.Write("nsDomainsOWA.js - createDB - START");
+            this.m_Log.Write("nsOWADomains.js - createDB - START");
             var szSQL;
 
             //Domains Table
@@ -161,7 +161,7 @@ nsOWADomains.prototype =
             szSQL +=    "domain TEXT, ";
             szSQL +=    "url TEXT ";
             szSQL +=");";
-            this.m_Log.Write("nsDomainsOWA.js - createDB - szSQL " + szSQL);
+            this.m_Log.Write("nsOWADomains.js - createDB - szSQL " + szSQL);
             this.m_dbConn.executeSimpleSQL(szSQL);
 
             //Version table
@@ -170,11 +170,11 @@ nsOWADomains.prototype =
             szSQL = "INSERT INTO owadomains_schema_version VALUES(1);";
             this.m_dbConn.executeSimpleSQL(szSQL);
             
-            this.m_Log.Write("nsDomainsOWA.js - createDB - END");
+            this.m_Log.Write("nsOWADomains.js - createDB - END");
         }
         catch(err)
         {
-            this.m_Log.DebugDump("nsDomainsOWA.js: createDB : Exception : "
+            this.m_Log.DebugDump("nsOWADomains.js: createDB : Exception : "
                                           + err.name +
                                           "\nError message: "
                                           + err.message +"\n"
