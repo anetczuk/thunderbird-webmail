@@ -408,14 +408,14 @@ nsOWADomains.prototype =
             szSQL  = "REPLACE INTO domains (id, domain, url) ";
             szSQL += "VALUES ";
             szSQL += "( ";
-            szSQL += "  (SELECT id FROM domains WHERE domain LIKE ?1),";
-            szSQL += "   ?1,";
-            szSQL += "   ?2 ";
+            szSQL += "  (SELECT id FROM domains WHERE domain LIKE :domain),";
+            szSQL += "   :domain,";
+            szSQL += "   :url ";
             szSQL += ");";
             this.m_Log.Write("nsOWADomains : newDomain - sql "  + szSQL);
             var statement = this.m_dbConn.createStatement(szSQL);
-            statement.bindStringParameter(0, szDomain.toLowerCase().replace(/\s/,""));
-            statement.bindStringParameter(1, szURL.toLowerCase().replace(/\s/,""));
+            statement.params.domain = szDomain.toLowerCase().replace(/\s/,"");
+            statement.params.url = szURL.toLowerCase().replace(/\s/,"");
             statement.execute();
             
             this.m_Log.Write("nsOWADomains.js - addDomain - END " );
@@ -440,9 +440,9 @@ nsOWADomains.prototype =
         {
             this.m_Log.Write("nsOWADomains.js - removeDomain - START " + szDomain);
 
-            var szSQL = "DELETE FROM domains WHERE domain LIKE ?1";
+            var szSQL = "DELETE FROM domains WHERE domain LIKE :domain";
             var statement = this.m_dbConn.createStatement(szSQL);
-            statement.bindStringParameter(0, szDomain.toLowerCase().replace(/\s/,""));
+            statement.params.domain = szDomain.toLowerCase().replace(/\s/,"");
             statement.execute();
 
             this.m_DomainManager.removeDomainForProtocol(szDomain, "POP");
@@ -515,9 +515,9 @@ nsOWADomains.prototype =
         {
             this.m_Log.Write("nsOWADomains.js - getURL - START " + szDomain);
             var szURL = null;
-            var szSQL = "SELECT url FROM domains WHERE domain LIKE ?1";
+            var szSQL = "SELECT url FROM domains WHERE domain LIKE :url";
             var statement = this.m_dbConn.createStatement(szSQL);
-            statement.bindStringParameter(0, szDomain.toLowerCase().replace(/\s/,""));
+            statement.params.url = szDomain.toLowerCase().replace(/\s/,"");
             try
             {
                 while (statement.executeStep())

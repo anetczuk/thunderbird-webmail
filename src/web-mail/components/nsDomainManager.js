@@ -229,14 +229,14 @@ nsDomainManager.prototype =
            szSQL  = "INSERT INTO domain_handler (content_id, enabled) "
            szSQL += "VALUES "
            szSQL += "( "
-           szSQL +=    "?1, "
+           szSQL +=    ":contentId, "
            szSQL +=    "\"true\""
            szSQL += ");"
            statement = this.m_dbConn.createStatement(szSQL);
 
            for (var i =0; i<aContentID.length; i++)
            {
-               statement.bindStringParameter(0, aContentID[i]);
+               statement.params.contentId = aContentID[i];
                statement.execute();
            }
            statement.reset();
@@ -569,27 +569,27 @@ nsDomainManager.prototype =
            if (szProtocol.search(/pop/i)!=-1)
                szSQL = "SELECT pop_domains.content_id, pop_domains.default_domain " +
                        "FROM pop_domains, domain_handler " +
-                       "WHERE domain LIKE ?1 " +
+                       "WHERE domain LIKE :domain " +
                        "      AND domain_handler.content_id = pop_domains.content_id " +
                        "      AND domain_handler.enabled = \"true\"" +
                        "LIMIT (1)";
            if (szProtocol.search(/smtp/i)!=-1)
                szSQL = "SELECT smtp_domains.content_id, smtp_domains.default_domain " +
                        "FROM smtp_domains, domain_handler  " +
-                       "WHERE domain LIKE ?1 " +
+                       "WHERE domain LIKE :domain " +
                        "      AND domain_handler.content_id = smtp_domains.content_id " +
                        "      AND domain_handler.enabled = \"true\"" +
                        "LIMIT (1)";
            if (szProtocol.search(/imap/i)!=-1)
                szSQL = "SELECT imap_domains.content_id, imap_domains.default_domain  " +
                        "FROM imap_domains, domain_handler  " +
-                       "WHERE domain LIKE ?1 " +
+                       "WHERE domain LIKE :domain " +
                        "      AND domain_handler.content_id = imap_domains.content_id " +
                        "      AND domain_handler.enabled = \"true\"" +
                        "LIMIT (1)";
 
            var statement = this.m_dbConn.createStatement(szSQL);
-           statement.bindStringParameter(0, szAddress.toLowerCase().replace(/\s/,""));
+           statement.params.domain = szAddress.toLowerCase().replace(/\s/,"");
 
            try
            {
@@ -654,13 +654,13 @@ nsDomainManager.prototype =
            szSQL  = "REPLACE INTO domain_handler (id, content_id, enabled, extension_guid) ";
            szSQL += "VALUES ";
            szSQL += "( ";
-           szSQL += "  (SELECT id FROM domain_handler WHERE content_id LIKE ?1),";
-           szSQL += "   ?1,";
+           szSQL += "  (SELECT id FROM domain_handler WHERE content_id LIKE :contentId),";
+           szSQL += "   :contentId,";
            szSQL += "   \"true\",";
-           szSQL += "   (SELECT extension_guid FROM domain_handler WHERE content_id LIKE ?1)"
+           szSQL += "   (SELECT extension_guid FROM domain_handler WHERE content_id LIKE :contentId)"
            szSQL += ");";
            var statement = this.m_dbConn.createStatement(szSQL);
-           statement.bindStringParameter(0, szContentID);
+           statement.params.contentId = szContentID;
            statement.execute();
 
 
@@ -670,10 +670,10 @@ nsDomainManager.prototype =
                szSQL = "REPLACE INTO pop_domains (id,domain,content_id, default_domain) ";
                szSQL+= "VALUES ";
                szSQL+= "(" ;
-               szSQL+= "(SELECT id FROM pop_domains WHERE domain LIKE ?1),";
-               szSQL+= "?2,";
-               szSQL+= "?3,";
-               szSQL+= "?4";
+               szSQL+= "(SELECT id FROM pop_domains WHERE domain LIKE :domain),";
+               szSQL+= ":domain,";
+               szSQL+= ":contentId,";
+               szSQL+= ":defaultDomain";
                szSQL+= ");";
            }
            if (szProtocol.search(/smtp/i)!=-1)
@@ -681,10 +681,10 @@ nsDomainManager.prototype =
                szSQL = "REPLACE INTO smtp_domains (id,domain,content_id, default_domain) ";
                szSQL+= "VALUES ";
                szSQL+= "(" ;
-               szSQL+= "(SELECT id FROM smtp_domains WHERE domain LIKE ?1),";
-               szSQL+= "?2,";
-               szSQL+= "?3,";
-               szSQL+= "?4";
+               szSQL+= "(SELECT id FROM smtp_domains WHERE domain LIKE :domain),";
+               szSQL+= ":domain,";
+               szSQL+= ":contentId,";
+               szSQL+= ":defaultDomain";
                szSQL+= ");";
            }
            if (szProtocol.search(/imap/i)!=-1)
@@ -692,19 +692,17 @@ nsDomainManager.prototype =
                szSQL = "REPLACE INTO imap_domains (id,domain,content_id, default_domain) ";
                szSQL+= "VALUES ";
                szSQL+= "(" ;
-               szSQL+= "(SELECT id FROM imap_domains WHERE domain LIKE ?1),";
-               szSQL+= "?2,";
-               szSQL+= "?3,";
-               szSQL+= "?4";
+               szSQL+= "(SELECT id FROM imap_domains WHERE domain LIKE :domain),";
+               szSQL+= ":contentId,";
+               szSQL+= ":defaultDomain";
                szSQL+= ");";
            }
 
            this.m_Log.Write("nsDomainManager : newDomain - sql "  + szSQL);
            statement = this.m_dbConn.createStatement(szSQL);
-           statement.bindStringParameter(0, szAddress.toLowerCase().replace(/\s/,""));
-           statement.bindStringParameter(1, szAddress.toLowerCase().replace(/\s/,""));
-           statement.bindStringParameter(2, szContentID);
-           statement.bindStringParameter(3, bDefault);
+           statement.params.domain = szAddress.toLowerCase().replace(/\s/,"");
+           statement.params.contentId = szContentID;
+           statement.params.defaultDomain = bDefault;
            statement.execute();
 
            this.m_Log.Write("nsDomainManager.js - newDomain -  END" );
@@ -745,7 +743,7 @@ nsDomainManager.prototype =
                        "           WHERE pop_domains.domain = view_all_domain.domain "  +
                        "                 AND domain_handler.enabled =\"true\" " +
                        "                 AND pop_domains.content_id =  domain_handler.content_id " +
-                       "                 AND domain_handler.extension_guid = ?1 ) <> 0 THEN 1 ELSE 0 " +
+                       "                 AND domain_handler.extension_guid = :guid ) <> 0 THEN 1 ELSE 0 " +
                        "END) AS pop, ";
                szSQL+= "(CASE " +
                        "     WHEN (SELECT pop_domains.domain " +
@@ -760,7 +758,7 @@ nsDomainManager.prototype =
                        "            WHERE smtp_domains.domain =view_all_domain.domain " +
                        "                  AND domain_handler.enabled =\"true\" " +
                        "                  AND smtp_domains.content_id =  domain_handler.content_id " +
-                       "                  AND domain_handler.extension_guid = ?1 ) <> 0 THEN 1 ELSE 0 " +
+                       "                  AND domain_handler.extension_guid = :guid ) <> 0 THEN 1 ELSE 0 " +
                        "END)  AS smtp, ";
                szSQL+= "(CASE " +
                        "     WHEN (SELECT smtp_domains.domain " +
@@ -775,7 +773,7 @@ nsDomainManager.prototype =
                        "            WHERE imap_domains.domain=view_all_domain.domain " +
                        "                  AND domain_handler.enabled =\"true\" " +
                        "                  AND imap_domains.content_id = domain_handler.content_id " +
-                       "                  AND domain_handler.extension_guid = ?1 ) <> 0 THEN 1 ELSE 0 " +
+                       "                  AND domain_handler.extension_guid = :guid ) <> 0 THEN 1 ELSE 0 " +
                        "END) AS imap, ";
                szSQL+= "(CASE " +
                        "     WHEN (SELECT imap_domains.domain " +
@@ -788,7 +786,7 @@ nsDomainManager.prototype =
 
 
            var statement = this.m_dbConn.createStatement(szSQL);
-           statement.bindStringParameter(0, szGUID);
+           statement.params.guid = szGUID;
            try
            {
                while (statement.executeStep())
@@ -1013,14 +1011,14 @@ nsDomainManager.prototype =
 
            var szSQL;
            if (szProtocol.search(/pop/i)!=-1)
-               szSQL = "DELETE FROM pop_domains WHERE domain LIKE ?1";
+               szSQL = "DELETE FROM pop_domains WHERE domain LIKE :domain";
            if (szProtocol.search(/smtp/i)!=-1)
-               szSQL = "DELETE FROM smtp_domains WHERE domain LIKE ?1";
+               szSQL = "DELETE FROM smtp_domains WHERE domain LIKE :domain";
            if (szProtocol.search(/imap/i)!=-1)
-               szSQL = "DELETE FROM imap_domains WHERE domain LIKE ?1";
+               szSQL = "DELETE FROM imap_domains WHERE domain LIKE :domain";
 
            var statement = this.m_dbConn.createStatement(szSQL);
-           statement.bindStringParameter(0, szAddress.toLowerCase().replace(/\s/,""));
+           statement.params.domain = szAddress.toLowerCase().replace(/\s/,"");
            statement.execute();
 
            this.m_Log.Write("nsDomainManager.js - removeDomainForProtocol -  END" );
