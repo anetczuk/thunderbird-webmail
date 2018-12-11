@@ -45,7 +45,7 @@ nsGMailDomains.prototype =
             if (!this.m_oFile.exists())
             {   //create file
                 this.m_Log.Write("nsGMailDomains.js - loadStandardData - creating file");
-                this.m_oFile.create(Components.interfaces.nsIFile.NORMAL_FILE_TYPE, 0764);
+                this.m_oFile.create(Components.interfaces.nsIFile.NORMAL_FILE_TYPE, 0o764);
             }
 
             //open file

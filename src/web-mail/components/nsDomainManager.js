@@ -524,15 +524,15 @@ nsDomainManager.prototype =
            szSQL  = "REPLACE INTO domain_handler (id, content_id, enabled, extension_guid) ";
            szSQL += "VALUES ";
            szSQL += "( ";
-           szSQL += "  (SELECT id FROM domain_handler WHERE content_id LIKE ?1),";
-           szSQL += "   ?1,";
+           szSQL += "  (SELECT id FROM domain_handler WHERE content_id LIKE :contentId),";
+           szSQL += "   :contentId,";
            szSQL += "   \"true\",";
-           szSQL += "   ?2";
+           szSQL += "   :extension";
            szSQL += ");";
 
            var statement = this.m_dbConn.createStatement(szSQL);
-           statement.bindStringParameter(0, szContentId);
-           statement.bindStringParameter(1, szGUID);
+           statement.params.contentId = szContentId;
+           statement.params.extension = szGUID;
            statement.execute();
 
            this.m_Log.Write("nsDomainManager.js - registerDomainHandler - END");
