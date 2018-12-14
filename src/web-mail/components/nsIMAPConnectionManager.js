@@ -318,9 +318,9 @@ nsIMAPConnectionManager.prototype =
                     WebMailPrefAccess.Get("bool","webmail.bUseIMAPServer",oPref);
                     if (oPref.Value)
                     {
-                        this.m_Log.Write("nsPOPConnectionManager :  IMAP server wanted");
+                        this.m_Log.Write("nsIMAPConnectionManager.js:  IMAP server wanted");
                         if (this.Start())
-                            this.m_Log.Write("nsPOPConnectionManager : IMAP server started");
+                            this.m_Log.Write("nsIMAPConnectionManager.js: IMAP server started");
                     }
                 }
                 else if (aData.search(/offline/)!=-1 && bOffline)

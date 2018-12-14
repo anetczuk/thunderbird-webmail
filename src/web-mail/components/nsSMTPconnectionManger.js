@@ -131,12 +131,12 @@ nsSMTPConnectionManager.prototype =
     {
         try
         {
-            this.m_Log.Write("nsPOPConnectionManager.js - GetPort = " + this.m_iSMTPPort);
+            this.m_Log.Write("nsSMTPConnectionManager.js - GetPort = " + this.m_iSMTPPort);
             return this.m_iSMTPPort;
         }
         catch(e)
         {
-            this.m_Log.DebugDump("nsPOPConnectionManager.js: GetStatus : Exception : "
+            this.m_Log.DebugDump("nsSMTPConnectionManager.js: GetStatus : Exception : "
                                           + e.name
                                           + ".\nError message: "
                                           + e.message+ "\n"

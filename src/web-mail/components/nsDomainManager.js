@@ -453,10 +453,20 @@ nsDomainManager.prototype =
                    aDomains.push(oData);
                }
            }
+           catch(err)
+           {
+               this.m_Log.DebugDump("nsDomainManager.js: domainHandlerCheck : Exception : "
+                                 + err.name +
+                                 "\nError message: "
+                                 + err.message +"\n"
+                                 + "DB Error " + "\n"
+                                 + err.lineNumber+ "\n"
+                                 + this.m_dbConn.lastErrorString);
+               return false;
+           }
            finally
            {
                statement.reset();
-               this.m_Log.Write("nsDomainManager : domainHandlerCheck - DB Reset "+ this.m_dbConn.lastErrorString);
            }
 
            //load domain handler
@@ -555,13 +565,13 @@ nsDomainManager.prototype =
    {
        try
        {
-           this.m_Log.Write("nsDomainManager.js - getDoamin - START");
-           this.m_Log.Write("nsDomainManager.js - getDoamin - " +szAddress+ " " +szProtocol);
+           this.m_Log.Write("nsDomainManager.js - getDomain - START");
+           this.m_Log.Write("nsDomainManager.js - getDomain - " +szAddress+ " " +szProtocol);
 
            var bFound = false;
            if (!szAddress || !szProtocol )
            {
-               this.m_Log.Write("nsDomainManager.js - getDoamin - bad param" );
+               this.m_Log.Write("nsDomainManager.js - getDomain - bad param" );
                return bFound;
            }
 
@@ -589,32 +599,43 @@ nsDomainManager.prototype =
                        "LIMIT (1)";
 
            var statement = this.m_dbConn.createStatement(szSQL);
-           statement.params.domain = szAddress.toLowerCase().replace(/\s/,"");
-
+           var domainAddr = szAddress.toLowerCase().replace(/\s/,"");
+           statement.params.domain = domainAddr;
+           this.m_Log.Write("nsDomainManager.js - getDomain - domainAddr = " + domainAddr );
+           
            try
            {
                if (statement.executeStep())
                {
                   szContentID.value = statement.row["content_id"];
-                  this.m_Log.Write("nsDomainManager.js - getDoamin - szContentID " + szContentID.value);
+                  this.m_Log.Write("nsDomainManager.js - getDomain - szContentID " + szContentID.value);
 
                   bDefault.value = statement.row["default_domain"] ? true : false;
-                  this.m_Log.Write("nsDomainManager.js - getDoamin - bDefault " +  bDefault.value);
+                  this.m_Log.Write("nsDomainManager.js - getDomain - bDefault " +  bDefault.value);
                   bFound = true;
                }
            }
+           catch(e)
+           {
+        	   this.m_Log.DebugDump("nsDomainManager.js: getDomain : Exception : "
+				        			   + e.name +
+				        			   ".\nError message: "
+				        			   + e.message+ "\n"
+				        			   + e.lineNumber+"\n"
+				        			   + "DB Reset "+ this.m_dbConn.lastErrorString);        	   
+           }
            finally
            {
-               this.m_Log.Write("nsDomainManager : getDoamin - DB Reset "+ this.m_dbConn.lastErrorString);
                statement.reset();
+               
            }
 
-           this.m_Log.Write("nsDomainManager.js - getDoamin - END " + bFound);
+           this.m_Log.Write("nsDomainManager.js - getDomain - END " + bFound);
            return bFound;
        }
        catch(e)
        {
-           this.m_Log.DebugDump("nsDomainManager.js: getDoamin : Exception : "
+           this.m_Log.DebugDump("nsDomainManager.js: getDomain : Exception : "
                                          + e.name +
                                          ".\nError message: "
                                          + e.message+ "\n"
