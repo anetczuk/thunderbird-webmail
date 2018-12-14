@@ -66,17 +66,13 @@ var gPrefAccounts =
             var domainManager = Components.classes["@mozilla.org/DomainManager;1"]
                                           .getService(Components.interfaces.nsIDomainManager);
 
-            var allServers = accountManager.allServers;
+            var accounts = accountManager.accounts;
 
-            this.m_DebugLog.Write("OWA-Pref-Accounts : getUserNames - allServers = " + allServers + " " + (typeof allServers));
-            
-            for (var i=0; i < allServers.length; i++)
-            {
-                var currentServer = null;
-            	allServers.queryElementAt(i, Components.interfaces.nsIMsgIncomingServer, currentServer);
-            	if ( currentServer == null )
+            for (var i = 0; i < accounts.length; i++) {
+            	var account = accounts.queryElementAt(i, Components.interfaces.nsIMsgAccount);
+            	if ( account == null )
             		continue;
-                
+            	var currentServer = account.incomingServer;
                 var szType = currentServer.type;
                 this.m_DebugLog.Write("OWA-Pref-Accounts  : getUserNames - type " +szType );             
                 if (szType.search(/pop3/i)!=-1)  //found pop account

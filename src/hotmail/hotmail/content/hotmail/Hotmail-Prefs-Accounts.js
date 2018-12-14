@@ -67,13 +67,13 @@ var gPrefAccounts =
             var domainManager = Components.classes["@mozilla.org/DomainManager;1"]
                                           .getService(Components.interfaces.nsIDomainManager);
 
-            var allServers = accountManager.allServers;
+            var accounts = accountManager.accounts;
 
-            for (var i=0; i < allServers.Count(); i++)
-            {
-                var currentServer = allServers.GetElementAt(i)
-                                              .QueryInterface(Components.interfaces.nsIMsgIncomingServer);
-
+            for (var i = 0; i < accounts.length; i++) {
+            	var account = accounts.queryElementAt(i, Components.interfaces.nsIMsgAccount);
+            	if ( account == null )
+            		continue;
+            	var currentServer = account.incomingServer;
                 var szType = currentServer.type;
                 this.m_DebugLog.Write("Hotmail-Pref-Accounts  : getUserNames - type " +szType );             
                 if (szType.search(/pop3/i)!=-1 || szType.search(/imap/i)!=-1)  //found pop account

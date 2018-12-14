@@ -54,13 +54,13 @@ var gPrefAccounts =
             var domainManager = Components.classes["@mozilla.org/DomainManager;1"].getService().
                                        QueryInterface(Components.interfaces.nsIDomainManager);
 
-            var allServers = accountManager.allServers;
+            var accounts = accountManager.accounts;
 
-            for (var i=0; i < allServers.Count(); i++)
-            {
-                var currentServer = allServers.GetElementAt(i).
-                                        QueryInterface(Components.interfaces.nsIMsgIncomingServer);
-
+            for (var i = 0; i < accounts.length; i++) {
+            	var account = accounts.queryElementAt(i, Components.interfaces.nsIMsgAccount);
+            	if ( account == null )
+            		continue;
+            	var currentServer = account.incomingServer;
                 if (currentServer.type.search(/pop3/i)!=-1)  //found pop account
                 {
                     var szUserName = currentServer.realUsername;
