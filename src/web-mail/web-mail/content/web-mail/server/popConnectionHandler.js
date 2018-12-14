@@ -20,14 +20,17 @@ function POPconnectionHandler(transport)
 
         //get streams
         this.ServerRequest = this.transport.openInputStream(0,0,0);
-        if (!this.ServerRequest) throw new Error("Error getting input stream.");
+        if (!this.ServerRequest) 
+        	throw new Error("Error getting input stream.");
         this.ServerResponse =  this.transport.openOutputStream(0,0,-1);
-        if (!this.ServerResponse) throw new Error("Error getting output stream.");
+        if (!this.ServerResponse) 
+        	throw new Error("Error getting output stream.");
 
         //create stream watcher
         this.Pump = Components.classes["@mozilla.org/network/input-stream-pump;1"];
         this.Pump = this.Pump.createInstance(Components.interfaces.nsIInputStreamPump);
-        this.Pump.init(this.ServerRequest, -1, -1, 0, 0, false);
+        this.m_POPLog.Write("nsPOPConnectionHandler.js: POPconnectionHandler - server: "+ this.ServerRequest);
+        this.Pump.init(this.ServerRequest, -1, -1, 0, null, false);
         this.Pump.asyncRead(this,null);
 
         //connection made send ok
@@ -388,7 +391,7 @@ POPconnectionHandler.prototype.onDataAvailable = function(request, context, inpu
     }
     catch(e)
     {
-        this.m_POPLog.DebugDump("nsPOPConnectionManager.js: POPconnectionHandler onDataAvailable : Exception : "
+        this.m_POPLog.DebugDump("POPconnectionHandler.js: POPconnectionHandler onDataAvailable : Exception : "
                                               + e.name
                                               + ".\nError message: "
                                               + e.message+ "\n"
