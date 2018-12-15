@@ -86,13 +86,13 @@ var gHttpMailDomains =
                 this.enableRemove(true);
                 
                 var aszUri = aUri.value;
-                for (i=0; i<aszUri.length; i++)
+                for (var i=0; i<aszUri.length; i++)
                 {
                     this.m_DebugLog.Write("Webmail-Prefs-Domains : update - uri "+ aszUri);
                     var newUriItem = document.createElement("treeitem"); 
                     
                     var bFound = false;
-                    for (j=0 ; j<this.m_aOpenContainer.length; j++)
+                    for (var j=0 ; j<this.m_aOpenContainer.length; j++)
                     {
                         var regExp = new RegExp(aszUri[i],"i");
                         this.m_DebugLog.Write("Webmail-Prefs-Domains : update - regExp "+ regExp);
@@ -135,7 +135,7 @@ var gHttpMailDomains =
                     var newUriChildren = document.createElement("treechildren"); 
                    
                     var aszDomain = aDomain.value;
-                    for (j=0; j<aszDomain.length; j++)
+                    for (var j=0; j<aszDomain.length; j++)
                     {
                         var newDomainCell = document.createElement("treecell"); 
                         newDomainCell.setAttribute("label",aszDomain[j]); 
@@ -339,7 +339,7 @@ var gHttpMailDomains =
                     this.m_UriManager.getDomains(szLabel,iCount, aDomain);
                     this.m_DebugLog.Write("Webmail-Prefs-Domains : update - remove - count "+iCount.value +" " + aDomain.value);
  
-                    for (i=0; i< aDomain.value.length; i++)
+                    for (var i=0; i< aDomain.value.length; i++)
                     {
                         this.m_DomainManager.removeDomainForProtocol(aDomain.value[i],"pop");  
                         this.m_DomainManager.removeDomainForProtocol(aDomain.value[i],"smtp");
@@ -502,7 +502,7 @@ var gHttpMailDomains =
             this.m_DebugLog.Write("Webmail-Prefs-Domains : treeClear - " + iCount);
             
             var listNodes = this.m_mainTreeChildren.childNodes;
-            for (i=0; i< listNodes.length+1; i++)
+            for (var i=0; i< listNodes.length+1; i++)
             {
                 this.m_mainTreeChildren.removeChild(listNodes.item(0)); 
 
@@ -587,7 +587,7 @@ var gHttpMailDomains =
             var col = this.m_tree.columns["domain"];
             this.m_DebugLog.Write("Webmail-Prefs-Domains : treeStatus - col "+ col);    
             
-            for (i=0; i< iCount; i++)
+            for (var i=0; i< iCount; i++)
             {
                 var bContainer = this.m_tree.view.isContainer(i); 
                 this.m_DebugLog.Write("Webmail-Prefs-Domains : treeStatus - bContainer "+ bContainer);    

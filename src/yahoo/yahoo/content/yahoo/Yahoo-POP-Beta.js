@@ -255,7 +255,7 @@ YahooPOPBETA.prototype =
                     var aLoginData = aLoginForm[0].match(patternYahooInput);
                     mainObject.m_Log.Write("YahooPOPBETA.js - loginOnloadHandler - loginData " + aLoginData);
 
-                    for (i=0; i<aLoginData.length; i++)
+                    for (var i=0; i<aLoginData.length; i++)
                     {
                         var szName=aLoginData[i].match(patternYahooNameAlt)[1];
                         szName = szName.replace(/["|']/gm,"");
@@ -423,7 +423,7 @@ YahooPOPBETA.prototype =
                     var aLoginData = mainObject.m_aLoginForm[0].match(patternYahooInput);
                     mainObject.m_Log.Write("YahooPOPBETA.js - loginOnloadHandler - loginData " + aLoginData);
 
-                    for (i=0; i<aLoginData.length; i++)
+                    for (var i=0; i<aLoginData.length; i++)
                     {
                         var szName=aLoginData[i].match(patternYahooNameAlt)[1];
                         szName = szName.replace(/["|']/gm,"");

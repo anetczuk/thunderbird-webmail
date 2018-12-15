@@ -49,7 +49,7 @@ nsUriManager.prototype =
             this.m_Log.Write("nsUriManager.js - getDomains - szUri " + szUri);
             
             var aTemp = new Array();
-            for (i=0; i <this.m_aUriAndDomains.length; i++ )
+            for (var i=0; i <this.m_aUriAndDomains.length; i++ )
             {
                 var szTempUri = this.m_aUriAndDomains[i].szUri;
                 var regExp = new RegExp(szTempUri, "i");
@@ -89,7 +89,7 @@ nsUriManager.prototype =
             
             var aTemp = new Array();
             
-            for(i=0; i<this.m_aUriAndDomains; i++)
+            for(var i=0; i<this.m_aUriAndDomains; i++)
             {
                 aTemp.push(this.m_aUriAndDomains[i].szDomain);
             }
@@ -196,7 +196,7 @@ nsUriManager.prototype =
             var szRegExp = new RegExp(szUri,"i");
             
             var iLength = this.m_aUriAndDomains.length;
-            for (i=0; i<iLength; i++)
+            for (var i=0; i<iLength; i++)
             {
                 var oData = this.m_aUriAndDomains.shift();
                 this.m_Log.Write("nsUriManager.js - deleteUri - not found " + oData.szUri);
@@ -234,7 +234,7 @@ nsUriManager.prototype =
             var szRegExp = new RegExp(szDomain,"i");
             
             var iLength = this.m_aUriAndDomains.length;
-            for (i=0; i<iLength; i++)
+            for (var i=0; i<iLength; i++)
             {
                 var oData = this.m_aUriAndDomains.shift();
                 this.m_Log.Write("nsUriManager.js - deleteDomain - " + oData.szUri + " " + oData.szDomain);
@@ -270,7 +270,7 @@ nsUriManager.prototype =
             //create data list
             var aData = new Array();
             
-            for (i=0; i<this.m_aUriAndDomains.length; i++)
+            for (var i=0; i<this.m_aUriAndDomains.length; i++)
             {               
                 var szUri = this.m_aUriAndDomains[i].szUri;
                 var szDomain = this.m_aUriAndDomains[i].szDomain;
@@ -315,7 +315,7 @@ nsUriManager.prototype =
                 this.m_Log.Write("nsUriManager.js - saveData - count " + aData.length);
                 WebMailPrefAccess.Set("int", "httpmail.iNumOfUrl", aData.length);
                
-                for(i=0; i<aData.length; i++)
+                for(var i=0; i<aData.length; i++)
                 {
                     var szTempUri = aData[i].szUri;
                     this.m_Log.Write("nsUriManager.js - saveData - szTempUri " + szTempUri);
@@ -325,7 +325,7 @@ nsUriManager.prototype =
                     WebMailPrefAccess.Set("char","httpmail.domain.site["+i+"].szUri",szTempUri);  
                     
                     var szPrefDomains = null;
-                    for (j=0 ; j < aszTempDomain.length; j++)
+                    for (var j=0 ; j < aszTempDomain.length; j++)
                     {
                         var szTemp =aszTempDomain[j]
                         szPrefDomains ? szPrefDomains+="\n"+szTemp : szPrefDomains=szTemp;
@@ -374,7 +374,7 @@ nsUriManager.prototype =
             if (iUriNum>0)
             {
                 this.m_Log.Write("nsUriManager.js - iUriNum " + iUriNum);
-                for (i=0; i<iUriNum; i++)
+                for (var i=0; i<iUriNum; i++)
                 {                     
                     oPref ={Value : null};
                     WebMailPrefAccess.Get("char","httpmail.domain.site["+i+"].szUri",oPref);
@@ -387,7 +387,7 @@ nsUriManager.prototype =
                     var aszDomains = oPref.Value.split("\n");
                     this.m_Log.Write("nsUriManager.js -  szdomains " +aszDomains );
                    
-                    for (j=0 ; j < aszDomains.length; j++)
+                    for (var j=0 ; j < aszDomains.length; j++)
                     {
                         var oData = new UriDomainData();
                         oData.szUri = szUri;

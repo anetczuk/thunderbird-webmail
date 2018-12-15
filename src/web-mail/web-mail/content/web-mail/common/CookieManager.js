@@ -49,7 +49,7 @@ CookieManager.prototype =
 
             //process cookies
             var aTempCookies = new Array();
-            for (i=0; i<aszCookie.length; i++)
+            for (var i=0; i<aszCookie.length; i++)
             {
                 var oNewCookie =this.createCookie(aszCookie[i]);
                 if (!oNewCookie.getDomain()) oNewCookie.setDomain(szDefaultDomain);
@@ -65,17 +65,17 @@ CookieManager.prototype =
 
                     do
                     {
-                        this.m_Log.Write("CookieManger.js - addCookie - Update - checking Cookie " + j);
+                        this.m_Log.Write("CookieManager.js - addCookie - Update - checking Cookie " + j);
                         var tempCookie = this.m_aCookies[j];
                         var tempDomain = tempCookie.getDomain();
                         if (this.domainCheck(tempDomain,szNewCookieDomain))
                         {
-                            this.m_Log.Write("CookieManger.js - addCookie - Update - Domain found")
+                            this.m_Log.Write("CookieManager.js - addCookie - Update - Domain found")
                             //found domain
                             var tempName = tempCookie.getName();
                             if (this.cookieCheck(tempName,szNewCookieName))
                             {
-                                this.m_Log.Write("CookieManger.js - addCookie - Update - Cookie found");
+                                this.m_Log.Write("CookieManager.js - addCookie - Update - Cookie found");
                                 //cookie found - update
                                 tempCookie.setValue(oNewCookie.getValue());
                                 tempCookie.setExpiry(oNewCookie.getExpiry());
@@ -89,12 +89,12 @@ CookieManager.prototype =
                 if (bFound)
                 {
                     delete oNewCookie;
-                    this.m_Log.Write("CookieManger.js - addCookie - Update - deleted");
+                    this.m_Log.Write("CookieManager.js - addCookie - Update - deleted");
                 }
                 else
                 {
                     this.m_aCookies.push(oNewCookie);
-                    this.m_Log.Write("CookieManger.js - addCookie - Update - saved");
+                    this.m_Log.Write("CookieManager.js - addCookie - Update - saved");
                 }
             }
 
@@ -103,7 +103,7 @@ CookieManager.prototype =
         }
         catch(e)
         {
-             this.m_Log.Write("CookieManger.js: addCookie : Exception : "
+             this.m_Log.Write("CookieManager.js: addCookie : Exception : "
                                           + e.name
                                           + ".\nError message: "
                                           + e.message + " \n"
@@ -133,7 +133,7 @@ CookieManager.prototype =
             oCookie.setValue(szValue);
 
             //rest of cookie data
-            for (j=1; j<aData.length; j++)
+            for (var j=1; j<aData.length; j++)
             {
                 //split name and value
                 iNameSplit = aData[j].indexOf("=");
@@ -192,7 +192,7 @@ CookieManager.prototype =
         }
         catch(e)
         {
-             this.m_Log.Write("CookieManger.js: createCookie : Exception : "
+             this.m_Log.Write("CookieManager.js: createCookie : Exception : "
                                           + e.name
                                           + ".\nError message: "
                                           + e.message + " \n"
@@ -206,9 +206,9 @@ CookieManager.prototype =
     {
         try
         {
-            this.m_Log.Write("CookieManger.js - findCookie - START");
+            this.m_Log.Write("CookieManager.js - findCookie - START");
             var szDomain = url.prePath.match(/\/\/(.*?)$/)[1]
-            this.m_Log.Write("CookieManger.js - findCookie - domain - " + szDomain);
+            this.m_Log.Write("CookieManager.js - findCookie - domain - " + szDomain);
 
             var szCookies = "";
             var iCookieCount = this.m_aCookies.length
@@ -222,7 +222,7 @@ CookieManager.prototype =
                     {
                         var szName = oCookie.getName();
                         var szValue = oCookie.getValue();
-                        this.m_Log.Write("CookieManger.js - findCookie - cookie - found " + szName + " " + szValue );
+                        this.m_Log.Write("CookieManager.js - findCookie - cookie - found " + szName + " " + szValue );
                         if (szValue.length>0)
                         {
                             szCookies +=  szName;
@@ -241,14 +241,14 @@ CookieManager.prototype =
             }
 
             szCookies = szCookies.replace(/;\s$/,"");
-            this.m_Log.Write("CookieManger.js - findCookie - szCookies " + szCookies);
+            this.m_Log.Write("CookieManager.js - findCookie - szCookies " + szCookies);
 
-            this.m_Log.Write("CookieManger.js - findCookie - END");
+            this.m_Log.Write("CookieManager.js - findCookie - END");
             return szCookies;
         }
         catch(e)
         {
-            this.m_Log.Write("CookieManger.js: findCookie : Exception : "
+            this.m_Log.Write("CookieManager.js: findCookie : Exception : "
                                           + e.name
                                           + ".\nError message: "
                                           + e.message + " \n"
@@ -262,7 +262,7 @@ CookieManager.prototype =
     {
         try
         {
-            this.m_Log.Write("CookieManger.js - domainCheck - cookie "+szCookieDomain + " wanted " + szWantedDomain);
+            this.m_Log.Write("CookieManager.js - domainCheck - cookie "+szCookieDomain + " wanted " + szWantedDomain);
 
             var regexp = null;
             var szSubject = null;
@@ -282,12 +282,12 @@ CookieManager.prototype =
             var bFound = false;
             if (szSubject.search(regexp)!=-1)bFound =  true;
 
-            this.m_Log.Write("CookieManger.js - domainCheck END " +bFound);
+            this.m_Log.Write("CookieManager.js - domainCheck END " +bFound);
             return bFound;
         }
         catch(err)
         {
-            this.m_Log.Write("CookieManger.js: domainCheck : Exception : "
+            this.m_Log.Write("CookieManager.js: domainCheck : Exception : "
                                           + err.name
                                           + ".\nError message: "
                                           + err.message + " \n"
@@ -302,16 +302,16 @@ CookieManager.prototype =
     {
         try
         {
-            this.m_Log.Write("CookieManger.js - cookieCheck - cookie "+szCookieName + " wanted " + szWantedName);
+            this.m_Log.Write("CookieManager.js - cookieCheck - cookie "+szCookieName + " wanted " + szWantedName);
             var regexp =  new RegExp("^"+szCookieName+"$", "i");
             var bFound = false
             if (szWantedName.search(regexp)!=-1) bFound = true;
-            this.m_Log.Write("CookieManger.js - cookieCheck - END " + bFound);
+            this.m_Log.Write("CookieManager.js - cookieCheck - END " + bFound);
             return bFound;
         }
         catch(err)
         {
-            this.m_Log.Write("CookieManger.js: cookieCheck : Exception : "
+            this.m_Log.Write("CookieManager.js: cookieCheck : Exception : "
                                           + err.name
                                           + ".\nError message: "
                                           + err.message + " \n"
@@ -326,19 +326,19 @@ CookieManager.prototype =
         try
         {
             var iTimeNow = Date.now();
-            this.m_Log.Write("CookieManger.js - expiryCheck - iExpiryTime "+iExpiryTime + " NOW " + iTimeNow);
+            this.m_Log.Write("CookieManager.js - expiryCheck - iExpiryTime "+iExpiryTime + " NOW " + iTimeNow);
 
             var bFound = true;
 
             if (iExpiryTime != -1)
                 if (iExpiryTime<iTimeNow) bFound = false;
 
-            this.m_Log.Write("CookieManger.js - cookieCheck - END " +bFound);
+            this.m_Log.Write("CookieManager.js - cookieCheck - END " +bFound);
             return bFound;
         }
         catch(err)
         {
-            this.m_Log.Write("CookieManger.js: expiryCheck : Exception : "
+            this.m_Log.Write("CookieManager.js: expiryCheck : Exception : "
                                           + err.name
                                           + ".\nError message: "
                                           + err.message + " \n"

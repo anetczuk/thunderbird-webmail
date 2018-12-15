@@ -196,7 +196,7 @@ YahooSMTPClassic.prototype =
                     var aLoginData = aLoginForm[0].match(patternYahooInput);
                     mainObject.m_Log.Write("YahooSMTPClassic.js - loginOnloadHandler - loginData " + aLoginData);
 
-                    for (i=0; i<aLoginData.length; i++)
+                    for (var i=0; i<aLoginData.length; i++)
                     {
                         var szName=aLoginData[i].match(patternYahooClassicName)[1];
                         mainObject.m_Log.Write("YahooSMTPClassic.js - loginOnloadHandler - loginData name " + szName);
@@ -289,7 +289,7 @@ YahooSMTPClassic.prototype =
                     var aInputData = szComposeForm.match(patternYahooInput);
                     mainObject.m_Log.Write("YahooSMTPClassic.js - loginOnloadHandler - aInputData " + aInputData);
 
-                    for (i=0; i<aInputData.length; i++)
+                    for (var i=0; i<aInputData.length; i++)
                     {
                         var szName = aInputData[i].match(patternYahooClassicName)[1];
                         mainObject.m_Log.Write("YahooSMTPClassic.js - loginOnloadHandler - aInputData name " + szName);
@@ -432,7 +432,7 @@ YahooSMTPClassic.prototype =
                     var aszInput = szForm.match(patternYahooInput);
                     mainObject.m_Log.Write("YahooSMTPClassic.js - composerOnloadHandler - Input " + aszInput);
 
-                    for (i=0; i< aszInput.length; i++)
+                    for (var i=0; i< aszInput.length; i++)
                     {
                         var szName = aszInput[i].match(patternYahooClassicName)[1];
                         mainObject.m_Log.Write("YahooSMTPClassic.js - composerOnloadHandler - Name " + szName);
@@ -573,7 +573,7 @@ YahooSMTPClassic.prototype =
                     var aszInput = szForm.match(patternYahooInput);
                     mainObject.m_Log.Write("YahooSMTPClassic.js - composerOnloadHandler - Input " + aszInput);
 
-                    for (i=0; i< aszInput.length; i++)
+                    for (var i=0; i< aszInput.length; i++)
                     {
                         var szName = aszInput[i].match(patternYahooClassicName)[1];
                         mainObject.m_Log.Write("YahooSMTPClassic.js - composerOnloadHandler - Name " + szName);
@@ -607,7 +607,7 @@ YahooSMTPClassic.prototype =
 
                     var szActionURI = "";
                     var szRand = "";
-                    for (i=0; i< aszInput.length; i++)
+                    for (var i=0; i< aszInput.length; i++)
                     {
                         var szName = aszInput[i].match(patternYahooClassicName)[1];
                         mainObject.m_Log.Write("YahooSMTPClassic.js - composerOnloadHandler - Name " + szName);
@@ -630,7 +630,7 @@ YahooSMTPClassic.prototype =
                     mainObject.m_HttpComms.addValuePair("_charset_",  "UTF-8");
                     mainObject.m_HttpComms.addValuePair("resulturl",  "http://us.mc539.mail.yahoo.com/mc/uploadHandler?do=done");
 
-                    for (i=0; i< aszFileInput.length; i++)
+                    for (var i=0; i< aszFileInput.length; i++)
                     {
                         var szName = aszFileInput[i].match(patternYahooClassicName)[1];
                         szName = szName.replace(/"/mg,"");
@@ -675,7 +675,7 @@ YahooSMTPClassic.prototype =
                     mainObject.m_Log.Write("YahooSMTPClassic.js - composerOnloadHandler - Input " + aszInput);
 
                     var szRand = "";
-                    for (i=0; i< aszInput.length; i++)
+                    for (var i=0; i< aszInput.length; i++)
                     {
                         var szName = aszInput[i].match(patternYahooClassicName)[1];
                         mainObject.m_Log.Write("YahooSMTPClassic.js - composerOnloadHandler - Name " + szName);
@@ -753,7 +753,7 @@ YahooSMTPClassic.prototype =
 
                     //construct form
                     var aszInput = mainObject.m_szImageVerForm.match(patternYahooInput);
-                    for (i=0; i< aszInput.length; i++)
+                    for (var i=0; i< aszInput.length; i++)
                     {
                         var szName = aszInput[i].match(patternYahooClassicName)[1];
                         mainObject.m_Log.Write("YahooSMTPClassic.js - composerOnloadHandler - Name " + szName);
@@ -828,7 +828,7 @@ YahooSMTPClassic.prototype =
                 szBcc = this.m_aszTo;
             else
             {
-                for (j=0; j<this.m_aszTo.length; j++)
+                for (var j=0; j<this.m_aszTo.length; j++)
                 {
                     var regExp = new RegExp(this.m_aszTo[j]);
                     if (szAddress.search(regExp)==-1)

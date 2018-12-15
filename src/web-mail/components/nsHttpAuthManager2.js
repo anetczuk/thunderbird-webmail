@@ -108,7 +108,7 @@ nsHttpAuthManager2.prototype =
             finally
             {
                 statement.reset();
-                this.m_Log.Write("CookieManger : findCookie - DB Reset "+ this.m_dbConn.lastErrorString);
+                this.m_Log.Write("nsHttpAuthManager2 : findCookie - DB Reset "+ this.m_dbConn.lastErrorString);
             }
 
             this.m_Log.Write("nsHttpAuthManager - findToken - END");

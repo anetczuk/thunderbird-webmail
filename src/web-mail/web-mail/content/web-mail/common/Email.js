@@ -101,7 +101,7 @@ email.prototype.splitBoundary = function (szBoundary, szBody)
 
     //split email in parts
     var aTempAttach = new Array();
-    for (i=0; i<aszParts.length; i++)
+    for (var i=0; i<aszParts.length; i++)
     {
         var oBody = {value :null};
         var oHeader = {value : null};

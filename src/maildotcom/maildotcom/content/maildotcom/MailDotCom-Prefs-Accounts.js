@@ -234,7 +234,7 @@ var gPrefAccounts =
             var list = document.getElementById("popupAccounts");
             if (this.m_aszUserList.length > 0)
             {
-                for(i =0 ; i< this.m_aszUserList.length; i++)
+                for(var i=0 ; i< this.m_aszUserList.length; i++)
                 {
                     var szUserName = this.m_aszUserList[i];
                     if (szUserName.search(regExp)!= -1) this.m_iIndex = i;

@@ -30,9 +30,9 @@ nsWebMailCookieManager2.prototype =
     {
         try
         {
-            this.m_Log.Write("CookieManager.js - addCookie - START " + szUserName);
-            this.m_Log.Write("CookieManager.js - addCookie - cookie " + szCookie);
-            this.m_Log.Write("CookieManager.js - addCookie - szUrl " + szUrl);
+            this.m_Log.Write("nsWebMailCookieManager2.js - addCookie - START " + szUserName);
+            this.m_Log.Write("nsWebMailCookieManager2.js - addCookie - cookie " + szCookie);
+            this.m_Log.Write("nsWebMailCookieManager2.js - addCookie - szUrl " + szUrl);
             if (!szCookie) return false;
 
             var url = Components.classes["@mozilla.org/network/io-service;1"]
@@ -40,18 +40,18 @@ nsWebMailCookieManager2.prototype =
             					.newURI(szUrl, null, null);
             
             var szDefaultDomain = url.host;
-            this.m_Log.Write("CookieManager.js - addCookie - default domain " + szDefaultDomain);
+            this.m_Log.Write("nsWebMailCookieManager2.js - addCookie - default domain " + szDefaultDomain);
             var Host  = url.host;
-            this.m_Log.Write("CookieManager.js - addCookie - default Host " + Host);
+            this.m_Log.Write("nsWebMailCookieManager2.js - addCookie - default Host " + Host);
 
             //split into rows
             var aszCookie = szCookie.split(/\n/);
-            this.m_Log.Write("CookieManager.js - addCookie - cookie rows " + aszCookie);
+            this.m_Log.Write("nsWebMailCookieManager2.js - addCookie - cookie rows " + aszCookie);
 
 
             //process cookies
             var aTempCookies = new Array();
-            for (i=0; i<aszCookie.length; i++)
+            for (var i=0; i<aszCookie.length; i++)
             {
                 var oNewCookie =this.createCookie(aszCookie[i]);
                 if (!oNewCookie.getDomain()) oNewCookie.setDomain(szDefaultDomain);
@@ -62,33 +62,33 @@ nsWebMailCookieManager2.prototype =
                         "(" +
                         "   (" +
                         "       SELECT id FROM webmail_cookies  " +
-                        "       WHERE user_name LIKE ?1 AND cookie_domain LIKE ?2 AND cookie_name LIKE ?3" +
+                        "       WHERE user_name LIKE :user AND cookie_domain LIKE :domain AND cookie_name LIKE :cookiename" +
                         "   ), " +
-                        "   ?1," +
-                        "   ?2," +
-                        "   ?3," +
-                        "   ?4, " +
-                        "   ?5, " +
-                        "   ?6 "  +
+                        "   :user," +
+                        "   :domain," +
+                        "   :cookiename," +
+                        "   :cookievalue, " +
+                        "   :cookieexpiry, " +
+                        "   :cookiesecure "  +
                         ")";
 
                 var statement = this.m_dbConn.createStatement(szSQL);
-                statement.bindStringParameter(0, szUserName.toLowerCase()); //username
+                statement.params.user = szUserName.toLowerCase(); //username
                 var tempDomain = oNewCookie.getDomain();//.replace(/^\./,"%.");
-                statement.bindStringParameter(1, tempDomain);   //cookie domain
-                statement.bindStringParameter(2, oNewCookie.getName());     //cookie name
-                statement.bindStringParameter(3, oNewCookie.getValue());    //cookie value
-                statement.bindStringParameter(4, oNewCookie.getExpiry());   //cookie expiry
-                statement.bindStringParameter(5, oNewCookie.getSecure());   //cookie secure
+                statement.params.domain = tempDomain;   //cookie domain
+                statement.params.cookiename = oNewCookie.getName();     //cookie name
+                statement.params.cookievalue = oNewCookie.getValue();    //cookie value
+                statement.params.cookieexpiry = oNewCookie.getExpiry();   //cookie expiry
+                statement.params.cookiesecure = oNewCookie.getSecure();   //cookie secure
                 statement.execute();
             }
 
-            this.m_Log.Write("CookieManager.js - addCookie - END");
+            this.m_Log.Write("nsWebMailCookieManager2.js - addCookie - END");
             return true;
         }
         catch(e)
         {
-             this.m_Log.Write("CookieManger.js: addCookie : Exception : "
+             this.m_Log.Write("nsWebMailCookieManager2.js: addCookie : Exception : "
                                           + e.name
                                           + ".\nError message: "
                                           + e.message + " \n"
@@ -106,33 +106,33 @@ nsWebMailCookieManager2.prototype =
     {
         try
         {
-            this.m_Log.Write("CookieManger.js - findCookie - START " + szUserName);
-            this.m_Log.Write("CookieManager.js - findCookie - szUrl " + szUrl);
+            this.m_Log.Write("nsWebMailCookieManager2.js - findCookie - START " + szUserName);
+            this.m_Log.Write("nsWebMailCookieManager2.js - findCookie - szUrl " + szUrl);
             
             var url = Components.classes["@mozilla.org/network/io-service;1"]
 								.getService(Components.interfaces.nsIIOService)
 								.newURI(szUrl, null, null);
 
             var szDomain = url.host;
-            this.m_Log.Write("CookieManger.js - findCookie - domain - " + szDomain);
+            this.m_Log.Write("nsWebMailCookieManager2.js - findCookie - domain - " + szDomain);
 
             var bSecureURL = false;
             if (url.schemeIs("https"))bSecureURL = true;
-            this.m_Log.Write("CookieManger.js - findCookie - bSecureURL - " + bSecureURL);
+            this.m_Log.Write("nsWebMailCookieManager2.js - findCookie - bSecureURL - " + bSecureURL);
 
             var iTimeNow = Date.now()/1000;
-            this.m_Log.Write("CookieManger.js - findCookie - NOW " + iTimeNow);
+            this.m_Log.Write("nsWebMailCookieManager2.js - findCookie - NOW " + iTimeNow);
 
             var szCookies = "";
             var szSQL = null;
             szSQL = "SELECT *  " +
                     "FROM webmail_cookies " +
-                    "WHERE user_name LIKE ?1 AND (cookie_expiry > ?2 OR  cookie_expiry == -1)";
+                    "WHERE user_name LIKE :user AND (cookie_expiry > :date OR  cookie_expiry == -1)";
 
 
             var statement = this.m_dbConn.createStatement(szSQL);
-            statement.bindStringParameter(0, szUserName.toLowerCase()); //username
-            statement.bindStringParameter(1, iTimeNow);                 //time now
+            statement.params.user = szUserName.toLowerCase(); //username
+            statement.params.date = iTimeNow;                 //time now
 
             try
             {
@@ -144,14 +144,14 @@ nsWebMailCookieManager2.prototype =
                         var szName = statement.row["cookie_name"];
                         var szValue = statement.row["cookie_value"];
                         var bSecure = statement.row["cookie_secure"];
-                        this.m_Log.Write("CookieManger.js - findCookie - cookie - found " + szName + " " + szValue + " " + bSecure );
+                        this.m_Log.Write("nsWebMailCookieManager2.js - findCookie - cookie - found " + szName + " " + szValue + " " + bSecure );
                         if (bSecureURL== false && bSecure == "true")
                         {
-                            this.m_Log.Write("CookieManger.js - findCookie - cookie - secure on unsecure link not adding ");
+                            this.m_Log.Write("nsWebMailCookieManager2.js - findCookie - cookie - secure on unsecure link not adding ");
                         }
                         else
                         {
-                            this.m_Log.Write("CookieManger.js - findCookie - cookie - adding ");
+                            this.m_Log.Write("nsWebMailCookieManager2.js - findCookie - cookie - adding ");
                             szCookies +=  szName;
                             szCookies += "=";
                             szCookies +=  szValue;
@@ -160,19 +160,27 @@ nsWebMailCookieManager2.prototype =
                     }
                 }
             }
+            catch(e)
+            {
+                this.m_Log.Write("nsWebMailCookieManager2.js: findCookie : Exception : "
+                                              + e.name
+                                              + ".\nError message: "
+                                              + e.message + " \n"
+                                              + e.lineNumber+ "\n"
+                                              + this.m_dbConn.lastErrorString);
+            }
             finally
             {
                 statement.reset();
-                this.m_Log.Write("CookieManger : findCookie - DB Reset "+ this.m_dbConn.lastErrorString);
             }
-           this.m_Log.Write("CookieManger.js - findCookie - szCookies " + szCookies);
+           this.m_Log.Write("nsWebMailCookieManager2.js - findCookie - szCookies " + szCookies);
 
-            this.m_Log.Write("CookieManger.js - findCookie - END");
+            this.m_Log.Write("nsWebMailCookieManager2.js - findCookie - END");
             return szCookies;
         }
         catch(e)
         {
-            this.m_Log.Write("CookieManger.js: findCookie : Exception : "
+            this.m_Log.Write("nsWebMailCookieManager2.js: findCookie : Exception : "
                                           + e.name
                                           + ".\nError message: "
                                           + e.message + " \n"
@@ -189,7 +197,7 @@ nsWebMailCookieManager2.prototype =
     {
         try
         {
-            this.m_Log.Write("CookieManger.js - domainCheck - cookie "+szCookieDomain + " wanted " + szWantedDomain);
+            this.m_Log.Write("nsWebMailCookieManager2.js - domainCheck - cookie "+szCookieDomain + " wanted " + szWantedDomain);
 
             var regexp = null;
             var szSubject = null;
@@ -209,12 +217,12 @@ nsWebMailCookieManager2.prototype =
             var bFound = false;
             if (szSubject.search(regexp)!=-1)bFound =  true;
 
-            this.m_Log.Write("CookieManger.js - domainCheck END " +bFound);
+            this.m_Log.Write("nsWebMailCookieManager2.js - domainCheck END " +bFound);
             return bFound;
         }
         catch(err)
         {
-            this.m_Log.Write("CookieManger.js: domainCheck : Exception : "
+            this.m_Log.Write("nsWebMailCookieManager2.js: domainCheck : Exception : "
                                           + err.name
                                           + ".\nError message: "
                                           + err.message + " \n"
@@ -232,18 +240,18 @@ nsWebMailCookieManager2.prototype =
     {
         try
         {
-            this.m_Log.Write("CookieManager.js - removeCookie - START " + szUserName);
+            this.m_Log.Write("nsWebMailCookieManager2.js - removeCookie - START " + szUserName);
 
-            var szSQL = "DELETE FROM webmail_cookies WHERE user_name LIKE ?1";
+            var szSQL = "DELETE FROM webmail_cookies WHERE user_name LIKE :user";
             var statement = this.m_dbConn.createStatement(szSQL);
-            statement.bindStringParameter(0, szUserName.toLowerCase());
+            statement.params.user = szUserName.toLowerCase();
             statement.execute();
-            this.m_Log.Write("CookieManager.js - removeCookie - END");
+            this.m_Log.Write("nsWebMailCookieManager2.js - removeCookie - END");
             return true;
         }
         catch(e)
         {
-             this.m_Log.Write("CookieManger.js: removeCookie : Exception : "
+             this.m_Log.Write("nsWebMailCookieManager2.js: removeCookie : Exception : "
                                           + e.name
                                           + ".\nError message: "
                                           + e.message + " \n"
@@ -261,10 +269,10 @@ nsWebMailCookieManager2.prototype =
     {
         try
         {
-            this.m_Log.Write("CookieManager.js - createCookie - START");
+            this.m_Log.Write("nsWebMailCookieManager2.js - createCookie - START");
 
             var aData = szCookie.split(";");
-            this.m_Log.Write("CookieManager.js - createCookie - aData " + aData);
+            this.m_Log.Write("nsWebMailCookieManager2.js - createCookie - aData " + aData);
 
             var szName = null;
             var oCookie = new Cookie();
@@ -273,42 +281,42 @@ nsWebMailCookieManager2.prototype =
             var iNameSplit = aData[0].indexOf("=");
             var szName = (aData[0].substr(0, iNameSplit)).replace(/^[\s]+|[\s]+$/,"");
             var szValue = (aData[0].substr(iNameSplit+1)).replace(/^[\s]+|[\s]+$/,"");;
-            this.m_Log.Write("CookieManager.js - createCookie data - szName " + szName + " szValue " + szValue);
+            this.m_Log.Write("nsWebMailCookieManager2.js - createCookie data - szName " + szName + " szValue " + szValue);
             oCookie.setName(szName);
             oCookie.setValue(szValue);
 
             //rest of cookie data
-            for (j=1; j<aData.length; j++)
+            for (var j=1; j<aData.length; j++)
             {
                 //split name and value
                 iNameSplit = aData[j].indexOf("=");
                 szTempName = (aData[j].substr(0, iNameSplit)).replace(/^[\s]+|[\s]+$/,"");
                 szTempValue = (aData[j].substr(iNameSplit+1)).replace(/^[\s]+|[\s]+$/,"");
-                this.m_Log.Write("CookieManager.js - createCookie ITEM - name : " + szTempName + "  value : " +szTempValue);
+                this.m_Log.Write("nsWebMailCookieManager2.js - createCookie ITEM - name : " + szTempName + "  value : " +szTempValue);
 
                 if (szTempName.search(/^domain$/i)!=-1) //get domain
                 {
                     szDomain = szTempValue;
-                    this.m_Log.Write("CookieManager.js - createCookie - szDomain " + szDomain);
+                    this.m_Log.Write("nsWebMailCookieManager2.js - createCookie - szDomain " + szDomain);
                     oCookie.setDomain(szDomain);
                 }
                 else if(szTempName.search(/^path$/i)!=-1) //get path
                 {
                     szPath = szTempValue;
-                    this.m_Log.Write("CookieManager.js - createCookie - szPath " + szPath);
+                    this.m_Log.Write("nsWebMailCookieManager2.js - createCookie - szPath " + szPath);
                     oCookie.setPath(szPath);
                 }
                 else if (szTempName.search(/^expires$/i)!=-1)//get expiry
                 {
                     iExpiry = (Date.parse(szTempValue.replace(/-/g," ")))/1000;
-                    this.m_Log.Write("CookieManager.js - createCookie - iExpiry " + iExpiry);
+                    this.m_Log.Write("nsWebMailCookieManager2.js - createCookie - iExpiry " + iExpiry);
                     oCookie.setExpiry(iExpiry);
                 }
                 else if (szTempName.search(/^secure$/i)!=-1 ||
                 		 (szTempValue.search(/^secure$/i)!=-1 && iNameSplit ==-1))//get secure boolean
                 {
                     bSecure = true;
-                    this.m_Log.Write("CookieManager.js - createCookie - bSecure " + bSecure);
+                    this.m_Log.Write("nsWebMailCookieManager2.js - createCookie - bSecure " + bSecure);
                     oCookie.setSecure(bSecure);
                 }
                 else if (szTempName.search(/^httponly$/i)!=-1)//get httponly boolean
@@ -316,17 +324,17 @@ nsWebMailCookieManager2.prototype =
                 }
                 else if (szTempName.search(/^version$/i)!=-1) //get version
                 {
-                    this.m_Log.Write("CookieManager.js - createCookie - Version " + szValue);
+                    this.m_Log.Write("nsWebMailCookieManager2.js - createCookie - Version " + szValue);
                     oCookie.setVersion(szValue);
                 }
             }
 
-            this.m_Log.Write("CookieManager.js - createCookie - END");
+            this.m_Log.Write("nsWebMailCookieManager2.js - createCookie - END");
             return oCookie;
         }
         catch(e)
         {
-             this.m_Log.Write("CookieManger.js: createCookie : Exception : "
+             this.m_Log.Write("nsWebMailCookieManager2.js: createCookie : Exception : "
                                           + e.name
                                           + ".\nError message: "
                                           + e.message + " \n"
@@ -343,7 +351,7 @@ nsWebMailCookieManager2.prototype =
     {
         try
         {
-            this.m_Log.Write("CookieManager.js - loadDataBase - START");
+            this.m_Log.Write("nsWebMailCookieManager2.js - loadDataBase - START");
 
             try
             {
@@ -352,7 +360,7 @@ nsWebMailCookieManager2.prototype =
             }
             catch(err)
             {
-                this.m_Log.Write("CookieManager.js : startUp - SQL components NOT installed");
+                this.m_Log.Write("nsWebMailCookieManager2.js : startUp - SQL components NOT installed");
                 throw new Error("no database");
             }
 
@@ -366,7 +374,7 @@ nsWebMailCookieManager2.prototype =
                 fileDB.create(Components.interfaces.nsIFile.DIRECTORY_TYPE, 0664);
             fileDB.append("cookies.db3");         //sqlite database
             fileDB.QueryInterface(Components.interfaces.nsIFile)
-            this.m_Log.Write("CookieManager.js - loadDB - fileDB "+ fileDB.path);
+            this.m_Log.Write("nsWebMailCookieManager2.js - loadDB - fileDB "+ fileDB.path);
             this.m_dbConn = this.m_dbService.openDatabase(fileDB);
 */
             this.m_dbConn = this.m_dbService.openSpecialDatabase("memory");
@@ -376,12 +384,12 @@ nsWebMailCookieManager2.prototype =
 
             this.m_bIsReady = true;
 
-            this.m_Log.Write("CookieManager.js - loadDataBase - END");
+            this.m_Log.Write("nsWebMailCookieManager2.js - loadDataBase - END");
             return true;
         }
         catch(err)
         {
-            this.m_Log.DebugDump("CookieManager.js: loadDataBase : Exception : "
+            this.m_Log.DebugDump("nsWebMailCookieManager2.js: loadDataBase : Exception : "
                                           + err.name
                                           + ".\nError message: "
                                           + err.message + "\n"
@@ -397,7 +405,7 @@ nsWebMailCookieManager2.prototype =
     {
         try
         {
-            this.m_Log.Write("CookieManager.js - createDB - START");
+            this.m_Log.Write("nsWebMailCookieManager2.js - createDB - START");
             var szSQL;
 
             //account table
@@ -414,14 +422,14 @@ nsWebMailCookieManager2.prototype =
                         "cookie_secure BOOLEAN" +
                     ");";
             this.m_dbConn.executeSimpleSQL(szSQL);
-            this.m_Log.Write("CookieManager.js - createDB - szSQL " + szSQL);
+            this.m_Log.Write("nsWebMailCookieManager2.js - createDB - szSQL " + szSQL);
 
-            this.m_Log.Write("CookieManager.js - createDB - END");
+            this.m_Log.Write("nsWebMailCookieManager2.js - createDB - END");
 
         }
         catch(err)
         {
-            this.m_Log.DebugDump("CookieManager.js: createDB : Exception : "
+            this.m_Log.DebugDump("nsWebMailCookieManager2.js: createDB : Exception : "
                                           + err.name +
                                           "\nError message: "
                                           + err.message +"\n"
@@ -455,12 +463,12 @@ nsWebMailCookieManager2.prototype =
                                           "{3c8e8390-2cf6-11d9-9669-0800200c9a66}",
                                           "CookieManager");
 
-                this.m_Log.Write("CookieManager.js - profile-after-change");
+                this.m_Log.Write("nsWebMailCookieManager2.js - profile-after-change");
                 this.loadDataBase();
             break;
 
             case "quit-application":
-                this.m_Log.Write("CookieManager.js - quit-application ");
+                this.m_Log.Write("nsWebMailCookieManager2.js - quit-application ");
             break;
 
             default: throw Components.Exception("Unknown topic: " + aTopic);

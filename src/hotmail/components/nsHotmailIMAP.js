@@ -279,7 +279,7 @@ nsHotmailIMAP.prototype =
             this.m_Log.Write("nsHotmailIMAP.js - listSubscribe - list: " + aszFolders.value);
 
             var szResponse = "";
-            for (i=0; i<aszFolders.value.length; i++)
+            for (var i=0; i<aszFolders.value.length; i++)
             {
                 szResponse += "* lsub (\\Noinferiors \\HasNoChildren) " + "\".\" \"" + aszFolders.value[i] + "\"\r\n";
             }
@@ -441,7 +441,7 @@ nsHotmailIMAP.prototype =
 
             var szResponse = "";
 
-            for (i=0; i<aszResponses.length; i++)
+            for (var i=0; i<aszResponses.length; i++)
             {
                 mainObject.processFolder(aszResponses[i]);
             }
@@ -538,7 +538,7 @@ nsHotmailIMAP.prototype =
             var iCount = {value : null };
             this.m_oIMAPData.getHierarchies(this.m_szUserName, this.m_szFolderReference ,iCount, aszFolders );
 
-            for (i=0; i<aszFolders.value.length; i++)
+            for (var i=0; i<aszFolders.value.length; i++)
             {
                 szResponse += "* LIST (\\Noinferiors \\HasNoChildren) \".\" \"" + aszFolders.value[i] +"\"\r\n";
             }
@@ -675,7 +675,7 @@ nsHotmailIMAP.prototype =
 
                     var aszResponses = szResponse.match(patternHotmailResponse);
                     mainObject.m_Log.Write("nsHotmailIMAP.js - selectOnloadHandler - folders - \n" + aszResponses);
-                    for (i=0; i<aszResponses.length; i++)
+                    for (var i=0; i<aszResponses.length; i++)
                     {
                         mainObject.processFolder(aszResponses[i]);
                     }
@@ -2153,7 +2153,7 @@ nsHotmailIMAP.prototype =
 
                     var aszResponses = szResponse.match(patternHotmailResponse);
                     mainObject.m_Log.Write("nsHotmailIMAP.js - createFolderOnloadHandler - folders - \n" + aszResponses);
-                    for (i=0; i<aszResponses.length; i++)
+                    for (var i=0; i<aszResponses.length; i++)
                     {
                         mainObject.processFolder(aszResponses[i]);
                     }

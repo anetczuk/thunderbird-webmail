@@ -269,7 +269,7 @@ nsAOLSMTP.prototype =
                     var aLoginData = szLoginForm[0].match(patternAOLInput);
                     mainObject.m_Log.Write("AOLSMTP.js - loginOnloadHandler - aLoginData " + aLoginData);
 
-                    for (i=0; i<aLoginData.length; i++)
+                    for (var i=0; i<aLoginData.length; i++)
                     {
                         if (aLoginData[i].search(/type="hidden"/i)!=-1)
                         {
@@ -586,7 +586,7 @@ nsAOLSMTP.prototype =
                 szBcc = this.m_aszTo;
             else
             {
-                for (j=0; j<this.m_aszTo.length; j++)
+                for (var j=0; j<this.m_aszTo.length; j++)
                 {
                     var regExp = new RegExp(this.m_aszTo[j]);
                     if (szAddress.search(regExp)==-1)

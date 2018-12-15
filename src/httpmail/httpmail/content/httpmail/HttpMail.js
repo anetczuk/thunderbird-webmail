@@ -81,7 +81,7 @@ var gHttpMailStartUp =
             var aDomain = {value : null};
             uriManager.getAllDomains(iCount, aDomain);
             
-            for (i=0 ; i< aDomain.value.length; i++)
+            for (var i=0 ; i< aDomain.value.length; i++)
             {
                 this.idCheck(aDomain.value[i], "pop" ,cszHttpMailPOPContentID); 
                 this.idCheck(aDomain.value[i], "smtp" ,cszHttpMailSMTPContentID); 

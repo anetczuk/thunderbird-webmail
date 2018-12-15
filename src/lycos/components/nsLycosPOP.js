@@ -203,7 +203,7 @@ nsLycos.prototype =
                     var aszFolderList = szResponse.match(kLycosResponse );
                     mainObject.m_Log.Write("nsLycos.js - loginOnloadHandler - aszFolderList :" +aszFolderList);
 
-                    for (j=0; j<mainObject.m_aszFolder.length; j++)
+                    for (var j=0; j<mainObject.m_aszFolder.length; j++)
                     {
                         var regExp = new RegExp("^"+mainObject.m_aszFolder[j]+"$","i");
                         mainObject.m_Log.Write("nsLycos.js - loginOnloadHandler - regExp : "+regExp );
@@ -1117,7 +1117,7 @@ nsLycos.prototype =
             if (oPref.Value)
             {
                 var aszFolders = oPref.Value.split("\r");
-                for (j=0; j<aszFolders.length; j++)
+                for (var j=0; j<aszFolders.length; j++)
                 {
                     this.m_Log.Write("nsLycos.js - getPrefs - aszFolders " + aszFolders[j]);
                     this.m_aszFolder.push(aszFolders[j]);

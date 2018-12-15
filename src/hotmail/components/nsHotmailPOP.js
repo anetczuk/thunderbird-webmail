@@ -360,7 +360,7 @@ nsHotmail.prototype =
             if (oPref.Value)
             {
                 var aszFolders = oPref.Value.split("\r");
-                for (j=0; j<aszFolders.length; j++)
+                for (var j=0; j<aszFolders.length; j++)
                 {
                     this.m_HotmailLog.Write("nsHotmail.js - getPrefs - aszFolders " + aszFolders[j]);
                     if (aszFolders[j].length>0)

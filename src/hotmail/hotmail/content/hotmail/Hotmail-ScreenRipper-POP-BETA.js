@@ -379,7 +379,7 @@ HotmailScreenRipperBETA.prototype =
                     mainObject.m_Log.Write("Hotmail-SR-BETA - loginOnloadHandler - folders : "+szFolderList);
                     var aszFLItems = szFolderList.split(patternOutlookFListItems);
                     mainObject.m_Log.Write("Hotmail-SR-BETA - loginOnloadHandler - folder Items : "+aszFLItems);
-                    for(i=0; i<aszFLItems.length; i++)
+                    for(var i=0; i<aszFLItems.length; i++)
                     {
                     	mainObject.m_Log.Write("Hotmail-SR-BETA - loginOnloadHandler - folder Item : "+aszFLItems[i]);
                     	try
@@ -569,7 +569,7 @@ HotmailScreenRipperBETA.prototype =
                     mainObject.m_Log.Write("Hotmail-SR-BETA - mailBoxOnloadHandler -split msg table : " + aszMsgRows);
                     if (aszMsgRows)
                     {
-                        for (j = 0; j < aszMsgRows.length; j++)
+                        for (var j = 0; j < aszMsgRows.length; j++)
                         {
                             mainObject.m_Log.Write("Hotmail-SR-BETA - mailBoxOnloadHandler - row  : " + aszMsgRows[j]);
                                                                                  
@@ -1456,7 +1456,7 @@ HotmailScreenRipperBETA.prototype =
     		{
 	            var regExp = new RegExp("^"+ szFolderID + "$","i");
 				this.m_Log.Write("Hotmail-SR-BETA - getMSGCount -  " +szFolderID);
-    			for(i=0; i<this.m_aFolderMsgCount.length; i++)
+    			for(var i=0; i<this.m_aFolderMsgCount.length; i++)
     			{
     				if (this.m_aFolderMsgCount[i].szID.search(regExp)!=-1)
     				{
@@ -1492,7 +1492,7 @@ HotmailScreenRipperBETA.prototype =
     		{
 	            var regExp = new RegExp("^"+ szFolderID + "$","i");
 				this.m_Log.Write("Hotmail-SR-BETA - incMsgCount -  " +szFolderID);
-    			for(i=0; i<this.m_aFolderMsgCount.length; i++)
+    			for(var i=0; i<this.m_aFolderMsgCount.length; i++)
     			{
     				if (this.m_aFolderMsgCount[i].szID.search(regExp)!=-1)
     				{
@@ -1528,7 +1528,7 @@ HotmailScreenRipperBETA.prototype =
     		{
 	            var regExp = new RegExp("^"+ szFolderID + "$","i");
 				this.m_Log.Write("Hotmail-SR-BETA - decMsgCount -  " +szFolderID);
-    			for(i=0; i<this.m_aFolderMsgCount.length; i++)
+    			for(var i=0; i<this.m_aFolderMsgCount.length; i++)
     			{
     				if (this.m_aFolderMsgCount[i].szID.search(regExp)!=-1)
     				{

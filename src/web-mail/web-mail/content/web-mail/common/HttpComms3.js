@@ -376,7 +376,7 @@ HttpComms.prototype =
                 HttpRequest.setRequestHeader("User-Agent", this.m_szUserAgent, true);
             }
 
-            for (i=0; i<this.m_aHeaders.length; i++)
+            for (var i=0; i<this.m_aHeaders.length; i++)
             {
                 var oTemp = this.m_aHeaders[i];
                 this.m_Log.Write("HttpComms3.js - send - adding headers "+ oTemp.szName +" "+
@@ -472,7 +472,7 @@ HttpComms.prototype =
         var MultiStream = Components.classes["@mozilla.org/io/multiplex-input-stream;1"]
                                     .createInstance(Components.interfaces.nsIMultiplexInputStream);
 
-        for (j=0; j<this.m_aFormData.length; j++)
+        for (var j=0; j<this.m_aFormData.length; j++)
         {
             var oTemp = this.m_aFormData[j];
             this.m_Log.Write("HttpComms3.js - urlencoded - adding data "+oTemp.szName+" "+oTemp.szValue);
@@ -522,7 +522,7 @@ HttpComms.prototype =
         szContentType += "; boundary=" +szBoundary;
         this.m_Log.Write("HttpComms3.js - send - update szContentType "+ szContentType);
 
-        for (j=0; j<this.m_aFormData.length; j++)
+        for (var j=0; j<this.m_aFormData.length; j++)
         {
             var oTemp = this.m_aFormData[j];
 

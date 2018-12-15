@@ -237,7 +237,7 @@ nsGMailSMTP.prototype =
                     var aszInput = aszLoginForm[0].match(patternGMailFormInput);
                     mainObject.m_Log.Write("nsGMailSMTP.js - loginOnloadHandler - aszInput " + aszInput);
 
-                    for (i=0; i<aszInput.length; i++)
+                    for (var i=0; i<aszInput.length; i++)
                     {
                         mainObject.m_Log.Write("nsGMailSMTP.js - loginOnloadHandler - aszInput[i] " + aszInput[i]);
 
@@ -645,7 +645,7 @@ nsGMailSMTP.prototype =
                 szBcc = this.m_aszTo;
             else
             {
-                for (j=0; j<this.m_aszTo.length; j++)
+                for (var j=0; j<this.m_aszTo.length; j++)
                 {
                     var regExp = new RegExp(this.m_aszTo[j]);
                     if (szAddress.search(regExp)==-1)

@@ -213,7 +213,7 @@ nsMailDotComSMTP.prototype =
                     mainObject.m_Log.Write("nsMailDotCom.js - loginOnloadHandler - login input " + aszLoginInput);
 
                     //login data
-                    for (i=0; i<aszLoginInput.length; i++)
+                    for (var i=0; i<aszLoginInput.length; i++)
                     {
                         mainObject.m_Log.Write("nsMailDotCom.js - loginOnloadHandler - aszLoginInput[i] " + aszLoginInput[i]);
                         if (aszLoginInput[i].search(/name/i)!=-1)
@@ -306,7 +306,7 @@ nsMailDotComSMTP.prototype =
                     var aInputs = aszComposerForm[0].match(patternMailDotComInput);
                     mainObject.m_Log.Write("nsMailDotCom.js - loginOnloadHandler - aInputs "+ aInputs);
                     var szComposer = null;
-                    for (i=0; i<aInputs.length; i++)
+                    for (var i=0; i<aInputs.length; i++)
                     {
                         mainObject.m_Log.Write("nsMailDotCom.js - loginOnloadHandler - Input "+ aInputs[i]);
                         if (aInputs[i].search(/compose/i)!=-1)  //get composer url
@@ -464,7 +464,7 @@ nsMailDotComSMTP.prototype =
                     mainObject.m_HttpComms.addValuePair("send","Send");
 
                     //other composer data
-                    for (i=0; i<aszInput.length; i++)
+                    for (var i=0; i<aszInput.length; i++)
                     {
                         mainObject.m_Log.Write("nsMailDotCom.js - loginOnloadHandler - input " + aszInput[i]);
                         var szType = aszInput[i].match(patternMailDotComType)[1];
@@ -576,7 +576,7 @@ nsMailDotComSMTP.prototype =
 
 
                     //composer data
-                    for (i=0; i<aszInput.length; i++)
+                    for (var i=0; i<aszInput.length; i++)
                     {
                         mainObject.m_Log.Write("nsMailDotCom.js - composerOnloadHandler - input " + aszInput[i]);
                         var szType = aszInput[i].match(patternMailDotComType)[1];
@@ -633,7 +633,7 @@ nsMailDotComSMTP.prototype =
                         mainObject.m_iStage = 3;
 
                     //composer data
-                    for (i=0; i<aszInput.length; i++)
+                    for (var i=0; i<aszInput.length; i++)
                     {
                         mainObject.m_Log.Write("nsMailDotCom.js - composerOnloadHandler - input " + aszInput[i]);
                         var szType = aszInput[i].match(patternMailDotComType)[1];
@@ -701,7 +701,7 @@ nsMailDotComSMTP.prototype =
                     mainObject.m_Log.Write("nsMailDotCom.js - composerOnloadHandler - login input " + aszInput);
 
                     //composer data
-                    for (i=0; i<aszInput.length; i++)
+                    for (var i=0; i<aszInput.length; i++)
                     {
                         mainObject.m_Log.Write("nsMailDotCom.js - composerOnloadHandler - input " + aszInput[i]);
                         var szType = aszInput[i].match(patternMailDotComType)[1];
@@ -768,7 +768,7 @@ nsMailDotComSMTP.prototype =
                 szBcc = this.m_aszTo;
             else
             {
-                for (j=0; j<this.m_aszTo.length; j++)
+                for (var j=0; j<this.m_aszTo.length; j++)
                 {
                     var regExp = new RegExp(this.m_aszTo[j]);
                     if (szAddress.search(regExp)==-1)

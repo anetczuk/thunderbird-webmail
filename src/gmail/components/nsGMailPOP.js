@@ -238,7 +238,7 @@ nsGMail.prototype =
                     var aszInput = aszLoginForm[0].match(patternGMailFormInput);
                     mainObject.m_Log.Write("nsGMailPOP.js - loginOnloadHandler - aszInput " + aszInput);
 
-                    for (i=0; i<aszInput.length; i++)
+                    for (var i=0; i<aszInput.length; i++)
                     {
                         mainObject.m_Log.Write("nsGMailPOP.js - loginOnloadHandler - aszInput[i] " + aszInput[i]);
 

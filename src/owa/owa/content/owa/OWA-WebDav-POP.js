@@ -230,7 +230,7 @@ OWAWebDav.prototype =
                     var aszFolderList = szResponse.match(patternOWAResponse);
                     mainObject.m_Log.Write("OWAWebDav.js - loginOnloadHandler - aszFolderList :" +aszFolderList);
 
-                    for (j=0; j<mainObject.m_aszFolders.length; j++)
+                    for (var j=0; j<mainObject.m_aszFolders.length; j++)
                     {
                         var regExp = new RegExp("^"+mainObject.m_aszFolders[j]+"$","i");
                         mainObject.m_Log.Write("OWAWebDav.js - loginOnloadHandler - regExp : "+regExp );

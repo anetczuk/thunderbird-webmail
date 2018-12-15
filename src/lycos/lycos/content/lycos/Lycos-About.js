@@ -67,7 +67,7 @@ var gLycosAbout =
         var vbox = null;
         var iCount = 0;
                 
-        for(i =0 ; i< aszNames.length; i++)
+        for(var i=0 ; i< aszNames.length; i++)
         {   
             if (iCount == 0) vbox = document.createElement("vbox"); 
             var hBox = this.processListItem(aszNames[i]);
@@ -97,7 +97,7 @@ var gLycosAbout =
 
     createList : function(base, aszNames)
     {
-        for(i =0 ; i< aszNames.length; i++)
+        for(var i=0 ; i< aszNames.length; i++)
         {
             base.appendChild(this.processListItem(aszNames[i]));
         }

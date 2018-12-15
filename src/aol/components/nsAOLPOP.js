@@ -274,7 +274,7 @@ nsAOL.prototype =
                     var aLoginData = szLoginForm[0].match(patternAOLInput);
                     mainObject.m_Log.Write("AOLPOP.js - loginOnloadHandler - aLoginData " + aLoginData);
 
-                    for (i=0; i<aLoginData.length; i++)
+                    for (var i=0; i<aLoginData.length; i++)
                     {
                         if (aLoginData[i].search(/type="hidden"/i)!=-1)
                         {
@@ -1176,7 +1176,7 @@ nsAOL.prototype =
             if (oPref.Value)
             {
                 var aszFolders = oPref.Value.split("\r");
-                for (j=0; j<aszFolders.length; j++)
+                for (var j=0; j<aszFolders.length; j++)
                 {
                     this.m_Log.Write("nsAOL.js - loadPRefs - aszFolders[j] " + aszFolders[j]);
                     this.m_aszFolder.push(encodeURIComponent(aszFolders[j]));

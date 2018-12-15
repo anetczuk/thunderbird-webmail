@@ -356,7 +356,7 @@ Comms.prototype =
 
 
             //other headers
-            for (i=0; i<this.m_aHeaders.length; i++)
+            for (var i=0; i<this.m_aHeaders.length; i++)
             {
                 var oTemp = this.m_aHeaders[i];
                 this.m_Log.Write("comms.js - send - adding headers "+ oTemp.szName +" "+
@@ -386,7 +386,7 @@ Comms.prototype =
                 if (this.m_iContentType==1) this.createBoundary();
 
 
-                for (j=0; j<this.m_aFormData.length; j++)
+                for (var j=0; j<this.m_aFormData.length; j++)
                 {
                     var oTemp = this.m_aFormData[j];
                     this.m_Log.Write("comms.js - send - adding data "+oTemp.szName+" "+oTemp.szValue);

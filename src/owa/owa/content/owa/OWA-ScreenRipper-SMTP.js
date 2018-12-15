@@ -512,7 +512,7 @@ OWASMTPScreenRipper.prototype =
                 szBcc = this.m_aszTo;
             else
             {
-                for (j=0; j<this.m_aszTo.length; j++)
+                for (var j=0; j<this.m_aszTo.length; j++)
                 {
                     var regExp = new RegExp(this.m_aszTo[j]);
                     if (szAddress.search(regExp)==-1)

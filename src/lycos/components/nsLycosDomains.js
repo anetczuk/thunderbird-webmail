@@ -380,7 +380,7 @@ nsLycosDomains.prototype =
                     //get rows
                     var aszRows = szDataBase.match(/<domain>[\S\s]*?<\/domain>/ig);
 
-                    for (i=0; i < aszRows.length; i++)
+                    for (var i=0; i < aszRows.length; i++)
                     {
                         var szDomain = aszRows[i].match(/<domain>([\S\s]*?)<\/domain>/i)[1];
                         this.m_Log.Write("nsLycosDomains.js - onStreamComplete - szDomain " + szDomain);
@@ -543,7 +543,7 @@ nsLycosDomains.prototype =
 
            //create standard file
             var szDataBase = "<database>\r\n";
-            for (j=0; j<this.m_aszStandardDomains.length; j++)
+            for (var j=0; j<this.m_aszStandardDomains.length; j++)
             {
                 szDataBase += "<domain>"+this.m_aszStandardDomains[j]+"</domain>\r\n";
             }
@@ -557,7 +557,7 @@ nsLycosDomains.prototype =
 
             ///create custom file
             szDataBase = "<database>\r\n";
-            for (j=0; j<this.m_aszCustomDomains.length; j++)
+            for (var j=0; j<this.m_aszCustomDomains.length; j++)
             {
                 szDataBase += "<domain>"+this.m_aszCustomDomains[j]+"</domain>\r\n";
             }

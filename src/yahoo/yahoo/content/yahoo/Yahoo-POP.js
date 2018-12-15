@@ -194,7 +194,7 @@ YahooPOP.prototype =
                     var aLoginData = aLoginForm[0].match(patternYahooInput);
                     mainObject.m_Log.Write("YahooPOP.js - loginOnloadHandler - loginData " + aLoginData);
 
-                    for (i=0; i<aLoginData.length; i++)
+                    for (var i=0; i<aLoginData.length; i++)
                     {
                         var szName=aLoginData[i].match(patternYahooNameAlt)[1];
                         szName = szName.replace(/["|']/gm,"");
@@ -313,10 +313,10 @@ YahooPOP.prototype =
                     mainObject.m_Log.Write("YahooPOP.js - loginOnloadHandler - aszServerFolders : "+aszServerFolders);
                     mainObject.m_Log.Write("YahooPOP.js - loginOnloadHandler - m_aszFolderList : "+mainObject.m_aszFolderList);
 
-                    for (j=0; j<mainObject.m_aszFolderList.length; j++)
+                    for (var j=0; j<mainObject.m_aszFolderList.length; j++)
                     {
                         var regExp = new RegExp("^"+mainObject.m_aszFolderList[j]+"$","i");
-                        for (i=0; i<aszServerFolders.length; i++)
+                        for (var i=0; i<aszServerFolders.length; i++)
                         {
                             var szBox = null;
                             try
@@ -471,7 +471,7 @@ YahooPOP.prototype =
                     var aszDeleteInput = aszDeleteForm[0].match(PatternYahooDeleteInput);
                     mainObject.m_Log.Write("YahooPOP.js - mailBoxOnloadHandler - delete Input :" + aszDeleteInput);
                     
-                    for (i = 0; i < aszDeleteInput.length; i++) 
+                    for (var i= 0; i < aszDeleteInput.length; i++) 
                     {
                         var aszInput = aszDeleteInput[i].match(PatternYahooDeleteInput);
                         mainObject.m_Log.Write("YahooPOP.js - mailBoxOnloadHandler - delete Input data :" + aszInput);
@@ -513,7 +513,7 @@ YahooPOP.prototype =
                 //process data
                 if (iNum > 0)
                 {
-                    for (i= 1 ; i< iNum+1 ; i++)
+                    for (var i= 1 ; i< iNum+1 ; i++)
                     {
                         mainObject.m_Log.Write("YahooPOP.js - mailBoxOnloadHandler - msgRow :" + aMsgRows[i]);
                         
@@ -1130,7 +1130,7 @@ YahooPOP.prototype =
                         var szPath = mainObject.m_szLocationURI + oMSGData.szDeleteUri;
                         mainObject.m_Log.Write("YahooPOP.js - emailOnloadHandler - URL - "+ szPath);
 
-                        for(i=0; i<oMSGData.aData.length; i++ )
+                        for(var i=0; i<oMSGData.aData.length; i++ )
                         {
                             var oData = oMSGData.aData[i];
                             if (oData.szName.search(/^DEL$/i)!=-1)
@@ -1202,7 +1202,7 @@ YahooPOP.prototype =
             var szPath = this.m_szLocationURI + oMSGData.szDeleteUri;
             this.m_Log.Write("YahooPOP.js - deleteMessage - url - "+ szPath);
 
-            for(i=0; i<oMSGData.aData.length; i++ )
+            for(var i=0; i<oMSGData.aData.length; i++ )
             {
                 var oData = oMSGData.aData[i];
                 if (oData.szName.search(/^DEL$/i)!=-1) oData.szValue = "1";

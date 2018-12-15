@@ -114,7 +114,7 @@ nsGMailDomains.prototype =
                     //get rows
                     var aszRows = szDataBase.match(/<domain>[\S\s]*?<\/domain>/ig);
 
-                    for (i=0; i < aszRows.length; i++)
+                    for (var i=0; i < aszRows.length; i++)
                     {
                         var szDomain = aszRows[i].match(/<domain>([\S\s]*?)<\/domain>/i)[1];
                         this.m_Log.Write("nsHotmailDomains.js - onStreamComplete - szDomain " + szDomain);

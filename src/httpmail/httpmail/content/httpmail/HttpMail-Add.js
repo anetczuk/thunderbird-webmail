@@ -79,7 +79,7 @@ var gHttpMailAdd =
                 
                 var regExp = new RegExp (this.m_szUri,"i");
                 var bSel = false;
-                for (i=0 ; i<aUri.length; i++ )
+                for (var i=0 ; i<aUri.length; i++ )
                 {  
                     bSel = (aUri[i].search(regExp)!=-1) ? true : false;
                     this.m_Log.Write("Webmail-Add : init - " + aUri[i] + " bsel " + bSel);    
