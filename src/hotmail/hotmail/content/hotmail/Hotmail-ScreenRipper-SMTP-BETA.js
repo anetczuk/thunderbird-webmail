@@ -665,7 +665,8 @@ HotmailSMTPScreenRipperBETA.prototype =
     		if (szRawAddress)
     		{
 	    		var aszAdd = szRawAddress.split(",");   		
-	       		for(var i=0; i<aszAdd.length; i++)
+	    		var i = 0;
+	            for(i=0; i<aszAdd.length; i++)
 	    		{           /* \"email\" <email> */
 	       			var szTemp =  aszAdd[i].replace(/^\s/,"").replace(/\s$/,"");
 	    			szAdd +="\\\"" + szTemp + "\\\" <"+ szTemp +">" 
@@ -711,7 +712,8 @@ HotmailSMTPScreenRipperBETA.prototype =
                 szBcc = this.m_aszTo;
             else
             {
-                for (var j=0; j<this.m_aszTo.length; j++)
+            	var j = 0;
+                for (j=0; j<this.m_aszTo.length; j++)
                 {
                     var regExp = new RegExp(this.m_aszTo[j]);
                     if (szAddress.search(regExp)==-1)

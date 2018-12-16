@@ -33,7 +33,8 @@ var gLycosStartUp =
             {
                 //get user name list
                 var aszUserList = this.getUserNames();
-                for (var i=0; i<aszUserList.length; i++)
+                var i = 0;
+                for (i=0; i<aszUserList.length; i++)
                 {
                     var szOldUserName = aszUserList[i].replace(/\./g,"_");
                     this.m_Log.Write("lycos.js - init - szOldUserName " +szOldUserName);
@@ -113,7 +114,8 @@ var gLycosStartUp =
                 var iNum = oPref.Value;
                 this.m_Log.Write("Lycos.js : - init - iNum " + iNum);
 
-                for (var i=0; i<iNum; i++)
+                var i = 0;
+                for (i=0; i<iNum; i++)
                 {
                     oPref.Value = null;
                     if (WebMailPrefAccess.Get("char","lycos.Account."+i+".user",oPref))
@@ -223,7 +225,8 @@ var gLycosStartUp =
 
             var accounts = accountManager.accounts;
 
-            for (var i = 0; i < accounts.length; i++) {
+            var i = 0;
+            for (i = 0; i < accounts.length; i++) {
             	var account = accounts.queryElementAt(i, Components.interfaces.nsIMsgAccount);
             	if ( account == null )
             		continue;

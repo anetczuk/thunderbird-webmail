@@ -238,7 +238,8 @@ nsGMail.prototype =
                     var aszInput = aszLoginForm[0].match(patternGMailFormInput);
                     mainObject.m_Log.Write("nsGMailPOP.js - loginOnloadHandler - aszInput " + aszInput);
 
-                    for (var i=0; i<aszInput.length; i++)
+                    var i = 0;
+                    for (i=0; i<aszInput.length; i++)
                     {
                         mainObject.m_Log.Write("nsGMailPOP.js - loginOnloadHandler - aszInput[i] " + aszInput[i]);
 
@@ -408,7 +409,8 @@ nsGMail.prototype =
 
                         if (aszBlock)
                         {
-                            for (var i=0; i<aszBlock.length; i++)
+                        	var i = 0;
+                            for (i=0; i<aszBlock.length; i++)
                             {
                                 var szData = aszBlock[i].replace(/\[".*?",\d*,\[/,"");
                                 aszData = szData.match(PatternGMailMSGData);
@@ -448,7 +450,8 @@ nsGMail.prototype =
                                         {
                                             var szLabels = "";
                                             var aszLabels = aszData[5].match(/"(.*?)"/g);
-                                            for (var k=0; k<aszLabels.length; k++)
+                                            var k = 0;
+                                            for (k=0; k<aszLabels.length; k++)
                                             {
                                                 if (aszLabels[k].search(/^"\^\S"$/)==-1)
                                                 {
@@ -494,7 +497,8 @@ nsGMail.prototype =
                     var aThreadTable = szResponse.match(PatternGMailThreadTableBlock);
                     mainObject.m_Log.Write("nsGMailPOP.js - mailBoxOnloadHandler - aThreadTable :" + aThreadTable);
 
-                    for (var i=0; i<aThreadTable.length; i++)
+                    var i = 0;
+                    for (i=0; i<aThreadTable.length; i++)
                     {
                         var aEmailData = aThreadTable[i].match(PatternGMailThreadTableData);
                         mainObject.m_Log.Write("nsGMailPOP.js - mailBoxOnloadHandler - aEmailData :" + aEmailData);

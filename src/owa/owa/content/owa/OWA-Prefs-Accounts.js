@@ -68,7 +68,8 @@ var gPrefAccounts =
 
             var accounts = accountManager.accounts;
 
-            for (var i = 0; i < accounts.length; i++) {
+            var i = 0;
+            for (i = 0; i < accounts.length; i++) {
             	var account = accounts.queryElementAt(i, Components.interfaces.nsIMsgAccount);
             	if ( account == null )
             		continue;
@@ -212,7 +213,8 @@ var gPrefAccounts =
             var list = document.getElementById("popupAccounts");
             if (this.m_aszUserList.length > 0)
             {
-                for(var i=0 ; i< this.m_aszUserList.length; i++)
+            	var i = 0;
+                for(i=0 ; i< this.m_aszUserList.length; i++)
                 {
                     var szDisplayName = this.m_aszUserList[i].szDisplayName;
                     var iType = this.m_aszUserList[i].iType;

@@ -135,7 +135,8 @@ OWASMTPScreenRipper.prototype =
                     
                     var aszInput = szForm.match(kOWAInput);
                     
-                    for (var i =0 ; i<aszInput.length; i++)
+                    var i = 0;
+                    for (i =0 ; i<aszInput.length; i++)
                     {
                         mainObject.m_Log.Write("OWA-SMTP-SR - loginOnloadHandler - aszInput :" +aszInput[i]);
                         
@@ -273,7 +274,8 @@ OWASMTPScreenRipper.prototype =
                             
                     var aszInput = szForm.match(kOWAInput);
                             
-                    for (var i = 0; i < aszInput.length; i++) 
+                    var i = 0;
+                    for (i = 0; i < aszInput.length; i++) 
                     {
                         mainObject.m_Log.Write("OWA-SMTP-SR - composerOnloadHandler - aszInput :" + aszInput[i]);
                         
@@ -399,7 +401,8 @@ OWASMTPScreenRipper.prototype =
                         }
                         
                         var aszInput = szForm[0].match(kOWAInput);
-                        for (var i = 0; i < aszInput.length; i++) 
+                        var i = 0;
+                        for (i = 0; i < aszInput.length; i++) 
                         {
                             mainObject.m_Log.Write("OWA-SMTP-SR - composerOnloadHandler - aszInput :" + aszInput[i]);
                             
@@ -449,7 +452,8 @@ OWASMTPScreenRipper.prototype =
                             
                     var aszInput = szForm.match(kOWAInput);
                             
-                    for (var i = 0; i < aszInput.length; i++) 
+                    var i = 0;
+                    for (i = 0; i < aszInput.length; i++) 
                     {
                         mainObject.m_Log.Write("OWA-SMTP-SR - composerOnloadHandler - aszInput :" + aszInput[i]);
                         
@@ -512,7 +516,8 @@ OWASMTPScreenRipper.prototype =
                 szBcc = this.m_aszTo;
             else
             {
-                for (var j=0; j<this.m_aszTo.length; j++)
+            	var j = 0;
+                for (j=0; j<this.m_aszTo.length; j++)
                 {
                     var regExp = new RegExp(this.m_aszTo[j]);
                     if (szAddress.search(regExp)==-1)

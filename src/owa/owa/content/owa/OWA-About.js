@@ -68,7 +68,8 @@ var gOWAAbout =
         var vbox = null;
         var iCount = 0;
                 
-        for(var i=0 ; i< aszNames.length; i++)
+        var i = 0;
+        for(i=0 ; i< aszNames.length; i++)
         {
             if (iCount == 0) vbox = document.createElement("vbox"); 
             var hBox = this.processListItem(aszNames[i]);
@@ -98,7 +99,8 @@ var gOWAAbout =
 
     createList : function(base, aszNames)
     {
-        for(var i=0 ; i< aszNames.length; i++)
+    	var i = 0;
+        for(i=0 ; i< aszNames.length; i++)
         {
             base.appendChild(this.processListItem(aszNames[i]));
         }

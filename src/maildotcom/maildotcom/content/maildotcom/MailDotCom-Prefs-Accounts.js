@@ -69,7 +69,8 @@ var gPrefAccounts =
 
             var accounts = accountManager.accounts;
 
-            for (var i = 0; i < accounts.length; i++) {
+            var i = 0;
+            for (i = 0; i < accounts.length; i++) {
             	var account = accounts.queryElementAt(i, Components.interfaces.nsIMsgAccount);
             	if ( account == null )
             		continue;
@@ -187,7 +188,8 @@ var gPrefAccounts =
                 //clear Folder list
                 var listFolders = document.getElementById("listFolders");
                 var iRowCount = listFolders.getRowCount()
-                for (var i=0; i<iRowCount; i++)
+                var i = 0;
+                for (i=0; i<iRowCount; i++)
                 {
                     this.m_DebugLog.Write("MailDotCom-Pref-Accounts : selectUserName - removing " + i);
                     var item = listFolders.getItemAtIndex(0);
@@ -201,7 +203,8 @@ var gPrefAccounts =
                 if (oPref.Value)
                 {
                     var aFolders = oPref.Value.split("\r");
-                    for (var j=0; j<aFolders.length; j++)
+                    var j = 0;
+                    for (j=0; j<aFolders.length; j++)
                     {
                         this.m_DebugLog.Write("MailDotCom-Pref-Accounts : selectUserName - aszFolder " + aFolders[j] + " j "+j);
                         if (aFolders[j].length>0)
@@ -234,7 +237,8 @@ var gPrefAccounts =
             var list = document.getElementById("popupAccounts");
             if (this.m_aszUserList.length > 0)
             {
-                for(var i=0 ; i< this.m_aszUserList.length; i++)
+            	var i = 0;
+                for(i=0 ; i< this.m_aszUserList.length; i++)
                 {
                     var szUserName = this.m_aszUserList[i];
                     if (szUserName.search(regExp)!= -1) this.m_iIndex = i;
@@ -355,7 +359,8 @@ var gPrefAccounts =
                 {
                     var aFolders = oPref.Value.split("\r");
                     this.m_DebugLog.Write("MailDotCom-Pref-Accounts : folderListAdd -  aFolders "+ aFolders);
-                    for (var j=0; j<aFolders.length; j++)
+                    var j = 0;
+                    for (j=0; j<aFolders.length; j++)
                     {
                         var regExp = new RegExp("^"+oParam.szFolder+"$","i");
                         if (aFolders[j].length>0 && aFolders[j].search(regExp)==-1)
@@ -422,7 +427,8 @@ var gPrefAccounts =
             if (oPref.Value)
             {
                 var aFolders = oPref.Value.split("\r");
-                for (var j=0; j<aFolders.length; j++)
+                var j = 0;
+                for (j=0; j<aFolders.length; j++)
                 {
                     var regExp = new RegExp("^"+szFolderName+"$","i");
                     if (aFolders[j].length>0 && aFolders[j].search(regExp)==-1)

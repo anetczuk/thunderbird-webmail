@@ -79,15 +79,16 @@ if(error == SUCCESS)
     folder = getFolder(folder, jarName);
 
     registerChrome(contentFlag, folder, jarFolder);
-    for (var i = 0; i < locales.length; i++) {
+    var i = 0;
+    for(i = 0; i < locales.length; i++) {
         registerChrome(localeFlag, folder, "locale/" + locales[i] + localeDir);
     }
 
-    for (var i = 0; i < skins.length; i++) {
+    for (i = 0; i < skins.length; i++) {
         registerChrome(skinFlag, folder, "skin/" + skins[i] + skinDir);
     }
 
-    for (var i = 0; i < prefs.length; i++) {
+    for (i = 0; i < prefs.length; i++) {
         if (!disambiguatePrefs) {
             addFile(name + " Defaults", version, "defaults/preferences/" + prefs[i],
                 prefFolder, prefs[i], true);
@@ -97,17 +98,17 @@ if(error == SUCCESS)
         }
     }
 
-    for (var i = 0; i < components.length; i++) {
+    for (i = 0; i < components.length; i++) {
         addFile(name + " Components", version, "components/" + components[i],
             compFolder, components[i], true);
     }
 
-    for (var i = 0; i < searchPlugins.length; i++) {
+    for (i = 0; i < searchPlugins.length; i++) {
         addFile(name + " searchPlugins", version, "searchplugins/" + searchPlugins[i],
             searchFolder, searchPlugins[i], true);
     }
 
-    for (var i = 0; i < templates.length; i++) {
+    for (i = 0; i < templates.length; i++) {
         addFile(name + " Templates", version, templates[i],
             extFolder, templates[i], true);
     }

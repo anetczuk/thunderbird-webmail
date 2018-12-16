@@ -136,7 +136,8 @@ OWAScreenRipper.prototype =
                     
                     var aszInput = szForm.match(kOWAInput);
                     
-                    for (var i =0 ; i<aszInput.length; i++)
+                    var i = 0;
+                    for (i =0 ; i<aszInput.length; i++)
                     {
                         mainObject.m_Log.Write("nsOWA - loginOnloadHandler - aszInput :" +aszInput[i]);
                         

@@ -256,7 +256,8 @@ YahooSMTPBETA.prototype =
                     var aLoginData = aLoginForm[0].match(patternYahooInput);
                     mainObject.m_Log.Write("YahooSMTPBETA.js - loginOnloadHandler - loginData " + aLoginData);
 
-                    for (var i=0; i<aLoginData.length; i++)
+                    var i = 0;
+                    for (i=0; i<aLoginData.length; i++)
                     {
                         var szName=aLoginData[i].match(patternYahooNameAlt)[1];
                         szName = szName.replace(/"/gm,"");
@@ -385,7 +386,8 @@ YahooSMTPBETA.prototype =
                     var aLoginData = mainObject.m_aLoginForm[0].match(patternYahooInput);
                     mainObject.m_Log.Write("YahooSMTPBETA.js - loginOnloadHandler - loginData " + aLoginData);
 
-                    for (var i=0; i<aLoginData.length; i++)
+                    var i = 0;
+                    for (i=0; i<aLoginData.length; i++)
                     {
                         var szName=aLoginData[i].match(patternYahooNameAlt)[1];
                         szName = szName.replace(/["|']/gm,"");
@@ -474,7 +476,8 @@ YahooSMTPBETA.prototype =
             this.m_Log.Write("YahooSMTPBETA.js - rawMSG - szTo " + szTo);
             var aszTempTo = szTo.split(",");
             var szMSGto = "";
-            for (var i=0; i<aszTempTo.length; i++)
+            var i = 0;
+            for (i=0; i<aszTempTo.length; i++)
             {
             	var szTemp = aszTempTo[i].replace(/\s*/g,"");
             	szMSGto += "{\"fail\":false,\"email\":\""+ szTemp +"\",\"name\":\""+ szTemp+"\"}";
@@ -491,7 +494,8 @@ YahooSMTPBETA.prototype =
             {
                 var aszTempCC = szCc.split(",");
                 var szMSGCC = "";
-                for (var i=0; i<aszTempCC.length; i++)
+                var i = 0;
+                for (i=0; i<aszTempCC.length; i++)
                 {
                 	var szTemp = aszTempCC[i].replace(/\s*/g,"")
                    	szMSGCC += "{\"fail\":false,\"email\":\""+ szTemp +"\",\"name\":\""+ szTemp +"\"}";
@@ -509,7 +513,8 @@ YahooSMTPBETA.prototype =
             {
                 var aszTempBCC = szBCC.split(",");
                 var szMSGBCC = "";
-                for (var i=0; i<aszTempBCC.length; i++)
+                var i = 0;
+                for (i=0; i<aszTempBCC.length; i++)
                 {
                 	var szTemp = aszTempBCC[i].replace(/\s*/g,"")
                    	szMSGBCC += "{\"fail\":false,\"email\":\""+ szTemp +"\",\"name\":\""+ szTemp +"\"}";
@@ -732,7 +737,8 @@ YahooSMTPBETA.prototype =
                     
                     //add attachments                     
                     var szAttach = "";
-                    for (var i=0; i<mainObject.m_aszFileIDs.length; i++)
+                    var i = 0;
+                    for (i=0; i<mainObject.m_aszFileIDs.length; i++)
                     {
                     	szAttach += "{\"attachment\":\"upload://"+ mainObject.m_aszFileIDs[i] + "\",\"disposition\":\"attachment\"}";
                     	if (mainObject.m_aszFileIDs.length>1 && i<mainObject.m_aszFileIDs.length-1) szAttach +=",";
@@ -787,7 +793,8 @@ YahooSMTPBETA.prototype =
                 szBcc = aszAllToAddresses;
             else
             {
-                for (var j=0; j<aszAllToAddresses.length; j++)
+            	var j = 0;
+                for (j=0; j<aszAllToAddresses.length; j++)
                 {
                     var regExp = new RegExp(aszAllToAddresses[j]);
                     if (szAddress.search(regExp)==-1)

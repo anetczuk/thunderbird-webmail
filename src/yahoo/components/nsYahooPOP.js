@@ -344,7 +344,8 @@ nsYahoo.prototype =
             if (oPref.Value)
             {
                 var aszFolders = oPref.Value.split("\r");
-                for (var j=0; j<aszFolders.length; j++)
+                var j = 0;
+                for (j=0; j<aszFolders.length; j++)
                 {
                     this.m_Log.Write("nsYahoo - loadPRefs - aszFolders[j] " + aszFolders[j]);
                     var szEncoded = encodeURIComponent(aszFolders[j])

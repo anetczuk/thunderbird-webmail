@@ -106,7 +106,8 @@ emailBuilder.prototype.addBody = function (szHeader, szBody)
         if (this.m_aoBodyPart.length>0)
         {
             //check for existing body part
-            for (var i = 0; i < this.m_aoBodyPart.length; i++) 
+        	var i = 0;
+            for (i = 0; i < this.m_aoBodyPart.length; i++) 
             {
                 var oOldMimePart = this.m_aoBodyPart.shift();
                 var szOldPartSubType = oOldMimePart.headers.getContentType(2);
@@ -220,7 +221,8 @@ emailBuilder.prototype.notify = function (timer)
                 //body
                 this.m_szEmail += "This is a multi-part message in MIME format built by the Yahoo extension.\r\n";
                            
-                for (var i = 0; i < this.m_aoBodyPart.length; i++) 
+                var i = 0;
+                for (i = 0; i < this.m_aoBodyPart.length; i++) 
                 {
                     this.m_szEmail += "\r\n--" + this.m_szBoundary + "\r\n";
                     this.m_szEmail += this.processHeaders(this.m_aoBodyPart[i].headers.getAllHeadersArray());
@@ -268,7 +270,8 @@ emailBuilder.prototype.notify = function (timer)
                     this.m_szEmail += "\r\n--" + this.m_szBoundary + "\r\n";
                     this.m_szEmail += "Content-Type: multipart/alternative; boundary=\"" + this.m_szBoundary+ "=MULTPART\"\r\n";
     
-                    for (var i = 0; i < this.m_aoBodyPart.length; i++) 
+                    var i = 0;
+                    for (i = 0; i < this.m_aoBodyPart.length; i++) 
                     {
                         this.m_szEmail += "\r\n--" + this.m_szBoundary + "=MULTPART\r\n";
                         this.m_szEmail += this.processHeaders(this.m_aoBodyPart[i].headers.getAllHeadersArray());
@@ -306,7 +309,8 @@ emailBuilder.prototype.processHeaders = function(aHeaders, szContentType)
     {
         this.m_Log.Write("emailBuilder.js - headers - START " + szContentType);
         var szHeaders = "";
-        for (var i =0; i<aHeaders.length; i++)
+        var i = 0;
+        for (i =0; i<aHeaders.length; i++)
         {
             var szName = aHeaders[i].szName;
             var szValue ="";

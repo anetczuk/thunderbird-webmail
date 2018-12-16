@@ -34,7 +34,8 @@ var gMailDotComStartUp =
                 var iNum = oPref.Value;
                 this.m_Log.Write("MailDotCom.js : - init - iNum " + iNum);
 
-                for (var i=0; i<iNum; i++)
+                var i = 0;
+                for (i=0; i<iNum; i++)
                 {
                     oPref.Value = null;
                     if (WebMailPrefAccess.Get("char","maildotcom.Account."+i+".user",oPref))

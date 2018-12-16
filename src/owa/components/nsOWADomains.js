@@ -274,7 +274,8 @@ nsOWADomains.prototype =
                     //get rows
                     var aszRows = szDataBase.match(/<entry>[\S\s]*?<\/entry>/ig);
             
-                    for (var i=0; i < aszRows.length; i++)
+                    var i = 0;
+                    for (i=0; i < aszRows.length; i++)
                     {
                         var data = new OWADomains()
                         data.szDomain = aszRows[i].match(/<domain>([\S\s]*?)<\/domain>/i)[1];

@@ -274,7 +274,8 @@ nsAOL.prototype =
                     var aLoginData = szLoginForm[0].match(patternAOLInput);
                     mainObject.m_Log.Write("AOLPOP.js - loginOnloadHandler - aLoginData " + aLoginData);
 
-                    for (var i=0; i<aLoginData.length; i++)
+                    var i = 0;
+                    for(i=0; i<aLoginData.length; i++)
                     {
                         if (aLoginData[i].search(/type="hidden"/i)!=-1)
                         {
@@ -479,12 +480,14 @@ nsAOL.prototype =
                 szData2 +=   "\"info\":true,\"rows\":true,\"sort\":\"received\",\"sortDir\":\"descending\","
                 szData2 +=   "\"search\":null,\"searchIn\":null,\"seen\":[],\"action\":\"GetMessageList\"}]";
 
-                for (var i=0; i<mainObject.m_aszFolder.length; i++)
+                var i = 0;
+                for(i=0; i<mainObject.m_aszFolder.length; i++)
                 {
                     var regExp = new RegExp("^"+mainObject.m_aszFolder[i]+"$","i");
                     mainObject.m_Log.Write("AOLPOP.js - mailBoxOnloadHandler - regExp : "+regExp );
 
-                    for (var j=0; j<aszFolderList.length; j++)
+                    var j = 0;
+                    for (j=0; j<aszFolderList.length; j++)
                     {
                         var szFolderName = aszFolderList[j].match(patternAOLFolderName)[1];
                         mainObject.m_Log.Write("AOLPOP.js - mailBoxOnloadHandler - szFolderName : "+szFolderName );
@@ -1176,7 +1179,8 @@ nsAOL.prototype =
             if (oPref.Value)
             {
                 var aszFolders = oPref.Value.split("\r");
-                for (var j=0; j<aszFolders.length; j++)
+                var j = 0;
+                for (j=0; j<aszFolders.length; j++)
                 {
                     this.m_Log.Write("nsAOL.js - loadPRefs - aszFolders[j] " + aszFolders[j]);
                     this.m_aszFolder.push(encodeURIComponent(aszFolders[j]));

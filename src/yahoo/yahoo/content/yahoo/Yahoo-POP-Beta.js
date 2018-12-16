@@ -255,7 +255,8 @@ YahooPOPBETA.prototype =
                     var aLoginData = aLoginForm[0].match(patternYahooInput);
                     mainObject.m_Log.Write("YahooPOPBETA.js - loginOnloadHandler - loginData " + aLoginData);
 
-                    for (var i=0; i<aLoginData.length; i++)
+                    var i = 0;
+                    for (i=0; i<aLoginData.length; i++)
                     {
                         var szName=aLoginData[i].match(patternYahooNameAlt)[1];
                         szName = szName.replace(/["|']/gm,"");
@@ -366,12 +367,14 @@ YahooPOPBETA.prototype =
                     var aszFolders = szFolderResponse.match(kPatternFolderData);
                     mainObject.m_Log.Write("YahooPOPBETA.js - loginOnloadHandler - aszFolders : "+aszFolders);
 
-                    for (var i=0; i<mainObject.m_aszPrefFolderList.length; i++)
+                    var i = 0;
+                    for (i=0; i<mainObject.m_aszPrefFolderList.length; i++)
                     {
                         var regExp = new RegExp("^"+mainObject.m_aszPrefFolderList[i]+"$","i");
                         mainObject.m_Log.Write("YahooPOP.js - loginOnloadHandler - regExp : "+regExp );
 
-                        for (var j=0; j<aszFolders.length; j++)
+                        var j = 0;
+                        for (j=0; j<aszFolders.length; j++)
                         {
                             var szBox = aszFolders[j].match(kPatternFolderID)[1];
                             mainObject.m_Log.Write("YahooPOP.js - loginOnloadHandler - szBox : "+szBox );
@@ -423,7 +426,8 @@ YahooPOPBETA.prototype =
                     var aLoginData = mainObject.m_aLoginForm[0].match(patternYahooInput);
                     mainObject.m_Log.Write("YahooPOPBETA.js - loginOnloadHandler - loginData " + aLoginData);
 
-                    for (var i=0; i<aLoginData.length; i++)
+                    var i = 0;
+                    for (i=0; i<aLoginData.length; i++)
                     {
                         var szName=aLoginData[i].match(patternYahooNameAlt)[1];
                         szName = szName.replace(/["|']/gm,"");
@@ -845,7 +849,8 @@ YahooPOPBETA.prototype =
                     {
                         var aszIDParts = szEmailID.split(/_/);
                         szEmailID ="";
-                        for (var j=0; j<aszIDParts.length; j++)
+                        var j = 0;
+                        for (j=0; j<aszIDParts.length; j++)
                         {
                             if (j!=1)
                             {
@@ -1087,7 +1092,8 @@ YahooPOPBETA.prototype =
                     if (aszComplexParts)
                     {
                         var aszCleanParts = new Array();
-                        for (var i =0; i<aszComplexParts.length; i++)
+                        var i = 0;
+                        for (i =0; i<aszComplexParts.length; i++)
                         {
                             aszCleanParts = aszCleanParts.concat(aszComplexParts[i].replace(kPatternShortPart,""));
                         }

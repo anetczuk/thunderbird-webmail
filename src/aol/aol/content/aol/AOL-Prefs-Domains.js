@@ -20,7 +20,8 @@ var gAOLDomain =
 			{
 				if (aDomains.value.length > 0)
 				{                    
-					for (var i=0; i<aDomains.value.length; i++)
+					var i = 0;
+			        for(i=0; i<aDomains.value.length; i++)
 					{
 						this.domainList(aDomains.value[i].szDomain, aDomains.value[i].bPOPDefault);
 					}
@@ -110,7 +111,8 @@ var gAOLDomain =
         var aszMSG = szMSG.split(/\s/);
 
         //message
-        for (var i=0; i<aszMSG.length; i++)
+        var i = 0;
+        for(i=0; i<aszMSG.length; i++)
         {
             var labelMSG = document.createElement("label");
             labelMSG.setAttribute("value",aszMSG[i]);

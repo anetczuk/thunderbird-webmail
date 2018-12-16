@@ -65,7 +65,8 @@ var gHotmailStartUp =
 
             var accounts = accountManager.accounts;
 
-            for (var i = 0; i < accounts.length; i++) {
+            var i = 0;
+            for (i = 0; i < accounts.length; i++) {
             	var account = accounts.queryElementAt(i, Components.interfaces.nsIMsgAccount);
             	if ( account == null )
             		continue;

@@ -39,7 +39,8 @@ var gYahooStartUp =
 
                 
                 var aszUserList = this.getUserNames();
-                for (var i=0; i<aszUserList.length; i++)
+                var i = 0;
+                for (i=0; i<aszUserList.length; i++)
                 {
                     var szUserName = aszUserList[i].replace(/\./g,"~");
                     this.m_Log.Write("yahoo.js - init - szUserName " +szUserName + 
@@ -88,7 +89,8 @@ var gYahooStartUp =
 
             var accounts = accountManager.accounts;
 
-            for (var i = 0; i < accounts.length; i++) {
+            var i = 0;
+            for (i = 0; i < accounts.length; i++) {
             	var account = accounts.queryElementAt(i, Components.interfaces.nsIMsgAccount);
             	if ( account == null )
             		continue;

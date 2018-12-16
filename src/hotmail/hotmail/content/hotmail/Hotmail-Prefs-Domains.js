@@ -21,7 +21,8 @@ var gHotmailDomain =
             {
                 if (aDomains.value.length > 0)
                 {                    
-                    for (var i=0; i<aDomains.value.length; i++)
+                	var i = 0;
+                    for (i=0; i<aDomains.value.length; i++)
                     {
                         this.domainList(aDomains.value[i].szDomain, aDomains.value[i].bPOPDefault);
                     }
@@ -55,7 +56,8 @@ var gHotmailDomain =
             var listView = document.getElementById("listDomain");   //click item
             var iCount = listView.getRowCount();
 
-            for (var i=0; i<iCount;i++)
+            var i = 0;
+            for (i=0; i<iCount;i++)
             {
                 var item = listView.getItemAtIndex(0);
                 listView.removeChild(item);
@@ -142,7 +144,8 @@ var gHotmailDomain =
         var aszMSG = szMSG.split(/\s/);
 
         //message
-        for (var i=0; i<aszMSG.length; i++)
+        var i = 0;
+        for (i=0; i<aszMSG.length; i++)
         {
             var labelMSG = document.createElement("label");
             labelMSG.setAttribute("value",aszMSG[i]);

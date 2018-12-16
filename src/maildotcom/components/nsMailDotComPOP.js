@@ -221,7 +221,8 @@ nsMailDotCom.prototype =
                     mainObject.m_Log.Write("nsMailDotCom.js - loginOnloadHandler - login input " + aszLoginInput);
 
                     //login data
-                    for (var i=0; i<aszLoginInput.length; i++)
+                    var i = 0;
+                    for (i=0; i<aszLoginInput.length; i++)
                     {
                         mainObject.m_Log.Write("nsMailDotCom.js - loginOnloadHandler - aszLoginInput[i] " + aszLoginInput[i]);
                         if (aszLoginInput[i].search(/name/i)!=-1)
@@ -298,7 +299,8 @@ nsMailDotCom.prototype =
                     var aInputs = aszForm[0].match(patternMailDotComInput);
                     mainObject.m_Log.Write("nsMailDotCom.js - loginOnloadHandler - aInputs "+ aInputs);
                     var szComposer = null;
-                    for (var i=0; i<aInputs.length; i++)
+                    var i = 0;
+                    for (i=0; i<aInputs.length; i++)
                     {
                        if (aInputs[i].search(/folders.mail/i)!=-1)//get folder uri
                         {
@@ -353,12 +355,14 @@ nsMailDotCom.prototype =
                     var szPath = szLocation.match(/(http:\/\/.*?)\//i)[1];
                     mainObject.m_Log.Write("nsMailDotCom.js - loginOnloadHandler - path "+ szPath);
 
-                    for (var j=0; j<mainObject.m_aszFolder.length; j++)
+                    var j = 0;
+                    for (j=0; j<mainObject.m_aszFolder.length; j++)
                     {
                         var regExp = new RegExp("^"+mainObject.m_aszFolder[j]+"$","i");
                         mainObject.m_Log.Write("nsMailDotCom.js - loginOnloadHandler - regExp "+ regExp);
 
-                        for(var i=0; i<aszFolderList.length; i++)
+                        var i = 0;
+                        for(i=0; i<aszFolderList.length; i++)
                         {
                             var szHref = aszFolderList[i].match(patternMailDotComFolderURI)[1];
                             mainObject.m_Log.Write("nsMailDotCom.js - loginOnloadHandler - folders uri "+ szHref);
@@ -478,7 +482,8 @@ nsMailDotCom.prototype =
 
                 if(aszMSGs)
                 {
-                    for (var i=0; i<aszMSGs.length; i++ )
+                	var i = 0;
+                    for (i=0; i<aszMSGs.length; i++ )
                     {
                         var aszData = aszMSGs[i].match(patternMailDotComMsgData);
                         mainObject.m_Log.Write("nsMailDotCom.js - mailBoxOnloadHandler - MSG Data" + aszData );
@@ -931,7 +936,8 @@ nsMailDotCom.prototype =
                     //process headers
                     if (aszRawHeaders)
                     {
-                        for (var i=0; i<aszRawHeaders.length; i++)
+                    	var i = 0;
+                        for (i=0; i<aszRawHeaders.length; i++)
                         {
                             try
                             {
@@ -1337,7 +1343,8 @@ nsMailDotCom.prototype =
             if (oPref.Value)
             {
                 var aszFolders = oPref.Value.split("\r");
-                for (var j=0; j<aszFolders.length; j++)
+                var j = 0;
+                for (j=0; j<aszFolders.length; j++)
                 {
                     this.m_Log.Write("nsMailDotCom.js - getPrefs - aszFolders " + aszFolders[j]);
                     this.m_aszFolder.push(aszFolders[j]);

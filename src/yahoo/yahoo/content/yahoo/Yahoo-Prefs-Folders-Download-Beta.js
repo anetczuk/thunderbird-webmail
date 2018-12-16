@@ -198,7 +198,8 @@ YahooFolderBeta.prototype =
                     var aLoginData = aLoginForm[0].match(patternYahooInput);
                     mainObject.m_Log.Write("YahooPOPClassic.js - downloadOnloadHandler - loginData " + aLoginData);
 
-                    for (var i=0; i<aLoginData.length; i++)
+                    var i = 0;
+                    for (i=0; i<aLoginData.length; i++)
                     {
                         var szName=aLoginData[i].match(patternYahooClassicName)[1];
                         szName = szName.replace(/^\s*|\s*$/gm,"");
@@ -312,7 +313,8 @@ YahooFolderBeta.prototype =
                     mainObject.m_ComponentManager.addElement(mainObject.m_szUserName, "szHomeURI", mainObject.m_szHomeURI);
 
                     var aszFolderList = new Array();
-                    for (var i=0; i<aszFolders.length; i++)
+                    var i = 0;
+                    for (i=0; i<aszFolders.length; i++)
                     {
                         var szBox = decodeURIComponent(aszFolders[i].match(kPatternFolderID)[1]);
                         mainObject.m_Log.Write("YahooFolderBeta.js - downloadOnloadHandler - szBox : "+szBox );

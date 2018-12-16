@@ -290,7 +290,8 @@ nsHttpMail.prototype =
             {   
                 mainObject.m_Log.Write("nsHttpMail.js - mailBoxOnloadHandler - starting to process");
                
-                for (var i=0; i< mainObject.m_aRawData.length; i++)
+                var i = 0;
+                for (i=0; i< mainObject.m_aRawData.length; i++)
                 {
                     mainObject.processItem( mainObject.m_aRawData[i]);        
                 }
@@ -310,7 +311,8 @@ nsHttpMail.prototype =
                     var szPOPResponse = "+OK " + mainObject.m_aMsgDataStore.length + " Messages\r\n"; 
                     this.m_Log.Write("Hotmail-SR.js - mailBoxOnloadHandler - : " + mainObject.m_aMsgDataStore.length);
      
-                    for (var i= 0; i <  mainObject.m_aMsgDataStore.length; i++)
+                    var i = 0;
+                    for (i= 0; i <  mainObject.m_aMsgDataStore.length; i++)
                     {
                         var iEmailSize = mainObject.m_aMsgDataStore[i].iSize;
                         szPOPResponse+=(i+1) + " " + iEmailSize + "\r\n";       
@@ -373,7 +375,8 @@ nsHttpMail.prototype =
                     var szPOPResponse = "+OK " + this.m_aMsgDataStore.length + " Messages\r\n"; 
                     this.m_Log.Write("nsHttpMail-SR.js - mailBoxOnloadHandler - : " + this.m_aMsgDataStore.length);
      
-                    for (var i= 0; i <  this.m_aMsgDataStore.length; i++)
+                    var i = 0;
+                    for (i= 0; i <  this.m_aMsgDataStore.length; i++)
                     {
                         var iEmailSize = this.m_aMsgDataStore[i].iSize;
                         szPOPResponse+=(i+1) + " " + iEmailSize + "\r\n";       
@@ -485,7 +488,8 @@ nsHttpMail.prototype =
             if (this.m_bStat) 
             {  //msg table has been donwloaded    
                 var szPOPResponse = "+OK " + this.m_aMsgDataStore.length + " Messages\r\n";
-                for (var i= 0; i <  this.m_aMsgDataStore.length; i++)
+                var i = 0;
+                for (i= 0; i <  this.m_aMsgDataStore.length; i++)
                 {
                     var iSize = this.m_aMsgDataStore[i].iSize;
                     this.m_Log.Write("nsHttpMail - getMessageSizes - size : " +iSize);    
@@ -534,7 +538,8 @@ nsHttpMail.prototype =
             this.m_Log.Write("nsHttpMail.js - getMessageIDs - START"); 
             
             var szPOPResponse = "+OK " + this.m_aMsgDataStore.length + " Messages\r\n";
-            for (var i= 0; i <  this.m_aMsgDataStore.length; i++)
+            var i = 0;
+            for (i= 0; i <  this.m_aMsgDataStore.length; i++)
             {
                 var szEmailURL = this.m_aMsgDataStore[i].szMSGUri;
                 this.m_Log.Write("nsHttpMail.js - getMessageIDs - Email URL : " +szEmailURL);
@@ -860,7 +865,8 @@ nsHttpMail.prototype =
                         var szEnd = "</D:target>\r\n</D:delete>";
                         
                         var szDeleteMsg= szStart;
-                        for (var i=0; i<aszResponses.length; i++)
+                        var i = 0;
+                        for (i=0; i<aszResponses.length; i++)
                         {
                             var szMSGUri = aszResponses[i].match(HttpMailHref)[1]; //uri
                             var szMsgID =  szMSGUri.match(HttpMailMSGIDPattern); //id

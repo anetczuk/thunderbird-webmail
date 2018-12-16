@@ -225,7 +225,8 @@ YahooFolderClassic.prototype =
                     var aLoginData = aLoginForm[0].match(patternYahooInput);
                     mainObject.m_Log.Write("YahooPOPClassic.js - loginOnloadHandler - loginData " + aLoginData);
 
-                    for (var i=0; i<aLoginData.length; i++)
+                    var i = 0;
+                    for (i=0; i<aLoginData.length; i++)
                     {
                         var szName=aLoginData[i].match(patternYahooClassicName)[1];
                         szName = szName.replace(/^\s*|\s*$/gm,"");
@@ -346,7 +347,8 @@ YahooFolderClassic.prototype =
                     mainObject.m_ComponentManager.addElement(mainObject.m_szUserName, "szHomeURI", mainObject.m_szHomeURI);
 
                     var aszFolderList = new Array();
-                    for (var i=0; i<aszServerFolders.length; i++)
+                    var i = 0;
+                    for (i=0; i<aszServerFolders.length; i++)
                     {
                         var szServerFolders = decodeURIComponent(aszServerFolders[i]);
                         var szBox = decodeURIComponent(szServerFolders.match(PatternYahooFolderNameAlt)[1]);

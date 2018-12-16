@@ -57,7 +57,8 @@ var gOWADomains =
                 if (aDomains.value.length > 0)
                 {           
                     this.m_DebugLog.Write("OWA-Prefs-Domains : updateList - "+iCount.value +" " + aDomains.value);         
-                    for (var i=0; i<aDomains.value.length; i++)
+                    var i = 0;
+                    for (i=0; i<aDomains.value.length; i++)
                     {
                         this.domainList(aDomains.value[i]);
                     }
@@ -106,7 +107,8 @@ var gOWADomains =
             
             //clear list
             var iCount = listView.getRowCount();
-            for (var i=0; i<iCount; i++)
+            var i = 0;
+            for (i=0; i<iCount; i++)
             {
                 listView.removeChild(listView.getItemAtIndex(0));
             }
@@ -195,7 +197,8 @@ var gOWADomains =
         var aszMSG = szMSG.split(/\s/);
                    
         //message
-        for (var i=0; i<aszMSG.length; i++)
+        var i = 0;
+        for (i=0; i<aszMSG.length; i++)
         {
             var labelMSG = document.createElement("label");
             labelMSG.setAttribute("value",aszMSG[i]); 

@@ -218,7 +218,8 @@ OWASMTPWebDav.prototype =
 
             var szMsg = "MAIL FROM:<"+szFrom+">\r\n";
 
-            for (var i=0; i< aszTo.length; i++)
+            var i = 0;
+            for (i=0; i< aszTo.length; i++)
             {
                 szMsg +="RCPT TO:<"+aszTo[i]+">\r\n";
             }

@@ -271,7 +271,8 @@ nsLycosIMAP.prototype =
             this.m_Log.Write("nsLycosIMAP.js - listSubscribe - list: " + aszFolders.value);
 
             var szResponse = "";
-            for (var i=0; i<aszFolders.value.length; i++)
+            var i = 0;
+            for (i=0; i<aszFolders.value.length; i++)
             {
                 szResponse += "* lsub (\\Noinferiors \\HasNoChildren) " + "\".\" \"" + aszFolders.value[i] + "\"\r\n";
             }
@@ -429,7 +430,8 @@ nsLycosIMAP.prototype =
 
             var szResponse = "";
 
-            for (var i=0; i<aszResponses.length; i++)
+            var i = 0;
+            for (i=0; i<aszResponses.length; i++)
             {
                 mainObject.processFolder(aszResponses[i]);
             }
@@ -522,7 +524,8 @@ nsLycosIMAP.prototype =
             var iCount = {value : null };
             this.m_oIMAPData.getHierarchies(this.m_szUserName, this.m_szFolderReference ,iCount, aszFolders );
 
-            for (var i=0; i<aszFolders.value.length; i++)
+            var i = 0;
+            for (i=0; i<aszFolders.value.length; i++)
             {
                 szResponse += "* LIST (\\Noinferiors \\HasNoChildren) \".\" \"" + aszFolders.value[i] +"\"\r\n";
             }
@@ -659,7 +662,8 @@ nsLycosIMAP.prototype =
 
                     var aszResponses = szResponse.match(kLycosResponse);
                     mainObject.m_Log.Write("nsLycosIMAP.js - selectOnloadHandler - folders - \n" + aszResponses);
-                    for (var i=0; i<aszResponses.length; i++)
+                    var i = 0;
+                    for (i=0; i<aszResponses.length; i++)
                     {
                         mainObject.processFolder(aszResponses[i]);
                     }
@@ -2224,7 +2228,8 @@ nsLycosIMAP.prototype =
 
                     var aszResponses = szResponse.match(kLycosResponse);
                     mainObject.m_Log.Write("nsLycosIMAP.js - createFolderOnloadHandler - folders - \n" + aszResponses);
-                    for (var i=0; i<aszResponses.length; i++)
+                    var i = 0;
+                    for (i=0; i<aszResponses.length; i++)
                     {
                         mainObject.processFolder(aszResponses[i]);
                     }
@@ -2456,7 +2461,8 @@ nsLycosIMAP.prototype =
             this.m_Log.Write("nsLycosIMAP.js - range - aTempRange " +aTempRange);
 
             var aRange = new Array();
-            for (var i=0; i<aTempRange.length; i++)
+            var i = 0;
+            for (i=0; i<aTempRange.length; i++)
             {
                 if (aTempRange[i].search(/\:/)!=-1)
                 {

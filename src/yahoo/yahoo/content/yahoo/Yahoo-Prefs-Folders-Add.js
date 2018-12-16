@@ -83,7 +83,8 @@ var gYahooFoldersAdd =
                 document.getElementById("cmd_close").setAttribute("oncommand", "gYahooFoldersAdd.doCancel()");
                 document.getElementById("vBoxfolderDownload").setAttribute("selectedIndex", 1);
 
-                for (var i = 0; i < aszFolderList.length; i++) 
+                var i = 0;
+                for (i = 0; i < aszFolderList.length; i++) 
                 {                 
                     //check for special folders
                     if (aszFolderList[i].search(/^inbox$/i)  == -1 && 
@@ -97,7 +98,8 @@ var gYahooFoldersAdd =
                         var bFound = false;
                         if (parent.m_aszFolderPref) 
                         {
-                            for (var j = 0; j < parent.m_aszFolderPref.length; j++) 
+                        	var j = 0;
+                            for (j = 0; j < parent.m_aszFolderPref.length; j++) 
                             {
                                 if (parent.m_aszFolderPref[j].search(regExp) != -1) bFound = true;
                             }
@@ -236,7 +238,8 @@ var gYahooFoldersAdd =
                 if (this.m_aszFolderPref) 
                 {
                     var regExp = new RegExp("^" + szValue[i] + "$", "i");
-                    for (var j = 0; j < this.m_aszFolderPref.length; j++) 
+                    var j = 0;
+                    for (j = 0; j < this.m_aszFolderPref.length; j++) 
                     {
                         if (this.m_aszFolderPref[j].search(regExp) != -1) bFound = true;
                     }
@@ -257,7 +260,8 @@ var gYahooFoldersAdd =
                 {
                     if (this.m_aszFolderPref) 
                     {
-                        for (var i=0; i< this.m_aszFolderPref.length-1; i++) 
+                    	var i = 0;
+                        for (i=0; i< this.m_aszFolderPref.length-1; i++) 
                         {
                             window.arguments[0].aszFolder.push(this.m_aszFolderPref[i]);
                         }
@@ -289,7 +293,8 @@ var gYahooFoldersAdd =
             
             if (this.m_aszFolderPref) 
             {
-                for (var i = 0; i < this.m_aszFolderPref.length-1; i++) 
+            	var i = 0;
+                for (i = 0; i < this.m_aszFolderPref.length-1; i++) 
                 {
                     window.arguments[0].aszFolder.push(this.m_aszFolderPref[i]);
                 }
@@ -297,7 +302,8 @@ var gYahooFoldersAdd =
             
             var listView = document.getElementById("listFolders");   //click item
             var iRowCount =listView.getRowCount();
-            for (var i = 0; i < iRowCount; i++) 
+            var i = 0;
+            for (i = 0; i < iRowCount; i++) 
             {
                 Item = listView.getItemAtIndex(i);
                 var szName = Item.getAttribute("id");

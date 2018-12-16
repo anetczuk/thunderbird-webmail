@@ -237,7 +237,8 @@ nsGMailSMTP.prototype =
                     var aszInput = aszLoginForm[0].match(patternGMailFormInput);
                     mainObject.m_Log.Write("nsGMailSMTP.js - loginOnloadHandler - aszInput " + aszInput);
 
-                    for (var i=0; i<aszInput.length; i++)
+                    var i = 0;
+                    for (i=0; i<aszInput.length; i++)
                     {
                         mainObject.m_Log.Write("nsGMailSMTP.js - loginOnloadHandler - aszInput[i] " + aszInput[i]);
 
@@ -611,7 +612,8 @@ nsGMailSMTP.prototype =
         //charSet = charSet || 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
         charSet = charSet || 'abcdefghijklmnopqrstuvwxyz0123456789';
         var randomString = '';
-        for (var i = 0; i < len; i++)
+        var i = 0;
+        for (i = 0; i < len; i++)
         {
             var randomPoz = Math.floor(Math.random() * charSet.length);
             randomString += charSet.substring(randomPoz,randomPoz+1);
@@ -645,7 +647,8 @@ nsGMailSMTP.prototype =
                 szBcc = this.m_aszTo;
             else
             {
-                for (var j=0; j<this.m_aszTo.length; j++)
+            	var j = 0;
+                for (j=0; j<this.m_aszTo.length; j++)
                 {
                     var regExp = new RegExp(this.m_aszTo[j]);
                     if (szAddress.search(regExp)==-1)

@@ -208,7 +208,8 @@ YahooPOPClassic.prototype =
                     var aLoginData = aLoginForm[0].match(patternYahooInput);
                     mainObject.m_Log.Write("YahooPOPClassic.js - loginOnloadHandler - loginData " + aLoginData);
 
-                    for (var i=0; i<aLoginData.length; i++)
+                    var i = 0;
+                    for (i=0; i<aLoginData.length; i++)
                     {
                         var szName=aLoginData[i].match(patternYahooClassicName)[1];
                         szName = szName.replace(/^\s*|\s*$/gm,"");
@@ -310,10 +311,12 @@ YahooPOPClassic.prototype =
                     mainObject.m_Log.Write("YahooPOPClassic.js - loginOnloadHandler - aszServerFolders : "+aszServerFolders);
                     mainObject.m_Log.Write("YahooPOPClassic.js - loginOnloadHandler - m_aszFolderList : "+mainObject.m_aszFolderList);
 
-                    for (var j=0; j<mainObject.m_aszFolderList.length; j++)
+                    var j = 0;
+                    for (j=0; j<mainObject.m_aszFolderList.length; j++)
                     {
                         var regExp = new RegExp("^"+mainObject.m_aszFolderList[j]+"$","i");
-                        for (var i=0; i<aszServerFolders.length; i++)
+                        var i = 0;
+                        for (i=0; i<aszServerFolders.length; i++)
                         {
                             var szServerFolders = decodeURIComponent(aszServerFolders[i]);
                             var szBox = "";
@@ -475,7 +478,8 @@ YahooPOPClassic.prototype =
                 //process data
                 if (iNum > 0)
                 {
-                    for (var i= 0 ; i< iNum ; i++)
+                	var i = 0;
+                    for (i= 0 ; i< iNum ; i++)
                     {
                         mainObject.m_Log.Write("YahooPOPClassic.js - mailBoxOnloadHandler - msgRow :" + aMsgRows[i]);
                         
@@ -766,7 +770,8 @@ YahooPOPClassic.prototype =
                     {
                         var aszIDParts = szEmailID.split(/_/);
                         szEmailID ="";
-                        for (var j=0; j<aszIDParts.length; j++)
+                        var j = 0;
+                        for (j=0; j<aszIDParts.length; j++)
                         {
                             if (j!=1)
                             {

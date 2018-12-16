@@ -206,7 +206,8 @@ nsLycosSMTP.prototype =
             this.m_iStage = 0;
 
             var szMsg = "MAIL FROM:<"+this.m_szFrom+">\r\n";
-            for (var i=0; i< this.m_aszTo.length; i++)
+            var i = 0;
+            for (i=0; i< this.m_aszTo.length; i++)
             {
                 szMsg +="RCPT TO:<"+this.m_aszTo[i]+">\r\n";
             }

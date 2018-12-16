@@ -47,7 +47,8 @@ function OWAWebDav(oResponseStream, oLog, oPrefData)
         this.m_aszFolders.push("Inbox"); //Inbox
         this.m_aszFolderURLList = new Array();
         if (oPrefData.bUseJunkMail)  this.m_aszFolders.push("HM_BuLkMail_"); //junk
-        for(var i=0; i<oPrefData.aszFolder.length; i++)
+        var i = 0;
+        for(i=0; i<oPrefData.aszFolder.length; i++)
         {
             this.m_aszFolders.push(oPrefData.aszFolder[i]);
         }
@@ -230,7 +231,8 @@ OWAWebDav.prototype =
                     var aszFolderList = szResponse.match(patternOWAResponse);
                     mainObject.m_Log.Write("OWAWebDav.js - loginOnloadHandler - aszFolderList :" +aszFolderList);
 
-                    for (var j=0; j<mainObject.m_aszFolders.length; j++)
+                    var j = 0;
+                    for (j=0; j<mainObject.m_aszFolders.length; j++)
                     {
                         var regExp = new RegExp("^"+mainObject.m_aszFolders[j]+"$","i");
                         mainObject.m_Log.Write("OWAWebDav.js - loginOnloadHandler - regExp : "+regExp );
