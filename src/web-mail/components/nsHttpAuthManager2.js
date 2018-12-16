@@ -161,7 +161,8 @@ nsHttpAuthManager2.prototype =
         var seed = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";
         var iLength = 10;
         var szRandom = "";
-        for (var i=0; i<iLength; i++)
+        var i = 0;
+        for (i=0; i<iLength; i++)
         {
             var rnum = Math.floor(Math.random() * seed.length);
             szRandom += seed.substring(rnum,rnum+1);

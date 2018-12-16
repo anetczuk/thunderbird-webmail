@@ -22,7 +22,8 @@ QuotedPrintable.prototype.decode = function(rawMSG)
             aszHexCodes.sort();
 
             //remove duplicates
-            for (var i=0; i<aszHexCodes.length; i)
+            var i = 0;
+            for (i=0; i<aszHexCodes.length; i)
             {
                 if (aszHexCodes[i] == aszHexCodes[i+1])
                     aszHexCodes.splice(i+1,1);
@@ -31,7 +32,8 @@ QuotedPrintable.prototype.decode = function(rawMSG)
             }
 
             //removed quoted printable codes
-            for (var j=0; j<aszHexCodes.length; j++)
+            var j=0;
+            for (j=0; j<aszHexCodes.length; j++)
             {
                 var hex = aszHexCodes[j].replace(/=/,"");
                 var decimal = parseInt(hex,16); //convert hex to decimal

@@ -210,7 +210,8 @@ nsPOPConnectionManager.prototype =
             if (this.m_aPOPConnections.length>0)
             {
                 var iMax = this.m_aPOPConnections.length;
-                for (var i = 0 ; i<iMax ; i++)
+                var i = 0;
+                for (i = 0 ; i<iMax ; i++)
                 {
                     this.m_Log.Write("nsPOPConnectionManager - connection " + 0 + " "+ this.m_aPOPConnections[0]);
 

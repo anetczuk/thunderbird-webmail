@@ -186,7 +186,8 @@ nsSMTPConnectionManager.prototype =
             if (this.m_aSMTPConnections.length>0)
             {
                 var iMax = this.m_aSMTPConnections.length;
-                for (var i = 0 ; i<iMax ; i++)
+                var i = 0;
+                for (i = 0 ; i<iMax ; i++)
                 {
                     this.m_Log.Write("nsSMTPConnectionManager.js - connection " + 0 + " "+ this.m_aSMTPConnections[0]);
 

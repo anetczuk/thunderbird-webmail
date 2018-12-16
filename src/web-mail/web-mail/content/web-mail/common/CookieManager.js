@@ -49,7 +49,8 @@ CookieManager.prototype =
 
             //process cookies
             var aTempCookies = new Array();
-            for (var i=0; i<aszCookie.length; i++)
+            var i = 0;
+            for (i=0; i<aszCookie.length; i++)
             {
                 var oNewCookie =this.createCookie(aszCookie[i]);
                 if (!oNewCookie.getDomain()) oNewCookie.setDomain(szDefaultDomain);
@@ -133,7 +134,8 @@ CookieManager.prototype =
             oCookie.setValue(szValue);
 
             //rest of cookie data
-            for (var j=1; j<aData.length; j++)
+            var j=0;
+            for (j=1; j<aData.length; j++)
             {
                 //split name and value
                 iNameSplit = aData[j].indexOf("=");
@@ -212,7 +214,8 @@ CookieManager.prototype =
 
             var szCookies = "";
             var iCookieCount = this.m_aCookies.length
-            for (var i=0; i<iCookieCount; i++ )
+            var i = 0;
+            for (i=0; i<iCookieCount; i++ )
             {
                 var oCookie = this.m_aCookies.shift();
                 if (this.domainCheck(oCookie.getDomain(),szDomain))

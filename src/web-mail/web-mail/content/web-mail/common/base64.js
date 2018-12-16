@@ -47,7 +47,8 @@ base64.prototype.encode = function(szMsg)
             szB6MSG = szB6Temp;
         else
         {
-            for (var i=0; i<szB6Temp.length; i+=this.iLineBreak)
+        	var i = 0;
+            for (i=0; i<szB6Temp.length; i+=this.iLineBreak)
             {
                 szB6MSG += szB6Temp.substr(i, this.iLineBreak);
                 szB6MSG +=  "\r\n"

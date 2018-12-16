@@ -203,7 +203,8 @@ nsIMAPConnectionManager.prototype =
             if (this.m_aIMAPConnections.length>0)
             {
                 var iMax = this.m_aIMAPConnections.length;
-                for (var i = 0 ; i<iMax ; i++)
+                var i = 0;
+                for (i = 0 ; i<iMax ; i++)
                 {
                     this.m_Log.Write("nsIMAPConnectionManager.js - connection " + i + " "+ this.m_aIMAPConnections[i]);
 

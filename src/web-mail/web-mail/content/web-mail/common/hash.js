@@ -23,7 +23,8 @@ hash.prototype.md5Hash = function(szInput)
 hash.prototype.binToHex = function(szInput)
 {
     var result = "";
-    for (var i = 0; i < szInput.length; ++i)
+    var i = 0;
+    for (i = 0; i < szInput.length; ++i)
     {
         var hex = szInput.charCodeAt(i).toString(16);
         if (hex.length == 1) hex = "0" + hex;

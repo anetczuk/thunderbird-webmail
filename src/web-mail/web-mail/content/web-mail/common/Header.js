@@ -22,7 +22,8 @@ function headers(szRawHeaders)
 
     //remove bad headers
     var aHeaders =  szHeaders.split("\n");
-    for (var i =0; i<aHeaders.length; i++)
+    var i = 0;
+    for (i =0; i<aHeaders.length; i++)
     {
         this.m_Log.Write("Header.js - header - row " +aHeaders[i]);
         if (aHeaders[i].search(/^\S*\s?:\s*[\S\s]*$/)!=-1)
@@ -57,7 +58,8 @@ headers.prototype =
 
             var szHeaders = "";
 
-            for (var i=0; i<this.m_aszHeaders.length; i++)
+            var i = 0;
+            for (i=0; i<this.m_aszHeaders.length; i++)
             {
                 var szName = this.m_aszHeaders[i].szName;
                 this.m_Log.Write("Header.js - getAllHeaders - szName "+ szName);
@@ -435,7 +437,8 @@ headers.prototype =
                     aszHexCodes.sort();
 
                     //remove duplicates
-                    for (var i=0; i<aszHexCodes.length; i)
+                    var i = 0;
+                    for (i=0; i<aszHexCodes.length; i)
                     {
                         if (aszHexCodes[i] == aszHexCodes[i+1])
                             aszHexCodes.splice(i+1,1);
@@ -443,7 +446,8 @@ headers.prototype =
                            i++
                     }
 
-                    for (var j=0; j<aszHexCodes.length; j++)
+                    var j=0;
+                    for (j=0; j<aszHexCodes.length; j++)
                     {
                         var hex = aszHexCodes[j].replace(/%/,"");
                         this.m_Log.Write("Header.js - decodeEncodedWordExt - hex " + hex);

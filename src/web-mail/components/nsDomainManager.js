@@ -234,7 +234,8 @@ nsDomainManager.prototype =
            szSQL += ");"
            statement = this.m_dbConn.createStatement(szSQL);
 
-           for (var i =0; i<aContentID.length; i++)
+           var i = 0;
+           for (i =0; i<aContentID.length; i++)
            {
                statement.params.contentId = aContentID[i];
                statement.execute();
@@ -471,7 +472,8 @@ nsDomainManager.prototype =
 
            //load domain handler
 
-           for (var i=0; i<aDomains.length; i++)
+           var i = 0;
+           for (i=0; i<aDomains.length; i++)
            {
                if (typeof(Components.classes[aDomains[i].szContentId]) == "undefined")
                   aDomains[i].bEnabled = false;
@@ -493,7 +495,8 @@ nsDomainManager.prototype =
            szSQL+=     ":extension ";
            szSQL+= ");";
 
-           for (var i = 0; i < aDomains.length; i++)
+           var i = 0;
+           for (i = 0; i < aDomains.length; i++)
            {
                statement = this.m_dbConn.createStatement(szSQL);
                statement.params.id = aDomains[i].iId;

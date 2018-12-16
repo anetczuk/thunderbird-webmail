@@ -51,7 +51,8 @@ HttpAuthManager.prototype =
             if (this.m_aTokens.length !=0)
             {
                 var iMax = this.m_aTokens.length;
-                for (var i = 0 ; i<iMax ; i++)
+                var i = 0;
+                for (i = 0 ; i<iMax ; i++)
                 {
                     this.m_Log.Write("nsHttpAuthManager.js - addToken" + this.m_aTokens[0]);
 
@@ -113,7 +114,8 @@ HttpAuthManager.prototype =
             if (!szDomain) return null;
             if (this.m_aTokens.length == 0) return null;
 
-            for (var i = 0 ; i<this.m_aTokens.length ; i++)
+            var i = 0;
+            for (i = 0 ; i<this.m_aTokens.length ; i++)
             {
                 var temp = this.m_aTokens[i];
                 this.m_Log.Write("nsHttpAuthManager.js - findToken " + i + " "+ temp.getDomain());
@@ -151,7 +153,8 @@ HttpAuthManager.prototype =
         var seed = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";
         var iLength = 10;
         var szRandom = "";
-        for (var i=0; i<iLength; i++)
+        var i = 0;
+        for (i=0; i<iLength; i++)
         {
             var rnum = Math.floor(Math.random() * seed.length);
             szRandom += seed.substring(rnum,rnum+1);

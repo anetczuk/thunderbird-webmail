@@ -65,7 +65,8 @@ var gDomainsPane =
                 var szYes=strbundle.getString("Yes");
                 var szNo=strbundle.getString("No");
 
-                for(var i=0 ; i< aszDomains.length; i++)
+                var i = 0;
+                for (i=0 ; i< aszDomains.length; i++)
                 {
                     var newDomainItem = document.createElement("treeitem");
                     var newTreeRow = document.createElement("treerow");
