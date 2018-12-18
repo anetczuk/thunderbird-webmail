@@ -290,8 +290,8 @@ SMTPconnectionHandler.prototype.getDomainHandler = function(szUserName, szDomain
 {
     try
     {
-        this.m_SMTPLog.Write("POPconnectionHandler - getDomainHandler - START");
-        this.m_SMTPLog.Write("POPconnectionHandler - getDomainHandler - "
+        this.m_SMTPLog.Write("SMTPconnectionHandler - getDomainHandler - START");
+        this.m_SMTPLog.Write("SMTPconnectionHandler - getDomainHandler - "
                                                 + szUserName
                                                 + " "
                                                 + szDomain);

@@ -54,8 +54,9 @@ nsWebMailCookieManager2.prototype =
             var i = 0;
             for (i=0; i<aszCookie.length; i++)
             {
-                var oNewCookie =this.createCookie(aszCookie[i]);
-                if (!oNewCookie.getDomain()) oNewCookie.setDomain(szDefaultDomain);
+                var oNewCookie = this.createCookie(aszCookie[i]);
+                if (!oNewCookie.getDomain()) 
+                	oNewCookie.setDomain(szDefaultDomain);
 
                 var szSQL =null;
                 szSQL = "REPLACE INTO webmail_cookies (id, user_name, cookie_domain, cookie_name, cookie_value, cookie_expiry, cookie_secure) " +
@@ -216,7 +217,8 @@ nsWebMailCookieManager2.prototype =
             }
 
             var bFound = false;
-            if (szSubject.search(regexp)!=-1)bFound =  true;
+            if (szSubject.search(regexp)!=-1)
+            	bFound =  true;
 
             this.m_Log.Write("nsWebMailCookieManager2.js - domainCheck END " +bFound);
             return bFound;
@@ -292,32 +294,32 @@ nsWebMailCookieManager2.prototype =
             {
                 //split name and value
                 iNameSplit = aData[j].indexOf("=");
-                szTempName = (aData[j].substr(0, iNameSplit)).replace(/^[\s]+|[\s]+$/,"");
-                szTempValue = (aData[j].substr(iNameSplit+1)).replace(/^[\s]+|[\s]+$/,"");
+                var szTempName = (aData[j].substr(0, iNameSplit)).replace(/^[\s]+|[\s]+$/,"");
+                var szTempValue = (aData[j].substr(iNameSplit+1)).replace(/^[\s]+|[\s]+$/,"");
                 this.m_Log.Write("nsWebMailCookieManager2.js - createCookie ITEM - name : " + szTempName + "  value : " +szTempValue);
 
                 if (szTempName.search(/^domain$/i)!=-1) //get domain
                 {
-                    szDomain = szTempValue;
+                    var szDomain = szTempValue;
                     this.m_Log.Write("nsWebMailCookieManager2.js - createCookie - szDomain " + szDomain);
                     oCookie.setDomain(szDomain);
                 }
                 else if(szTempName.search(/^path$/i)!=-1) //get path
                 {
-                    szPath = szTempValue;
+                    var szPath = szTempValue;
                     this.m_Log.Write("nsWebMailCookieManager2.js - createCookie - szPath " + szPath);
                     oCookie.setPath(szPath);
                 }
                 else if (szTempName.search(/^expires$/i)!=-1)//get expiry
                 {
-                    iExpiry = (Date.parse(szTempValue.replace(/-/g," ")))/1000;
+                    var iExpiry = (Date.parse(szTempValue.replace(/-/g," ")))/1000;
                     this.m_Log.Write("nsWebMailCookieManager2.js - createCookie - iExpiry " + iExpiry);
                     oCookie.setExpiry(iExpiry);
                 }
                 else if (szTempName.search(/^secure$/i)!=-1 ||
                 		 (szTempValue.search(/^secure$/i)!=-1 && iNameSplit ==-1))//get secure boolean
                 {
-                    bSecure = true;
+                    var bSecure = true;
                     this.m_Log.Write("nsWebMailCookieManager2.js - createCookie - bSecure " + bSecure);
                     oCookie.setSecure(bSecure);
                 }

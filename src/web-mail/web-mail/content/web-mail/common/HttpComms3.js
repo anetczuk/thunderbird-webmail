@@ -777,6 +777,8 @@ HttpComms.prototype =
                     try
                     {
                         szLocation =  httpChannel.getResponseHeader("Location");
+                        if ( szLocation.length > 0 && szLocation.charAt(0) === '.' )
+                        	szLocation = szLocation.substr(1);
                         mainObject.m_Log.Write("HttpComms3.js - callback - location \n" + szLocation);
                     }
                     catch(e)
@@ -801,7 +803,8 @@ HttpComms.prototype =
                     mainObject.m_aFormData = new Array();
 
                     var bResult = mainObject.send(mainObject.m_CallBack, mainObject.m_Parent);
-                    if (!bResult) throw new Error("httpConnection returned false");
+                    if (!bResult) 
+                    	throw new Error("httpConnection returned false");
                     return;
                 }
             }
