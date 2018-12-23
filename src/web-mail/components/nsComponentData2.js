@@ -38,17 +38,17 @@ nsComponentData2.prototype =
                     "(" +
                     "   (" +
                     "       SELECT id FROM webmail_components  " +
-                    "       WHERE user_name LIKE ?1 AND component_name LIKE ?2 " +
+                    "       WHERE user_name LIKE :user AND component_name LIKE :component " +
                     "   ), " +
-                    "   ?1, " +
-                    "   ?2, " +
-                    "   ?3 " +
+                    "   :user, " +
+                    "   :component, " +
+                    "   :value " +
                     "); "
 
             var statement = this.m_dbConn.createStatement(szSQL);
-            statement.bindStringParameter(0, szUserName.toLowerCase()); //username
-            statement.bindStringParameter(1, szName);                   //component name
-            statement.bindStringParameter(2, szValue);                  //component value
+            statement.params.user = szUserName.toLowerCase(); 		//username
+            statement.params.component = szName;                   	//component name
+            statement.params.value = szValue;                  		//component value
             statement.execute();
 
             this.m_Log.Write("nsComponentData.js - addElement - END");
@@ -79,11 +79,11 @@ nsComponentData2.prototype =
             var szSQL = null;
             szSQL = "SELECT *  " +
                     "FROM webmail_components " +
-                    "WHERE user_name LIKE ?1 AND component_name LIKE ?2";
+                    "WHERE user_name LIKE :user AND component_name LIKE :component";
 
             var statement = this.m_dbConn.createStatement(szSQL);
-            statement.bindStringParameter(0, szUserName.toLowerCase()); //username
-            statement.bindStringParameter(1, szName);                   //component name
+            statement.params.user = szUserName.toLowerCase(); //username
+            statement.params.component = szName;                   //component name
 
             try
             {
@@ -124,10 +124,10 @@ nsComponentData2.prototype =
             this.m_Log.Write("nsComponentData.js - deleteElement - " + szUserName + " " + szName);
 
             var szSQL = "DELETE FROM webmail_components " +
-                        "WHERE user_name LIKE ?1 AND component_name LIKE ?2";
+                        "WHERE user_name LIKE :user AND component_name LIKE :component";
             var statement = this.m_dbConn.createStatement(szSQL);
-            statement.bindStringParameter(0, szUserName.toLowerCase());
-            statement.bindStringParameter(1, szName);
+            statement.params.user = szUserName.toLowerCase();
+            statement.params.component = szName;
             statement.execute();
 
             this.m_Log.Write("nsComponentData.js - deleteElement - END");
@@ -154,9 +154,9 @@ nsComponentData2.prototype =
             this.m_Log.Write("nsComponentData.js - deleteElement - START " + szUserName);
 
             var szSQL = "DELETE FROM webmail_components " +
-                        "WHERE user_name LIKE ?1";
+                        "WHERE user_name LIKE :user";
             var statement = this.m_dbConn.createStatement(szSQL);
-            statement.bindStringParameter(0, szUserName.toLowerCase());
+            statement.params.user = szUserName.toLowerCase();
             statement.execute();
 
             this.m_Log.Write("nsComponentData.js - deleteElement - END");

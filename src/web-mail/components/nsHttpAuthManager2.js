@@ -47,19 +47,19 @@ nsHttpAuthManager2.prototype =
                     "(" +
                     "   (" +
                     "       SELECT id FROM webmail_auth  " +
-                    "       WHERE user_name LIKE ?1 AND auth_domain LIKE ?2 " +
+                    "       WHERE user_name LIKE :user AND auth_domain LIKE :domain " +
                     "   ), " +
-                    "   ?1," +
-                    "   ?2," +
-                    "   ?3 " +
+                    "   :user," +
+                    "   :domain," +
+                    "   :token " +
                     ");"
 
             var statement = this.m_dbConn.createStatement(szSQL);
-            statement.bindStringParameter(0, szUserName.toLowerCase()); //username
+            statement.params.user = szUserName.toLowerCase(); //username
             var tempDomain = szDomain.replace(/^\./,"%.");
-            statement.bindStringParameter(1, tempDomain);               //Auth domain
+            statement.params.domain = tempDomain;               //Auth domain
             var tempToken = this.newToken(szHeader, szURI, szUserName, szPassword)
-            statement.bindStringParameter(2, tempToken);                //Auth Token
+            statement.params.token = tempToken;                //Auth Token
             statement.execute();
 
             this.m_Log.Write("nsHttpAuthManager - addToken - END");
@@ -90,11 +90,11 @@ nsHttpAuthManager2.prototype =
             var szSQL = null;
             szSQL = "SELECT *  " +
                     "FROM webmail_auth " +
-                    "WHERE user_name LIKE ?1 AND ?2 LIKE auth_domain";
+                    "WHERE user_name LIKE :user AND :domain LIKE auth_domain";
 
             var statement = this.m_dbConn.createStatement(szSQL);
-            statement.bindStringParameter(0, szUserName.toLowerCase()); //username
-            statement.bindStringParameter(1, szDomain);                 //cookie domain
+            statement.params.user = szUserName.toLowerCase(); //username
+            statement.params.domain = szDomain;                 //cookie domain
 
             try
             {
@@ -134,9 +134,9 @@ nsHttpAuthManager2.prototype =
         {
             this.m_Log.Write("nsHttpAuthManager.js - removeCookie - START " + szUserName);
 
-            var szSQL = "DELETE FROM webmail_auth WHERE user_name LIKE ?1";
+            var szSQL = "DELETE FROM webmail_auth WHERE user_name LIKE :user";
             var statement = this.m_dbConn.createStatement(szSQL);
-            statement.bindStringParameter(0, szUserName.toLowerCase());
+            statement.params.user = szUserName.toLowerCase();
             statement.execute();
             this.m_Log.Write("nsHttpAuthManager.js - removeCookie - END");
             return true;

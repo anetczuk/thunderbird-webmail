@@ -378,12 +378,12 @@ nsIMAPFolders.prototype =
             var szSQL = "REPLACE INTO imap_accounts (id, account_name) ";
             szSQL    += "VALUES ";
             szSQL    += "(" ;
-            szSQL    += "  (SELECT id FROM imap_accounts WHERE account_name LIKE ?1),";
-            szSQL    += "  ?1";
+            szSQL    += "  (SELECT id FROM imap_accounts WHERE account_name LIKE :user),";
+            szSQL    += "  :user";
             szSQL    += ");";
 
             var statement = this.m_dbConn.createStatement(szSQL);
-            statement.bindStringParameter(0, szUserName.toLowerCase());
+            statement.params.user = szUserName.toLowerCase();
             statement.execute();
 
             this.m_Log.Write("nsIMAPFolders.js - createUser - END");
@@ -413,13 +413,13 @@ nsIMAPFolders.prototype =
             var bReturn = false;
             var szSQL = "SELECT subscribed_folders.folder_hierarchy "
             szSQL    += "FROM subscribed_folders, imap_accounts, folders ";
-            szSQL    += "WHERE imap_accounts.account_name LIKE ?1 AND " +
+            szSQL    += "WHERE imap_accounts.account_name LIKE :address AND " +
                         "      imap_accounts.id = subscribed_folders.account_id  AND " +
                         "      subscribed_folders.folder_hierarchy LIKE folders.folder_hierarchy  AND " +
-                        "      folders.session = ?2 "
+                        "      folders.session = :session "
             var statement = this.m_dbConn.createStatement(szSQL);
-            statement.bindStringParameter(0, szAddress.toLowerCase());
-            statement.bindStringParameter(1, this.m_iSession);
+            statement.params.address = szAddress.toLowerCase();
+            statement.params.session = this.m_iSession;
 
             var aResult = new Array();
             try
@@ -474,22 +474,22 @@ nsIMAPFolders.prototype =
             szSQL    += "   (";
             szSQL    += "        SELECT subscribed_folders.id " +
                                  "FROM subscribed_folders, imap_accounts " +
-                                 "WHERE imap_accounts.account_name  LIKE ?1 AND " +
+                                 "WHERE imap_accounts.account_name  LIKE :address AND " +
                                        "imap_accounts.id = subscribed_folders.account_id  AND " +
-                                       "subscribed_folders.folder_hierarchy  = ?2";
+                                       "subscribed_folders.folder_hierarchy  = :folder";
             szSQL    += "    ),"
             szSQL    += "    ("
             szSQL    += "        SELECT imap_accounts.id " +
                                  "FROM imap_accounts " +
-                                 "WHERE imap_accounts.account_name LIKE ?1 " +
+                                 "WHERE imap_accounts.account_name LIKE :address " +
                                  "LIMIT 1"
             szSQL    += "     ),";
-            szSQL    += "     ?2";
+            szSQL    += "     :folder";
             szSQL    += ")"
 
             var statement = this.m_dbConn.createStatement(szSQL);
-            statement.bindStringParameter(0, szAddress.toLowerCase());
-            statement.bindStringParameter(1, szFolder);
+            statement.params.address = szAddress.toLowerCase();
+            statement.params.folder = szFolder;
             statement.execute();
 
             this.m_Log.Write("nsIMAPFolder.js - subscribeFolder - End");
@@ -519,10 +519,10 @@ nsIMAPFolders.prototype =
 
             var bFound = true;
             var szSQL = "DELETE FROM subscribed_folders ";
-            szSQL   +=  "WHERE account_id = (SELECT id FROM imap_accounts WHERE account_name LIKE ?1) AND folder_hierarchy = ?2";
+            szSQL   +=  "WHERE account_id = (SELECT id FROM imap_accounts WHERE account_name LIKE :address) AND folder_hierarchy = :folder";
             var statement = this.m_dbConn.createStatement(szSQL);
-            statement.bindStringParameter(0, szAddress.toLowerCase());
-            statement.bindStringParameter(1, szFolder);
+            statement.params.address = szAddress.toLowerCase();
+            statement.params.folder = szFolder;
             statement.execute();
 
             this.m_Log.Write("nsIMAPFolder.js - unsubscribeFolder - End");
@@ -556,26 +556,26 @@ nsIMAPFolders.prototype =
             szSQL    += "   (";
             szSQL    += "        SELECT folders.id " +
                                  "FROM folders, imap_accounts " +
-                                 "WHERE imap_accounts.account_name LIKE ?1 AND " +
+                                 "WHERE imap_accounts.account_name LIKE :user AND " +
                                        "imap_accounts.id = folders.account_id  AND " +
-                                       "folders.folder_hierarchy  = ?2";
+                                       "folders.folder_hierarchy  = :hierarchy";
             szSQL    += "    ),"
             szSQL    += "    ("
             szSQL    += "        SELECT imap_accounts.id  " +
                                  "FROM imap_accounts " +
-                                 "WHERE imap_accounts.account_name LIKE ?1 " +
+                                 "WHERE imap_accounts.account_name LIKE :user " +
                                  "LIMIT 1"
             szSQL    += "     ),";
-            szSQL    += "     ?2,";
-            szSQL    += "     ?3,";
-            szSQL    += "     ?4";
+            szSQL    += "     :hierarchy,";
+            szSQL    += "     :href,";
+            szSQL    += "     :session";
             szSQL    += ");"
 
             var statement = this.m_dbConn.createStatement(szSQL);
-            statement.bindStringParameter(0, szUser.toLowerCase());
-            statement.bindStringParameter(1, szHiererchy);
-            statement.bindStringParameter(2, szHref);
-            statement.bindStringParameter(3, this.m_iSession);
+            statement.params.user = szUser.toLowerCase();
+            statement.params.hierarchy = szHiererchy;
+            statement.params.href = szHref;
+            statement.params.session = this.m_iSession;
             statement.execute();
 
             this.m_Log.Write("nsIMAPFolder.js - addFolder - End");
@@ -604,11 +604,11 @@ nsIMAPFolders.prototype =
             this.m_Log.Write("nsIMAPFolder.js - deleteFolder - "+ szUser + " " + szHiererchy);
 
             var szSQL = "DELETE FROM folders "
-            szSQL    += "WHERE (account_id = (SELECT id FROM imap_accounts WHERE account_name LIKE ?1)) AND folder_hierarchy LIKE ?2 "
+            szSQL    += "WHERE (account_id = (SELECT id FROM imap_accounts WHERE account_name LIKE :user)) AND folder_hierarchy LIKE :hierarchy "
 
             var statement = this.m_dbConn.createStatement(szSQL);
-            statement.bindStringParameter(0, szUser.toLowerCase());
-            statement.bindStringParameter(1, szHiererchy);
+            statement.params.user = szUser.toLowerCase();
+            statement.params.hierarchy = szHiererchy;
             statement.execute();
 
             this.m_Log.Write("nsIMAPFolder.js - deleteFolder - End");
@@ -637,20 +637,20 @@ nsIMAPFolders.prototype =
             this.m_Log.Write("nsIMAPFolder.js - renameFolder - "+ szUser + " " + szOldHierarchy + " " + szNewHierarchy + " " + szNewHref);
 
             var szSQL = "UPDATE folders ";
-            szSQL    += "SET folder_hierarchy = ?3, " +
-                            "folder_url = ?4 ";
+            szSQL    += "SET folder_hierarchy = :new_hierarchy, " +
+                            "folder_url = :new_href ";
             szSQL    += "WHERE id = ( SELECT folders.id " +
                                      "FROM folders, imap_accounts " +
-                                     "WHERE imap_accounts.account_name LIKE ?1 AND " +
+                                     "WHERE imap_accounts.account_name LIKE :user AND " +
                                      "      imap_accounts.id = folders.account_id  AND " +
-                                     "      folders.folder_hierarchy  = ?2 " +
+                                     "      folders.folder_hierarchy  = :old_hierarchy " +
                                     ");"
 
             var statement = this.m_dbConn.createStatement(szSQL);
-            statement.bindStringParameter(0, szUser.toLowerCase());
-            statement.bindStringParameter(1, szOldHierarchy);
-            statement.bindStringParameter(2, szNewHierarchy);
-            statement.bindStringParameter(3, szNewHref);
+            statement.params.user = szUser.toLowerCase();
+            statement.params.old_hierarchy = szOldHierarchy;
+            statement.params.new_hierarchy = szNewHierarchy;
+            statement.params.new_href = szNewHref;
             statement.execute();
 
 
@@ -701,24 +701,24 @@ nsIMAPFolders.prototype =
                 szSQL  = "SELECT folder_hierarchy "
                 szSQL += "FROM folders, imap_accounts "
                 szSQL += "WHERE folders.account_id = imap_accounts.id AND " +
-                                "imap_accounts.account_name LIKE ?1 AND " +
-                                "session = ?2"
+                                "imap_accounts.account_name LIKE :user AND " +
+                                "session = :session"
                 statement = this.m_dbConn.createStatement(szSQL);
-                statement.bindStringParameter(0, szUser);
-                statement.bindStringParameter(1, this.m_iSession);
+                statement.params.user = szUser;
+                statement.params.session = this.m_iSession;
             }
             else
             {
                 szSQL  = "SELECT folder_hierarchy "
                 szSQL += "FROM folders, imap_accounts "
                 szSQL += "WHERE folders.account_id = imap_accounts.id AND " +
-                                "imap_accounts.account_name LIKE ?1 AND " +
-                                "folder_hierarchy LIKE ?2 AND " +
-                                "session = ?3"
+                                "imap_accounts.account_name LIKE :user AND " +
+                                "folder_hierarchy LIKE :hierarchy AND " +
+                                "session = :session"
                 statement = this.m_dbConn.createStatement(szSQL);
-                statement.bindStringParameter(0, szUser);
-                statement.bindStringParameter(1, szHierarchy);
-                statement.bindStringParameter(2, this.m_iSession);
+                statement.params.user = szUser;
+                statement.params.hierarchy = szHierarchy;
+                statement.params.session = this.m_iSession;
             }
 
             try
@@ -772,45 +772,45 @@ nsIMAPFolders.prototype =
                                 "    FROM messages, folders, imap_accounts " +
                                 "    WHERE folders.account_id = imap_accounts.id AND " +
                                 "          messages.account_id = imap_accounts.id AND"+
-                                "          imap_accounts.account_name LIKE ?1 AND "+
+                                "          imap_accounts.account_name LIKE :user AND "+
                                 "          folders.id = messages.folder_id AND "+
-                                "          folders.folder_hierarchy LIKE ?2 AND " +
-                                "          messages.session = ?3 AND " +
+                                "          folders.folder_hierarchy LIKE :hierarchy AND " +
+                                "          messages.session = :session AND " +
                                 "          messages.deleted = \"false\" " +
                                 ") AS message_count, " +
                                 "(   SELECT COUNT(*) " +
                                 "    FROM messages, folders, imap_accounts " +
                                 "    WHERE folders.account_id = imap_accounts.id AND " +
                                 "          messages.account_id = imap_accounts.id AND"+
-                                "          imap_accounts.account_name LIKE ?1 AND " +
+                                "          imap_accounts.account_name LIKE :user AND " +
                                 "          folders.id = messages.folder_id AND "+
-                                "          folders.folder_hierarchy LIKE ?2 AND " +
+                                "          folders.folder_hierarchy LIKE :hierarchy AND " +
                                 "          messages.read = \"false\" AND " +
                                 "          messages.deleted = \"false\" AND " +
-                                "          messages.session = ?3 " +
+                                "          messages.session = :session " +
                                 ") AS read_count, " +
                                 "(   SELECT COUNT(*) " +
                                     "FROM messages, folders, imap_accounts " +
                                     "WHERE folders.account_id = imap_accounts.id AND " +
                                           "messages.account_id = imap_accounts.id AND " +
-                                          "imap_accounts.account_name LIKE ?1 AND " +
+                                          "imap_accounts.account_name LIKE :user AND " +
                                           "folders.id = messages.folder_id AND " +
-                                          "folders.folder_hierarchy LIKE ?2 AND " +
+                                          "folders.folder_hierarchy LIKE :hierarchy AND " +
                                           "messages.deleted = \"true\" AND " +
-                                          "messages.session = ?3 " +
+                                          "messages.session = :session " +
                                 ") AS expunge_count ";
             szSQL    += "FROM folders, imap_accounts "
             szSQL    += "WHERE folders.account_id = imap_accounts.id AND " +
-                              "imap_accounts.account_name LIKE ?1 AND " +
-                              "folders.folder_hierarchy LIKE ?2 AND " +
-                              "folders.session = ?3 "
+                              "imap_accounts.account_name LIKE :user AND " +
+                              "folders.folder_hierarchy LIKE :hierarchy AND " +
+                              "folders.session = :session "
             szSQL    += "LIMIT 1;"
 
 
             var statement = this.m_dbConn.createStatement(szSQL);
-            statement.bindStringParameter(0, szUser);
-            statement.bindStringParameter(1, szHierarchy);
-            statement.bindStringParameter(2, this.m_iSession);
+            statement.params.user = szUser;
+            statement.params.hierarchy = szHierarchy;
+            statement.params.session = this.m_iSession;
 
             try
             {
@@ -871,52 +871,52 @@ nsIMAPFolders.prototype =
                                 "FROM messages, imap_accounts, folders " +
                                 "WHERE messages.account_id = imap_accounts.id  AND  " +
                                       "imap_accounts.id = folders.account_id  AND " +
-                                      "imap_accounts.account_name LIKE ?1 AND " +
+                                      "imap_accounts.account_name LIKE :user AND " +
                                       "messages.folder_id = folders.id AND " +
-                                      "folders.folder_hierarchy LIKE ?2 AND " +
-                                      "messages.uid = ?3 AND " +
+                                      "folders.folder_hierarchy LIKE :hierarchy AND " +
+                                      "messages.uid = :uid AND " +
                                       "messages.deleted = \"false\" " +
                                 "LIMIT 1 "
             szSQL    += "    ),"
             szSQL    += "    (" +
                                  "SELECT imap_accounts.id  " +
                                  "FROM imap_accounts " +
-                                 "WHERE imap_accounts.account_name LIKE ?1 " +
+                                 "WHERE imap_accounts.account_name LIKE :user " +
                                  "LIMIT 1 "
             szSQL    += "     ),";
             szSQL    += "    (" +
                                  "SELECT folders.id " +
                                  "FROM folders, imap_accounts " +
-                                 "WHERE imap_accounts.account_name LIKE ?1 AND " +
+                                 "WHERE imap_accounts.account_name LIKE :user AND " +
                                        "imap_accounts.id = folders.account_id AND " +
-                                       "folders.folder_hierarchy LIKE ?2 " +
+                                       "folders.folder_hierarchy LIKE :hierarchy " +
                                  "LIMIT 1 "
             szSQL    += "     ),"
-            szSQL    += "     ?3,";
-            szSQL    += "     ?4,";
-            szSQL    += "     ?5,";
-            szSQL    += "     ?6,";
-            szSQL    += "     ?7,";
-            szSQL    += "     ?8,";
-            szSQL    += "     ?9,";
-            szSQL    += "     ?10,";
-            szSQL    += "     ?11,";
-            szSQL    += "     ?12";
+            szSQL    += "     :uid,";
+            szSQL    += "     :href,";
+            szSQL    += "     :to_param,";
+            szSQL    += "     :from_param,";
+            szSQL    += "     :subject,";
+            szSQL    += "     :date,";
+            szSQL    += "     :size,";
+            szSQL    += "     :read,";
+            szSQL    += "     :param1,";
+            szSQL    += "     :session";
             szSQL    += ");"
 
             var statement = this.m_dbConn.createStatement(szSQL);
-            statement.bindStringParameter(0, szUser);
-            statement.bindStringParameter(1, szHierarchy);
-            statement.bindStringParameter(2, szUID);
-            statement.bindStringParameter(3, szHref);
-            statement.bindStringParameter(4, szTo);
-            statement.bindStringParameter(5, szFrom);
-            statement.bindStringParameter(6, szSubject);
-            statement.bindStringParameter(7, szDate);
-            statement.bindStringParameter(8, iSize);
-            statement.bindStringParameter(9, bRead);
-            statement.bindStringParameter(10, "false");
-            statement.bindStringParameter(11, this.m_iSession);
+            statement.params.user = szUser;
+            statement.params.hierarchy = szHierarchy;
+            statement.params.uid = szUID;
+            statement.params.href = szHref;
+            statement.params.to_param = szTo;
+            statement.params.from_param = szFrom;
+            statement.params.subject = szSubject;
+            statement.params.date = szDate;
+            statement.params.size = iSize;
+            statement.params.read = bRead;
+            statement.params.param1 = "false";
+            statement.params.session = this.m_iSession;
             statement.execute();
 
             this.m_Log.Write("nsIMAPFolder.js - addMSG - End " +bResult);
@@ -956,18 +956,18 @@ nsIMAPFolders.prototype =
             szSQL   += "FROM folders, imap_accounts, messages "
             szSQL   += "WHERE  folders.account_id = imap_accounts.id AND " +
                               "messages.account_id =  imap_accounts.id AND " +
-                              "imap_accounts.account_name LIKE ?1 AND " +
+                              "imap_accounts.account_name LIKE :user AND " +
                               "folders.id = messages.folder_id AND " +
-                              "folders.folder_hierarchy LIKE ?2 AND  " +
-                              "messages.session = ?3 AND " +
-                              "messages.id= ?4 "
+                              "folders.folder_hierarchy LIKE :hierarchy AND  " +
+                              "messages.session = :session AND " +
+                              "messages.id= :uid "
             szSQL   += "LIMIT 1"
 
             var statement = this.m_dbConn.createStatement(szSQL);
-            statement.bindStringParameter(0, szUser);
-            statement.bindStringParameter(1, szOldHierarchy);
-            statement.bindStringParameter(2, this.m_iSession);
-            statement.bindStringParameter(3, szUID);
+            statement.params.user = szUser;
+            statement.params.hierarchy = szOldHierarchy;
+            statement.params.session = this.m_iSession;
+            statement.params.uid = szUID;
 
             var szHref = null;
             var szTo = null;
@@ -1032,21 +1032,21 @@ nsIMAPFolders.prototype =
             var szSQL  = "SELECT messages.id "
             szSQL     += "FROM messages, imap_accounts, folders "
             szSQL     += "WHERE folders.account_id = imap_accounts.id AND " +
-                        "       imap_accounts.account_name LIKE ?1 AND " +
+                        "       imap_accounts.account_name LIKE :user AND " +
                         "       folders.id = messages.folder_id AND " +
-                        "       folders.folder_hierarchy LIKE ?2 AND " +
-                        "       messages.session = ?3 AND" +
-                        "       messages.id >= ?4 ";
-            if (iMaxID != -1) szSQL += " AND messages.id <= ?5 "
+                        "       folders.folder_hierarchy LIKE :hierarchy AND " +
+                        "       messages.session = :session AND" +
+                        "       messages.id >= :min_uid ";
+            if (iMaxID != -1) szSQL += " AND messages.id <= :max_uid "
             szSQL    += "ORDER BY messages.id ASC ";
             this.m_Log.Write("nsIMAPFolder.js - getMSGUIDS - " + szSQL);
 
             var statement = this.m_dbConn.createStatement(szSQL);
-            statement.bindStringParameter(0, szUser);
-            statement.bindStringParameter(1, szHierarchy);
-            statement.bindStringParameter(2, this.m_iSession);
-            statement.bindStringParameter(3, iMinID);
-            if (iMaxID != -1) statement.bindStringParameter(4, iMaxID);
+            statement.params.user = szUser;
+            statement.params.hierarchy = szHierarchy;
+            statement.params.session = this.m_iSession;
+            statement.params.min_uid = iMinID;
+            if (iMaxID != -1) statement.params.max_uid = iMaxID;
 
             try
             {
@@ -1104,27 +1104,27 @@ nsIMAPFolders.prototype =
                                "   FROM messages, folders, imap_accounts " +
                                "   WHERE folders.account_id = imap_accounts.id AND " +
                                "         messages.account_id = imap_accounts.id AND " +
-                               "         imap_accounts.account_name LIKE ?1 AND " +
+                               "         imap_accounts.account_name LIKE :user AND " +
                                "         messages.folder_id = folders.id AND " +
-                               "         folders.folder_hierarchy LIKE ?2 AND " +
-                               "         messages.session = ?3 AND " +
-                               "         messages.id <= ?4" +
+                               "         folders.folder_hierarchy LIKE :hierarchy AND " +
+                               "         messages.session = :session AND " +
+                               "         messages.id <= :uid" +
                                ") AS sequence_number "
             szSQL   += "FROM folders, imap_accounts, messages "
             szSQL   += "WHERE  folders.account_id = imap_accounts.id AND " +
                               "messages.account_id =  imap_accounts.id AND " +
-                              "imap_accounts.account_name LIKE ?1 AND " +
+                              "imap_accounts.account_name LIKE :user AND " +
                               "folders.id = messages.folder_id AND " +
-                              "folders.folder_hierarchy LIKE ?2 AND  " +
-                              "messages.session = ?3 AND " +
-                              "messages.id= ?4 "
+                              "folders.folder_hierarchy LIKE :hierarchy AND  " +
+                              "messages.session = :session AND " +
+                              "messages.id= :uid "
             szSQL   += "LIMIT 1"
 
             var statement = this.m_dbConn.createStatement(szSQL);
-            statement.bindStringParameter(0, szUser);
-            statement.bindStringParameter(1, szHierarchy);
-            statement.bindStringParameter(2, this.m_iSession);
-            statement.bindStringParameter(3, szUID);
+            statement.params.user = szUser;
+            statement.params.hierarchy = szHierarchy;
+            statement.params.session = this.m_iSession;
+            statement.params.uid = szUID;
 
             try
             {
@@ -1181,18 +1181,18 @@ nsIMAPFolders.prototype =
             szSQL   += "FROM folders, imap_accounts, messages "
             szSQL   += "WHERE  folders.account_id = imap_accounts.id AND " +
                               "messages.account_id =  imap_accounts.id AND " +
-                              "imap_accounts.account_name LIKE ?1 AND " +
+                              "imap_accounts.account_name LIKE :user AND " +
                               "folders.id = messages.folder_id AND " +
-                              "folders.folder_hierarchy LIKE ?2 AND  " +
-                              "messages.session = ?3 AND " +
-                              "messages.id= ?4 "
+                              "folders.folder_hierarchy LIKE :hierarchy AND  " +
+                              "messages.session = :session AND " +
+                              "messages.id= :uid "
             szSQL   += "LIMIT 1"
 
             var statement = this.m_dbConn.createStatement(szSQL);
-            statement.bindStringParameter(0, szUser);
-            statement.bindStringParameter(1, szHierarchy);
-            statement.bindStringParameter(2, this.m_iSession);
-            statement.bindStringParameter(3, szUID);
+            statement.params.user = szUser;
+            statement.params.hierarchy = szHierarchy;
+            statement.params.session = this.m_iSession;
+            statement.params.uid = szUID;
 
             try
             {
@@ -1242,27 +1242,27 @@ nsIMAPFolders.prototype =
                                "   FROM messages, folders, imap_accounts " +
                                "   WHERE folders.account_id = imap_accounts.id AND " +
                                "         messages.account_id = imap_accounts.id AND " +
-                               "         imap_accounts.account_name LIKE ?1 AND " +
+                               "         imap_accounts.account_name LIKE :user AND " +
                                "         messages.folder_id = folders.id AND " +
-                               "         folders.folder_hierarchy LIKE ?2 AND " +
-                               "         messages.session = ?3 AND " +
-                               "         messages.id <= ?4" +
+                               "         folders.folder_hierarchy LIKE :hierarchy AND " +
+                               "         messages.session = :session AND " +
+                               "         messages.id <= :uid" +
                                ") AS sequence_number "
             szSQL   += "FROM folders, imap_accounts, messages "
             szSQL   += "WHERE  folders.account_id = imap_accounts.id AND " +
                               "messages.account_id =  imap_accounts.id AND " +
-                              "imap_accounts.account_name LIKE ?1 AND " +
+                              "imap_accounts.account_name LIKE :user AND " +
                               "folders.id = messages.folder_id AND " +
-                              "folders.folder_hierarchy LIKE ?2 AND  " +
-                              "messages.session = ?3 AND " +
-                              "messages.id= ?4 "
+                              "folders.folder_hierarchy LIKE :hierarchy AND  " +
+                              "messages.session = :session AND " +
+                              "messages.id= :uid "
             szSQL   += "LIMIT 1"
 
             var statement = this.m_dbConn.createStatement(szSQL);
-            statement.bindStringParameter(0, szUser);
-            statement.bindStringParameter(1, szHierarchy);
-            statement.bindStringParameter(2, this.m_iSession);
-            statement.bindStringParameter(3, szUID);
+            statement.params.user = szUser;
+            statement.params.hierarchy = szHierarchy;
+            statement.params.session = this.m_iSession;
+            statement.params.uid = szUID;
 
             try
             {
@@ -1310,22 +1310,22 @@ nsIMAPFolders.prototype =
             this.m_Log.Write("nsIMAPFolder.js - setMSGSeenFlag - " + szUser + " " + szHierarchy + " " + szUID + " " + bSeen);
 
             var szSQL = "UPDATE messages ";
-            szSQL    += "SET read = ?4 "
+            szSQL    += "SET read = :seen "
             szSQL    += "WHERE id = ( SELECT messages.id " +
                                      "FROM messages, folders, imap_accounts " +
-                                     "WHERE imap_accounts.account_name LIKE ?1 AND " +
+                                     "WHERE imap_accounts.account_name LIKE :user AND " +
                                      "      imap_accounts.id = folders.account_id  AND " +
                                      "      messages.account_id = imap_accounts.id AND " +
                                      "      messages.folder_id = folders.id AND " +
-                                     "      folders.folder_hierarchy  = ?2  AND " +
-                                     "      messages.id = ?3" +
+                                     "      folders.folder_hierarchy  = :hierarchy  AND " +
+                                     "      messages.id = :uid" +
                                     ");"
 
             var statement = this.m_dbConn.createStatement(szSQL);
-            statement.bindStringParameter(0, szUser.toLowerCase());
-            statement.bindStringParameter(1, szHierarchy);
-            statement.bindStringParameter(2, szUID);
-            statement.bindStringParameter(3, bSeen);
+            statement.params.user = szUser.toLowerCase();
+            statement.params.hierarchy = szHierarchy;
+            statement.params.uid = szUID;
+            statement.params.seen = bSeen;
             statement.execute();
 
             this.m_Log.Write("nsIMAPFolder.js - setMSGSeenFlag - END ");
@@ -1354,22 +1354,22 @@ nsIMAPFolders.prototype =
             this.m_Log.Write("nsIMAPFolder.js - setMSGDeleteFlag - " + szUser + " " + szHierarchy + " " + szUID + " " + bDelete);
 
             var szSQL = "UPDATE messages ";
-            szSQL    += "SET deleted = ?4 "
+            szSQL    += "SET deleted = :deleted "
             szSQL    += "WHERE id = ( SELECT messages.id " +
                                      "FROM messages, folders, imap_accounts " +
-                                     "WHERE imap_accounts.account_name LIKE ?1 AND " +
+                                     "WHERE imap_accounts.account_name LIKE :user AND " +
                                      "      imap_accounts.id = folders.account_id  AND " +
                                      "      messages.account_id = imap_accounts.id AND " +
                                      "      messages.folder_id = folders.id AND " +
-                                     "      folders.folder_hierarchy  = ?2  AND " +
-                                     "      messages.id = ?3" +
+                                     "      folders.folder_hierarchy  = :hierarchy  AND " +
+                                     "      messages.id = :uid" +
                                     ");"
 
             var statement = this.m_dbConn.createStatement(szSQL);
-            statement.bindStringParameter(0, szUser.toLowerCase());
-            statement.bindStringParameter(1, szHierarchy);
-            statement.bindStringParameter(2, szUID);
-            statement.bindStringParameter(3, bDelete);
+            statement.params.user = szUser.toLowerCase();
+            statement.params.hierarchy = szHierarchy;
+            statement.params.uid = szUID;
+            statement.params.deleted = bDelete;
             statement.execute();
 
 
@@ -1399,13 +1399,13 @@ nsIMAPFolders.prototype =
             this.m_Log.Write("nsIMAPFolder.js - deleteMSGs - " + szUser + " " + szHierarchy );
 
             var szSQL = "DELETE FROM messages ";
-            szSQL   +=  "WHERE account_id = (SELECT id FROM imap_accounts WHERE account_name LIKE ?1) AND " +
-                              "folder_id = (SELECT id FROM folders WHERE folder_hierarchy LIKE ?2) AND " +
+            szSQL   +=  "WHERE account_id = (SELECT id FROM imap_accounts WHERE account_name LIKE :user) AND " +
+                              "folder_id = (SELECT id FROM folders WHERE folder_hierarchy LIKE :hierarchy) AND " +
                               "deleted = \"true\"";
 
             var statement = this.m_dbConn.createStatement(szSQL);
-            statement.bindStringParameter(0, szUser);
-            statement.bindStringParameter(1, szHierarchy);
+            statement.params.user = szUser;
+            statement.params.hierarchy = szHierarchy;
             statement.execute();
 
             this.m_Log.Write("nsIMAPFolder.js - deleteMSGs - END ");
@@ -1437,15 +1437,15 @@ nsIMAPFolders.prototype =
             szSQL    += "FROM last_folder_update, imap_accounts, folders "
             szSQL    += "WHERE last_folder_update.account_id = imap_accounts.id AND " +
                               "imap_accounts.id = folders.account_id AND " +
-                              "imap_accounts.account_name LIKE ?1 AND " +
+                              "imap_accounts.account_name LIKE :user AND " +
                               "folders.id = last_folder_update.folder_id AND " +
-                              "folders.folder_hierarchy LIKE ?2 AND " +
-                              "last_folder_update.session = ?3"
+                              "folders.folder_hierarchy LIKE :hierarchy AND " +
+                              "last_folder_update.session = :session"
 
             var statement = this.m_dbConn.createStatement(szSQL);
-            statement.bindStringParameter(0, szUser);
-            statement.bindStringParameter(1, szHierarchy);
-            statement.bindStringParameter(2, this.m_iSession);
+            statement.params.user = szUser;
+            statement.params.hierarchy = szHierarchy;
+            statement.params.session = this.m_iSession;
 
             try
             {
@@ -1508,12 +1508,12 @@ nsIMAPFolders.prototype =
             var szSQL = "SELECT last_user_update.date ";
             szSQL    += "FROM last_user_update, imap_accounts "
             szSQL    += "WHERE last_user_update.account_id = imap_accounts.id AND " +
-                              "imap_accounts.account_name LIKE ?1 AND " +
-                              "last_user_update.session = ?2"
+                              "imap_accounts.account_name LIKE :user AND " +
+                              "last_user_update.session = :session"
 
             var statement = this.m_dbConn.createStatement(szSQL);
-            statement.bindStringParameter(0, szUser);
-            statement.bindStringParameter(1, this.m_iSession);
+            statement.params.user = szUser;
+            statement.params.session = this.m_iSession;
 
             try
             {
@@ -1573,16 +1573,16 @@ nsIMAPFolders.prototype =
             this.m_Log.Write("nsIMAPFolder.js - cleanDB - START ");
 
             //delete old messages
-            var szSQL = "DELETE FROM messages WHERE session <= ?1"
+            var szSQL = "DELETE FROM messages WHERE session <= :session"
             var statement = this.m_dbConn.createStatement(szSQL);
-            statement.bindStringParameter(0, this.m_iSession - 50);
+            statement.params.session = this.m_iSession - 50;
             statement.execute();
 
 
             //delete old folders
-            var szSQL = "DELETE FROM folders WHERE session <= ?1"
+            var szSQL = "DELETE FROM folders WHERE session <= :session"
             var statement = this.m_dbConn.createStatement(szSQL);
-            statement.bindStringParameter(0, this.m_iSession - 100);
+            statement.params.session = this.m_iSession - 100;
             statement.execute();
 
             this.m_Log.Write("nsIMAPFolder.js - cleanDB - END ");
