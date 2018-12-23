@@ -11,12 +11,12 @@ Main plugin, *web-mail*, works without problems. *owa* plugin configuration shou
 
 ## Development
 
-To build plugins just call *build.sh* script from root main directory. Optionally it takes one argument to build single plugin, e.g. *build.sh web-mail*.
+To build plugins just call ```build.sh``` script from root main directory. Optionally it takes one argument to build single plugin, e.g. ```build.sh web-mail```
 
-Building requires *ant*.
+Building requires *ant*
 
 
-To test plugin run thunderbird with following arguments: *thunderbird --jsconsole --jsdebugger*.
+To test plugin run thunderbird with following arguments: ```thunderbird --jsconsole --jsdebugger```
 
 
 ## References:
